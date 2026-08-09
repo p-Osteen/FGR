@@ -25,6 +25,20 @@ export default function StaticPage() {
       });
   }, [slug]);
 
+  useEffect(() => {
+    if (!loading && pageData && pageData.content) {
+      const titles = document.querySelectorAll('.su-spoiler-title');
+      const toggleSpoiler = function() {
+        const parent = this.parentElement;
+        parent.classList.toggle('su-spoiler-closed');
+      };
+      titles.forEach(t => t.addEventListener('click', toggleSpoiler));
+      return () => {
+        titles.forEach(t => t.removeEventListener('click', toggleSpoiler));
+      };
+    }
+  }, [loading, pageData]);
+
   if (loading) {
     return <div className="detail-page"><div className="loading">Loading page...</div></div>;
   }

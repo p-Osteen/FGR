@@ -455,3 +455,13 @@ body {
   color: var(--primary-color);
 }
 
+
+/* Static page content spacing */
+.static-html-content p {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+.static-html-content ul {
+  margin-bottom: 1.5rem;
+}
+
