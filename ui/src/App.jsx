@@ -16,6 +16,13 @@ export default function App() {
           <Route path="/game/:id" element={<GameDetail />} />
           <Route path="/page/:slug" element={<StaticPage />} />
         </Routes>
+        <footer className="site-footer">
+          <p>
+            <strong>Disclaimer:</strong> This is an unofficial, forked version of the FitGirl Repacks website. 
+            It was created to provide a cleaner, more modern, and easier-to-use interface than the original site. 
+            All data is sourced from the official FitGirl Repacks site.
+          </p>
+        </footer>
       </div>
     </Router>
   );

@@ -441,3 +441,17 @@ body {
 .su-spoiler-content { padding: 1rem; display: block; background: rgba(0,0,0,0.2); }
 .su-spoiler-closed .su-spoiler-content { display: none; }
 
+
+/* Footer styles */
+.site-footer {
+  text-align: center;
+  padding: 2rem;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+.site-footer strong {
+  color: var(--primary-color);
+}
+
