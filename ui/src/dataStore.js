@@ -11,7 +11,7 @@ export const fetchGamesData = async () => {
     // but standard Vite behavior resolves absolute paths from public root.
     // Let's use import.meta.env.BASE_URL to be safe.
     const url = `${import.meta.env.BASE_URL}games.json`;
-    
+
     fetchPromise = fetch(url)
       .then(res => res.json())
       .then(data => {

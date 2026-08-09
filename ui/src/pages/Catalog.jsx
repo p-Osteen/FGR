@@ -22,12 +22,13 @@ export default function Catalog() {
   const [allGames, setAllGames] = useState([]);
   const [filtersData, setFiltersData] = useState({ years: [], categories: [] });
   const [loading, setLoading] = useState(true);
-  
+
   // State for filters
   const [search, setSearch] = useState('');
   const [selectedYear, setSelectedYear] = useState('');
+  const [selectedMonth, setSelectedMonth] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
-  
+
   // Pagination
   const [page, setPage] = useState(1);
   const limit = 24;
@@ -42,25 +43,31 @@ export default function Catalog() {
 
   const filteredGames = useMemo(() => {
     let result = allGames;
-    
+
     if (search) {
       const s = search.toLowerCase();
-      result = result.filter(g => 
-        g.title.toLowerCase().includes(s) || 
+      result = result.filter(g =>
+        g.title.toLowerCase().includes(s) ||
         (g.categories && g.categories.some(c => c.toLowerCase().includes(s)))
       );
     }
-    
+
     if (selectedYear) {
       result = result.filter(g => g.year === selectedYear);
+      if (selectedMonth !== '') {
+        result = result.filter(g => {
+          const d = new Date(g.date);
+          return !isNaN(d) && d.getMonth() === parseInt(selectedMonth, 10);
+        });
+      }
     }
-    
+
     if (selectedCategory) {
       result = result.filter(g => g.categories && g.categories.includes(selectedCategory));
     }
-    
+
     return result;
-  }, [allGames, search, selectedYear, selectedCategory]);
+  }, [allGames, search, selectedYear, selectedMonth, selectedCategory]);
 
   const totalPages = Math.ceil(filteredGames.length / limit) || 1;
   const paginatedGames = useMemo(() => {
@@ -68,20 +75,25 @@ export default function Catalog() {
     return filteredGames.slice(start, start + limit);
   }, [filteredGames, page, limit]);
 
+  // Reset month when year changes
+  useEffect(() => {
+    setSelectedMonth('');
+  }, [selectedYear]);
+
   // Reset page when filters change
   useEffect(() => {
     setPage(1);
-  }, [search, selectedYear, selectedCategory]);
+  }, [search, selectedYear, selectedMonth, selectedCategory]);
 
   return (
     <div className="main-layout">
       <aside className="sidebar">
         <div className="filter-group">
           <h3>Search</h3>
-          <input 
-            type="text" 
-            className="search-input" 
-            placeholder="Search games..." 
+          <input
+            type="text"
+            className="search-input"
+            placeholder="Search games..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             style={{ width: '100%' }}
@@ -103,32 +115,36 @@ export default function Catalog() {
           </select>
         </div>
 
+        {selectedYear && (
+          <div className="filter-group">
+            <h3>Month Released</h3>
+            <select 
+              className="search-input" 
+              value={selectedMonth} 
+              onChange={e => setSelectedMonth(e.target.value)}
+              style={{ padding: '0.5rem', width: '100%' }}
+            >
+              <option value="">All Months</option>
+              {['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'].map((m, i) => (
+                <option key={i} value={i}>{m}</option>
+              ))}
+            </select>
+          </div>
+        )}
+
         <div className="filter-group">
           <h3>Categories</h3>
-          <div className="filter-list">
-            <label className="filter-label">
-              <input 
-                type="radio" 
-                name="category" 
-                className="filter-checkbox"
-                checked={selectedCategory === ''}
-                onChange={() => setSelectedCategory('')}
-              />
-              All Categories
-            </label>
+          <select
+            className="search-input"
+            value={selectedCategory}
+            onChange={e => setSelectedCategory(e.target.value)}
+            style={{ padding: '0.5rem', width: '100%' }}
+          >
+            <option value="">All Categories</option>
             {filtersData.categories.map(c => (
-              <label key={c} className="filter-label">
-                <input 
-                  type="radio" 
-                  name="category" 
-                  className="filter-checkbox"
-                  checked={selectedCategory === c}
-                  onChange={() => setSelectedCategory(c)}
-                />
-                {c}
-              </label>
+              <option key={c} value={c}>{c}</option>
             ))}
-          </div>
+          </select>
         </div>
       </aside>
 
@@ -142,19 +158,19 @@ export default function Catalog() {
                 <GameCard key={game.id} game={game} />
               ))}
             </div>
-            
+
             {totalPages > 1 && (
               <div className="pagination">
-                <button 
-                  className="btn" 
+                <button
+                  className="btn"
                   disabled={page === 1}
                   onClick={() => setPage(p => p - 1)}
                 >
                   Previous
                 </button>
                 <span>Page {page} of {totalPages}</span>
-                <button 
-                  className="btn" 
+                <button
+                  className="btn"
                   disabled={page === totalPages}
                   onClick={() => setPage(p => p + 1)}
                 >

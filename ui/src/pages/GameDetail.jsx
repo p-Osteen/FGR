@@ -28,7 +28,7 @@ export default function GameDetail() {
   useEffect(() => {
     if (!loading && game && game.mirrorsHtml) {
       const titles = document.querySelectorAll('.su-spoiler-title');
-      const toggleSpoiler = function() {
+      const toggleSpoiler = function () {
         const parent = this.parentElement;
         parent.classList.toggle('su-spoiler-closed');
       };
@@ -75,12 +75,12 @@ export default function GameDetail() {
             {game.originalSize && <p><strong>Original Size:</strong> {game.originalSize}</p>}
             {game.repackSize && <p><strong>Repack Size:</strong> {game.repackSize}</p>}
           </div>
-          
+
           <div className="download-section">
             {game.mirrorsHtml ? (
-              <div 
+              <div
                 className="og-mirrors-container"
-                dangerouslySetInnerHTML={{ __html: game.mirrorsHtml }} 
+                dangerouslySetInnerHTML={{ __html: game.mirrorsHtml }}
               />
             ) : game.links && game.links.length > 0 ? (
               <>
