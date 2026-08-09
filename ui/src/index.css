@@ -465,3 +465,76 @@ body {
   margin-bottom: 1.5rem;
 }
 
+
+/* Skeleton */
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.skeleton-card { pointer-events: none; }
+.skeleton-image {
+  background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.09) 50%, rgba(255,255,255,0.04) 75%);
+  background-size: 400px 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+.skeleton-line {
+  border-radius: 4px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.09) 50%, rgba(255,255,255,0.04) 75%);
+  background-size: 400px 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+.skeleton-title { height: 14px; width: 85%; margin-bottom: 0.4rem; }
+.skeleton-date { height: 11px; width: 45%; margin-top: auto; }
+
+/* Filter Buttons */
+.clear-filter-btn {
+  background: none; border: 1px solid var(--surface-border);
+  color: var(--primary-color); font-size: 0.8rem; border-radius: 6px;
+  padding: 0.2rem 0.6rem; cursor: pointer; margin-bottom: 0.75rem; transition: var(--transition);
+}
+.clear-filter-btn:hover { background: rgba(248, 135, 255, 0.1); }
+
+/* Active Filters */
+.active-filters { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-bottom: 1.25rem; }
+.filter-chip { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(248, 135, 255, 0.1); border: 1px solid rgba(248, 135, 255, 0.3); color: var(--primary-color); font-size: 0.8rem; padding: 0.25rem 0.6rem; border-radius: 20px; }
+.filter-chip button { background: none; border: none; color: inherit; cursor: pointer; font-size: 0.8rem; padding: 0; line-height: 1; opacity: 0.7; transition: opacity 0.15s; }
+.filter-chip button:hover { opacity: 1; }
+.filter-result-count { font-size: 0.8rem; color: var(--text-muted); margin-left: auto; }
+
+/* Sort Bar */
+.sort-bar { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; }
+.sort-label { font-size: 0.85rem; color: var(--text-muted); white-space: nowrap; }
+.sort-select { background: var(--surface-color); border: 1px solid var(--surface-border); color: var(--text-color); font-size: 0.85rem; padding: 0.3rem 0.6rem; border-radius: 6px; cursor: pointer; outline: none; transition: var(--transition); }
+.sort-select:focus { border-color: var(--primary-color); }
+
+/* Meta */
+.metadata-section { margin-bottom: 2rem; line-height: 1.8; }
+
+
+/* Navbar Fixes */
+.topbar h1 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
+}
+.logo-fitgirl { color: #ffffff; }
+.logo-repacks { color: var(--primary-color); }
+
+.dropdown-trigger {
+  background: none; border: none; color: var(--text-color);
+  font-size: 0.95rem; font-weight: 500; cursor: pointer;
+  padding: 0; transition: var(--transition); font-family: var(--font-family);
+}
+.dropdown-trigger:hover { color: var(--primary-color); }
+.sub-menu {
+  position: absolute; top: calc(100% + 0.5rem); left: 0;
+  background: var(--surface-color); backdrop-filter: blur(12px);
+  border: 1px solid var(--surface-border); border-radius: 8px;
+  list-style: none; padding: 0.5rem 0; min-width: 250px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 100;
+  animation: fadeIn 0.15s ease-in-out;
+}
+

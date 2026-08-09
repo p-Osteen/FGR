@@ -1,54 +1,47 @@
-let gamesData = null;
-let fetchPromise = null;
+let catalogCache = null;
+let catalogPromise = null;
+const gameDetailCache = {};
 
-export const fetchGamesData = async () => {
-  if (gamesData) return gamesData;
-  if (!fetchPromise) {
-    // In dev mode, or locally, we fetch from the public folder.
-    // Given base: '/FGR/', the public URL for github pages is /FGR/games.json
-    // But locally in dev it's /games.json. 
-    // We can just use the relative or absolute path based on environment, 
-    // but standard Vite behavior resolves absolute paths from public root.
-    // Let's use import.meta.env.BASE_URL to be safe.
+export const fetchCatalog = async () => {
+  if (catalogCache) return catalogCache;
+  if (!catalogPromise) {
     const url = `${import.meta.env.BASE_URL}games.json`;
-
-    fetchPromise = fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        gamesData = data;
-        return data;
-      })
-      .catch(err => {
-        console.error('Failed to load games.json', err);
-        return [];
-      });
+    catalogPromise = fetch(url)
+      .then(res => { if (!res.ok) throw new Error('Failed to load catalog'); return res.json(); })
+      .then(data => { catalogCache = data; return data; })
+      .catch(err => { console.error(err); catalogPromise = null; return []; });
   }
-  return fetchPromise;
+  return catalogPromise;
+};
+
+export const fetchGameDetail = async (id) => {
+  if (gameDetailCache[id]) return gameDetailCache[id];
+  const url = `${import.meta.env.BASE_URL}games/${id}.json`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`Game not found: ${id}`);
+  const data = await res.json();
+  gameDetailCache[id] = data;
+  return data;
 };
 
 export const getFilters = (games) => {
   const years = new Set();
   const categories = new Set();
-
   games.forEach(g => {
     if (g.year && !isNaN(g.year)) years.add(g.year);
-    if (g.categories) {
-      g.categories.forEach(c => categories.add(c));
-    }
+    if (g.categories) g.categories.forEach(c => categories.add(c));
   });
-
   return {
     years: Array.from(years).sort().reverse(),
-    categories: Array.from(categories).sort()
+    categories: Array.from(categories).sort(),
   };
 };
-
 
 let pagesCache = null;
 export async function fetchPagesData() {
   if (pagesCache) return pagesCache;
   try {
-    const res = await fetch('/FGR/pages.json');
+    const res = await fetch(`${import.meta.env.BASE_URL}pages.json`);
     if (!res.ok) throw new Error('Failed to load static pages');
     pagesCache = await res.json();
     return pagesCache;
@@ -58,3 +51,8 @@ export async function fetchPagesData() {
   }
 }
 
+export function formatDate(dateStr) {
+  const d = new Date(dateStr);
+  if (isNaN(d)) return '';
+  return `${String(d.getDate()).padStart(2, '0')}/${d.toLocaleString('en-US', {month: 'short'})}/${d.getFullYear()}`;
+}

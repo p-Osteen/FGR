@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { fetchGamesData } from '../dataStore';
+import { fetchGameDetail, formatDate } from '../dataStore';
+import DOMPurify from 'dompurify';
+
+const PLACEHOLDER = `${import.meta.env.BASE_URL}placeholder.svg`;
 
 export default function GameDetail() {
   const { id } = useParams();
@@ -9,14 +12,9 @@ export default function GameDetail() {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    fetchGamesData()
-      .then(games => {
-        const found = games.find(g => g.id === id);
-        if (found) {
-          setGame(found);
-        } else {
-          setError('Game not found');
-        }
+    fetchGameDetail(id)
+      .then(g => {
+        setGame(g);
         setLoading(false);
       })
       .catch(err => {
@@ -28,7 +26,7 @@ export default function GameDetail() {
   useEffect(() => {
     if (!loading && game && game.mirrorsHtml) {
       const titles = document.querySelectorAll('.su-spoiler-title');
-      const toggleSpoiler = function () {
+      const toggleSpoiler = function() {
         const parent = this.parentElement;
         parent.classList.toggle('su-spoiler-closed');
       };
@@ -57,46 +55,41 @@ export default function GameDetail() {
       <Link to="/" className="back-link">&larr; Back to Catalog</Link>
       <div className="detail-content">
         <div className="detail-image-col">
-          <img src={game.image || 'https://via.placeholder.com/400x533?text=No+Image'} alt={game.title} />
+          <img src={game.image || PLACEHOLDER} alt={game.title} />
         </div>
         <div className="detail-info-col">
           <h1 className="detail-title">{game.title}</h1>
           <div className="detail-tags">
-            <span className="tag">Added: {new Date(game.date).toLocaleDateString()}</span>
+            <span className="tag">Added: {formatDate(game.date)}</span>
             {game.categories && game.categories.map(c => (
               <span key={c} className="tag">{c}</span>
             ))}
           </div>
 
-          <div className="metadata-section" style={{ marginBottom: '2rem' }}>
+          <div className="metadata-section">
             {game.genres && <p><strong>Genres/Tags:</strong> {game.genres}</p>}
             {game.companies && <p><strong>Companies:</strong> {game.companies}</p>}
             {game.languages && <p><strong>Languages:</strong> {game.languages}</p>}
             {game.originalSize && <p><strong>Original Size:</strong> {game.originalSize}</p>}
             {game.repackSize && <p><strong>Repack Size:</strong> {game.repackSize}</p>}
+            {game.discussionUrl && (
+              <p>
+                <a href={game.discussionUrl} target="_blank" rel="noopener noreferrer">
+                  Discussion and (possible) future updates on CS.RIN.RU thread
+                </a>
+              </p>
+            )}
           </div>
-
+          
           <div className="download-section">
+            <h2>Download Links</h2>
             {game.mirrorsHtml ? (
-              <div
+              <div 
                 className="og-mirrors-container"
-                dangerouslySetInnerHTML={{ __html: game.mirrorsHtml }}
+                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(game.mirrorsHtml) }}
               />
-            ) : game.links && game.links.length > 0 ? (
-              <>
-                <h3>Download Links</h3>
-                <div className="text-links-list">
-                  {game.links.map((link, idx) => (
-                    <div key={idx} className="text-link-item">
-                      <a href={link.url} target="_blank" rel="noopener noreferrer" className="text-link">
-                        {link.name}
-                      </a>
-                    </div>
-                  ))}
-                </div>
-              </>
             ) : (
-              <p style={{ color: 'var(--text-muted)' }}>No links found for this title.</p>
+              <p>No links available.</p>
             )}
           </div>
         </div>

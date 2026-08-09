@@ -12,6 +12,7 @@ STATE_JSON = os.path.join(SCRAPER_DIR, 'state.json')
 def scrape_all():
     print("Starting full scrape...")
     subprocess.run(["node", "index.js", "all"], cwd=SCRAPER_DIR)
+GAMES_DIR = os.path.join(PUBLIC_DIR, 'games')
 
 def clear_all():
     print("Clearing all data...")
@@ -19,6 +20,8 @@ def clear_all():
         os.remove(GAMES_JSON)
     if os.path.exists(STATE_JSON):
         os.remove(STATE_JSON)
+    if os.path.exists(GAMES_DIR):
+        shutil.rmtree(GAMES_DIR)
     print("Data cleared.")
 
 def check_updates():

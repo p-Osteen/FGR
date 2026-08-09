@@ -1,17 +1,29 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { fetchGamesData, getFilters } from '../dataStore';
+import { fetchCatalog, getFilters, formatDate } from '../dataStore';
+
+const PLACEHOLDER = `${import.meta.env.BASE_URL}placeholder.svg`;
+
+const SkeletonCard = () => (
+  <div className="game-card skeleton-card">
+    <div className="game-image-wrapper skeleton-image" />
+    <div className="game-info">
+      <div className="skeleton-line skeleton-title" />
+      <div className="skeleton-line skeleton-date" />
+    </div>
+  </div>
+);
 
 const GameCard = ({ game }) => (
   <Link to={`/game/${game.id}`} className="game-card-link">
     <div className="game-card">
       <div className="game-image-wrapper">
-        <img src={game.image || 'https://via.placeholder.com/300x400?text=No+Image'} alt={game.title} className="game-image" loading="lazy" />
+        <img src={game.image || PLACEHOLDER} alt={game.title} className="game-image" loading="lazy" />
       </div>
       <div className="game-info">
         <h3 className="game-title" title={game.title}>{game.title}</h3>
         <div className="game-meta">
-          <span className="date">{new Date(game.date).toLocaleDateString()}</span>
+          <span className="date">{formatDate(game.date)}</span>
         </div>
       </div>
     </div>
@@ -22,36 +34,51 @@ export default function Catalog() {
   const [allGames, setAllGames] = useState([]);
   const [filtersData, setFiltersData] = useState({ years: [], categories: [] });
   const [loading, setLoading] = useState(true);
-
+  
   // State for filters
   const [search, setSearch] = useState('');
+  const [debouncedSearch, setDebouncedSearch] = useState('');
   const [selectedYear, setSelectedYear] = useState('');
   const [selectedMonth, setSelectedMonth] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('');
-
+  const [selectedCategories, setSelectedCategories] = useState(new Set());
+  const [sortBy, setSortBy] = useState('newest');
+  
   // Pagination
   const [page, setPage] = useState(1);
   const limit = 24;
 
   useEffect(() => {
-    fetchGamesData().then(data => {
+    fetchCatalog().then(data => {
       setAllGames(data);
       setFiltersData(getFilters(data));
       setLoading(false);
     });
   }, []);
 
+  useEffect(() => {
+    const timer = setTimeout(() => setDebouncedSearch(search), 220);
+    return () => clearTimeout(timer);
+  }, [search]);
+
+  const toggleCategory = (cat) => {
+    setSelectedCategories(prev => {
+      const next = new Set(prev);
+      next.has(cat) ? next.delete(cat) : next.add(cat);
+      return next;
+    });
+  };
+
   const filteredGames = useMemo(() => {
     let result = allGames;
-
-    if (search) {
-      const s = search.toLowerCase();
-      result = result.filter(g =>
-        g.title.toLowerCase().includes(s) ||
+    
+    if (debouncedSearch) {
+      const s = debouncedSearch.toLowerCase();
+      result = result.filter(g => 
+        g.title.toLowerCase().includes(s) || 
         (g.categories && g.categories.some(c => c.toLowerCase().includes(s)))
       );
     }
-
+    
     if (selectedYear) {
       result = result.filter(g => g.year === selectedYear);
       if (selectedMonth !== '') {
@@ -61,13 +88,18 @@ export default function Catalog() {
         });
       }
     }
-
-    if (selectedCategory) {
-      result = result.filter(g => g.categories && g.categories.includes(selectedCategory));
+    
+    if (selectedCategories.size > 0) {
+      result = result.filter(g => g.categories && g.categories.some(c => selectedCategories.has(c)));
     }
+    
+    if (sortBy === 'newest') result = [...result].sort((a, b) => new Date(b.date) - new Date(a.date));
+    else if (sortBy === 'oldest') result = [...result].sort((a, b) => new Date(a.date) - new Date(b.date));
+    else if (sortBy === 'az') result = [...result].sort((a, b) => a.title.localeCompare(b.title));
+    else if (sortBy === 'za') result = [...result].sort((a, b) => b.title.localeCompare(a.title));
 
     return result;
-  }, [allGames, search, selectedYear, selectedMonth, selectedCategory]);
+  }, [allGames, debouncedSearch, selectedYear, selectedMonth, selectedCategories, sortBy]);
 
   const totalPages = Math.ceil(filteredGames.length / limit) || 1;
   const paginatedGames = useMemo(() => {
@@ -75,28 +107,27 @@ export default function Catalog() {
     return filteredGames.slice(start, start + limit);
   }, [filteredGames, page, limit]);
 
-  // Reset month when year changes
   useEffect(() => {
     setSelectedMonth('');
   }, [selectedYear]);
 
-  // Reset page when filters change
   useEffect(() => {
     setPage(1);
-  }, [search, selectedYear, selectedMonth, selectedCategory]);
+  }, [debouncedSearch, selectedYear, selectedMonth, selectedCategories, sortBy]);
+
+  const hasFilters = debouncedSearch || selectedYear || selectedCategories.size > 0;
 
   return (
     <div className="main-layout">
       <aside className="sidebar">
         <div className="filter-group">
           <h3>Search</h3>
-          <input
-            type="text"
-            className="search-input"
-            placeholder="Search games..."
+          <input 
+            type="text" 
+            className="search-input" 
+            placeholder="Search games..." 
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            style={{ width: '100%' }}
           />
         </div>
 
@@ -106,7 +137,6 @@ export default function Catalog() {
             className="search-input" 
             value={selectedYear} 
             onChange={e => setSelectedYear(e.target.value)}
-            style={{ padding: '0.5rem', width: '100%' }}
           >
             <option value="">All Years</option>
             {filtersData.years.map(y => (
@@ -122,7 +152,6 @@ export default function Catalog() {
               className="search-input" 
               value={selectedMonth} 
               onChange={e => setSelectedMonth(e.target.value)}
-              style={{ padding: '0.5rem', width: '100%' }}
             >
               <option value="">All Months</option>
               {['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'].map((m, i) => (
@@ -134,23 +163,66 @@ export default function Catalog() {
 
         <div className="filter-group">
           <h3>Categories</h3>
-          <select
-            className="search-input"
-            value={selectedCategory}
-            onChange={e => setSelectedCategory(e.target.value)}
-            style={{ padding: '0.5rem', width: '100%' }}
-          >
-            <option value="">All Categories</option>
+          {selectedCategories.size > 0 && (
+            <button className="clear-filter-btn" onClick={() => setSelectedCategories(new Set())}>
+              Clear ({selectedCategories.size})
+            </button>
+          )}
+          <div className="filter-list">
             {filtersData.categories.map(c => (
-              <option key={c} value={c}>{c}</option>
+              <label key={c} className="filter-label">
+                <input 
+                  type="checkbox" 
+                  className="filter-checkbox"
+                  checked={selectedCategories.has(c)}
+                  onChange={() => toggleCategory(c)}
+                />
+                {c}
+              </label>
             ))}
-          </select>
+          </div>
         </div>
       </aside>
 
       <main className="content-area">
+        <div className="sort-bar">
+          <label htmlFor="sort-select" className="sort-label">Sort:</label>
+          <select id="sort-select" className="sort-select" value={sortBy} onChange={e => setSortBy(e.target.value)}>
+            <option value="newest">Newest first</option>
+            <option value="oldest">Oldest first</option>
+            <option value="az">A &rarr; Z</option>
+            <option value="za">Z &rarr; A</option>
+          </select>
+        </div>
+
+        {hasFilters && (
+          <div className="active-filters">
+            {debouncedSearch && (
+              <span className="filter-chip">
+                Search: "{debouncedSearch}"
+                <button onClick={() => setSearch('')}>&#10005;</button>
+              </span>
+            )}
+            {selectedYear && (
+              <span className="filter-chip">
+                Year: {selectedYear}
+                <button onClick={() => setSelectedYear('')}>&#10005;</button>
+              </span>
+            )}
+            {selectedCategories.size > 0 && (
+              <span className="filter-chip">
+                {selectedCategories.size} {selectedCategories.size === 1 ? 'category' : 'categories'}
+                <button onClick={() => setSelectedCategories(new Set())}>&#10005;</button>
+              </span>
+            )}
+            <span className="filter-result-count">{filteredGames.length} results</span>
+          </div>
+        )}
+
         {loading ? (
-          <div className="loading">Loading library...</div>
+          <div className="grid">
+            {Array.from({ length: 24 }).map((_, i) => <SkeletonCard key={i} />)}
+          </div>
         ) : paginatedGames.length > 0 ? (
           <>
             <div className="grid">
@@ -158,19 +230,19 @@ export default function Catalog() {
                 <GameCard key={game.id} game={game} />
               ))}
             </div>
-
+            
             {totalPages > 1 && (
               <div className="pagination">
-                <button
-                  className="btn"
+                <button 
+                  className="btn" 
                   disabled={page === 1}
                   onClick={() => setPage(p => p - 1)}
                 >
                   Previous
                 </button>
                 <span>Page {page} of {totalPages}</span>
-                <button
-                  className="btn"
+                <button 
+                  className="btn" 
                   disabled={page === totalPages}
                   onClick={() => setPage(p => p + 1)}
                 >

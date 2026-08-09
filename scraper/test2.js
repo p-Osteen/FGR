@@ -1,1 +1,0 @@
-const axios = require('axios'); const cheerio = require('cheerio'); axios.get('https://fitgirl-repacks.site/doloc-town/').then(res => { const $ = cheerio.load(res.data); console.log($('.entry-content').html().slice(0, 1500)); })

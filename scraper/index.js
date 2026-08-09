@@ -5,10 +5,12 @@ const path = require('path');
 
 const UI_PUBLIC_DIR = path.join(__dirname, '../ui/public');
 const GAMES_FILE = path.join(UI_PUBLIC_DIR, 'games.json');
+const GAMES_DIR = path.join(UI_PUBLIC_DIR, 'games');
 const STATE_FILE = path.join(__dirname, 'state.json');
 const BASE_URL = 'https://fitgirl-repacks.site/';
 
 fs.ensureDirSync(UI_PUBLIC_DIR);
+fs.ensureDirSync(GAMES_DIR);
 const args = process.argv.slice(2);
 const MODE = args[0] || 'update'; 
 
@@ -59,7 +61,14 @@ function parsePage(html) {
     meta.companies = extract('Companies:');
     meta.languages = extract('Languages:');
     meta.originalSize = extract('Original Size:');
-    meta.repackSize = extract('Repack Size:');
+    meta.repackSize = extract('Repack Size:').replace(/Discussion.*/i, '').trim();
+
+    let discussionUrl = '';
+    $(el).find('a').each((_, a) => {
+      if ($(a).text().toLowerCase().includes('cs.rin.ru')) {
+        discussionUrl = $(a).attr('href');
+      }
+    });
 
     $(el).find('.entry-content p strong').each((_, strong) => {
        const text = $(strong).parent().text();
@@ -88,7 +97,8 @@ function parsePage(html) {
       id: urlToSlug(url), title, url, image, categories, date, 
       year: new Date(date).getFullYear().toString(),
       ...meta,
-      mirrorsHtml // New field for raw HTML
+      discussionUrl,
+      mirrorsHtml
     });
   });
 
@@ -112,33 +122,58 @@ async function run() {
   let keepGoing = true;
 
   while (keepGoing) {
-    const html = await fetchPage(currentPage);
-    if (!html) break;
+    const BATCH_SIZE = 3;
+    const promises = [];
+    for (let i = 0; i < BATCH_SIZE; i++) {
+      promises.push(fetchPage(currentPage + i).then(html => ({ page: currentPage + i, html })));
+    }
+    
+    const results = await Promise.all(promises);
+    let anyHasNext = false;
+    let newGamesAddedBatch = 0;
+    let anyGamesFound = false;
 
-    const { games, hasNext } = parsePage(html);
-    if (games.length === 0 && !hasNext) break;
+    for (const res of results) {
+      if (!res.html) continue;
+      const { games, hasNext } = parsePage(res.html);
+      if (games.length > 0) anyGamesFound = true;
+      if (hasNext) anyHasNext = true;
 
-    let newGamesAdded = 0;
-    games.forEach(g => {
-      if (!gamesMap.has(g.id)) {
-        gamesMap.set(g.id, g);
-        newGamesAdded++;
-      } else {
-        // Full overwrite of object fields
-        gamesMap.set(g.id, { ...gamesMap.get(g.id), ...g });
-      }
-    });
+      games.forEach(g => {
+        // Write full game object to individual file
+        fs.writeJsonSync(path.join(GAMES_DIR, `${g.id}.json`), g, { spaces: 2 });
+        
+        // Create lightweight object for the main catalog
+        const lightweight = { ...g };
+        delete lightweight.mirrorsHtml;
 
-    if (MODE === 'update' && newGamesAdded === 0 && games.length > 0 && currentPage > 1) {
+        if (!gamesMap.has(g.id)) {
+          gamesMap.set(g.id, lightweight);
+          newGamesAddedBatch++;
+        } else {
+          gamesMap.set(g.id, { ...gamesMap.get(g.id), ...lightweight });
+        }
+      });
+    }
+
+    if (MODE === 'update' && newGamesAddedBatch === 0 && anyGamesFound && currentPage > 1) {
       break;
     }
 
     const updatedGamesList = Array.from(gamesMap.values()).sort((a, b) => new Date(b.date) - new Date(a.date));
     fs.writeJsonSync(GAMES_FILE, updatedGamesList, { spaces: 2 });
+    
+    currentPage += BATCH_SIZE;
     fs.writeJsonSync(STATE_FILE, { lastPage: currentPage });
 
-    if (!hasNext) keepGoing = false;
-    else { currentPage++; await sleep(1500); }
+    if (!anyHasNext && anyGamesFound === false) {
+      // no games found in the entire batch, we reached the end
+      keepGoing = false;
+    } else if (!anyHasNext) {
+      keepGoing = false;
+    } else { 
+      await sleep(1500); 
+    }
   }
   
   if (MODE === 'all' || !keepGoing) fs.writeJsonSync(STATE_FILE, { lastPage: 1 });
