@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   --bg-color: #0d0d12;
   --surface-color: rgba(30, 30, 40, 0.6);
   --surface-border: rgba(255, 255, 255, 0.08);
@@ -408,7 +408,7 @@ body {
   gap: 0.5rem;
 }
 .text-link-item::before {
-  content: '�';
+  content: '•';
   color: var(--primary-color);
   margin-right: 0.5rem;
 }
