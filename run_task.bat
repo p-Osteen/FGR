@@ -1,0 +1,6 @@
+@echo off
+echo Running Incremental Update...
+python manager.py 3
+echo Pushing to Live...
+python manager.py 4
+echo Finished!
