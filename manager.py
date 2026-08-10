@@ -31,7 +31,18 @@ def check_updates():
 def push_to_live():
     print("Building UI and pushing to live (GitHub Pages)...")
     
-    print("Pushing updated source to main branch to trigger GitHub Actions deployment...")
+    print("Building React App...")
+    subprocess.run(["npm", "run", "build"], cwd=UI_DIR, shell=True)
+    
+    print("Deploying to gh-pages...")
+    dist_dir = os.path.join(UI_DIR, "dist")
+    remote_url = subprocess.check_output(["git", "config", "--get", "remote.origin.url"], cwd=os.path.dirname(__file__)).decode("utf-8").strip()
+    
+    subprocess.run(["git", "init"], cwd=dist_dir, shell=True)
+    subprocess.run(["git", "checkout", "-b", "gh-pages"], cwd=dist_dir, shell=True)
+    subprocess.run(["git", "add", "."], cwd=dist_dir, shell=True)
+    subprocess.run(["git", "commit", "-m", "Auto-deploy"], cwd=dist_dir, shell=True)
+    subprocess.run(["git", "push", "-f", remote_url, "gh-pages"], cwd=dist_dir, shell=True)
     
     # Note: For the actual repo source, you can run normal git add/commit/push here as well
     print("Pushing raw source to main branch...")
