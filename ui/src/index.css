@@ -464,7 +464,12 @@ body {
 .og-mirrors-container a { color: var(--primary-color); text-decoration: none; }
 .og-mirrors-container a:hover { color: #fff; text-shadow: 0 0 5px rgba(248, 135, 255, 0.5); }
 .og-mirrors-container span[style*="color: red"] { color: #ff6b6b !important; }
-.og-mirrors-container span[style*="color: black"] { color: #999 !important; }
+.og-mirrors-container [style*="color: black"],
+.og-mirrors-container [style*="color:black"],
+.og-mirrors-container [style*="color: #000"],
+.og-mirrors-container [style*="color:#000"],
+.og-mirrors-container [style*="color: #333"],
+.og-mirrors-container [style*="color:#333"] { color: #ccc !important; }
 .su-spoiler { margin-top: 0.5rem; background: var(--surface-color); border: 1px solid var(--surface-border); border-radius: 6px; overflow: hidden; }
 .su-spoiler-title { padding: 0.75rem 1rem; cursor: pointer; background: rgba(255, 255, 255, 0.05); display: flex; align-items: center; font-weight: 500; user-select: none; }
 .su-spoiler-title:hover { background: rgba(255, 255, 255, 0.1); }
@@ -541,6 +546,8 @@ body {
 
 /* Meta */
 .metadata-section { margin-bottom: 2rem; line-height: 1.8; }
+.metadata-section a { color: var(--primary-color); text-decoration: none; font-weight: 500; transition: var(--transition); }
+.metadata-section a:hover { color: #fff; text-shadow: 0 0 8px rgba(248, 135, 255, 0.5); }
 
 
 /* Navbar Fixes */
