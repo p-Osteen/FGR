@@ -99,7 +99,27 @@ body {
   flex-direction: column;
   gap: 2rem;
   background: rgba(0,0,0,0.2);
+  position: sticky;
+  top: 73px;
+  height: calc(100vh - 73px);
+  overflow-y: auto;
 }
+
+/* Custom scrollbar for sidebar */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background: var(--surface-border);
+  border-radius: 4px;
+}
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}
+
 
 .filter-group h3 {
   font-size: 0.9rem;
@@ -170,11 +190,18 @@ body {
   border: 1px solid var(--surface-border);
   border-radius: 12px;
   overflow: hidden;
-  transition: var(--transition);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   display: flex;
   flex-direction: column;
   height: 100%;
 }
+
+.game-card:hover {
+  border-color: rgba(255, 99, 146, 0.4);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4), 0 0 12px rgba(255,99,146,0.1);
+  transform: translateY(-4px);
+}
+
 
 .game-card:hover {
   transform: translateY(-4px);
@@ -240,21 +267,24 @@ body {
   border-top: 1px solid var(--surface-border);
 }
 
-.btn {
+.pagination button {
   background: var(--surface-color);
-  color: var(--text-color);
   border: 1px solid var(--surface-border);
-  padding: 0.5rem 1rem;
+  color: var(--text-color);
+  padding: 0.6rem 1.2rem;
   border-radius: 8px;
-  font-size: 0.9rem;
-  font-weight: 500;
   cursor: pointer;
-  transition: var(--transition);
+  font-weight: 500;
+  transition: all 0.2s ease;
+  min-width: 44px;
 }
 
-.btn:hover:not(:disabled) {
-  background: rgba(248, 135, 255, 0.1);
+.pagination button:hover:not(:disabled) {
+  background: var(--primary-color);
   border-color: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 99, 146, 0.2);
 }
 
 .btn:disabled {

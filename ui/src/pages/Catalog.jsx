@@ -115,6 +115,10 @@ export default function Catalog() {
     setPage(1);
   }, [debouncedSearch, selectedYear, selectedMonth, selectedCategories, sortBy]);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [page, debouncedSearch, selectedYear, selectedMonth, selectedCategories, sortBy]);
+
   const hasFilters = debouncedSearch || selectedYear || selectedCategories.size > 0;
 
   return (
