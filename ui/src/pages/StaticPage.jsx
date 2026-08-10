@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { fetchPagesData } from '../dataStore';
+import UpdatesDigest from './UpdatesDigest';
 
 export default function StaticPage() {
   const { slug } = useParams();
@@ -41,6 +42,10 @@ export default function StaticPage() {
 
   if (loading) {
     return <div className="detail-page"><div className="loading">Loading page...</div></div>;
+  }
+
+  if (slug && slug.includes('updates-digest')) {
+    return <UpdatesDigest pageData={pageData} />;
   }
 
   if (error || !pageData) {

@@ -32,8 +32,11 @@ def push_to_live():
     print("Building UI and pushing to live (GitHub Pages)...")
     
     print("Building React App...")
-    subprocess.run(["npm", "run", "build"], cwd=UI_DIR, shell=True)
-    
+    build_result = subprocess.run(["npm", "run", "build"], cwd=UI_DIR, shell=True)
+    if build_result.returncode != 0:
+        print("Build failed. Aborting deployment.")
+        return
+        
     print("Deploying to gh-pages...")
     dist_dir = os.path.join(UI_DIR, "dist")
     remote_url = subprocess.check_output(["git", "config", "--get", "remote.origin.url"], cwd=os.path.dirname(__file__)).decode("utf-8").strip()
