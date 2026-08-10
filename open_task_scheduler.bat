@@ -1,0 +1,3 @@
+@echo off
+echo Opening Windows Task Scheduler...
+start taskschd.msc
