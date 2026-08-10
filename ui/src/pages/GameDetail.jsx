@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { fetchGameDetail, formatDate } from '../dataStore';
 import DOMPurify from 'dompurify';
+import UpdatesDigest from './UpdatesDigest';
 
 const PLACEHOLDER = `${import.meta.env.BASE_URL}placeholder.svg`;
 
@@ -48,6 +49,14 @@ export default function GameDetail() {
         <div className="empty-state">{error || 'Game not found'}</div>
       </div>
     );
+  }
+
+  if (id.includes('updates-digest')) {
+    const pageData = {
+      title: game.title,
+      content: game.mirrorsHtml
+    };
+    return <UpdatesDigest pageData={pageData} />;
   }
 
   return (
