@@ -53,7 +53,7 @@ def main():
         choice = sys.argv[1]
     else:
         print("FitGirl Scraper Manager")
-        print("1. Scrape All (Warning: Takes ~20 mins)")
+        print("1. Scrape All (Takes ~5-10 mins)")
         print("2. Clear All Data")
         print("3. Check for Updates (Incremental)")
         print("4. Push to Live (Build & Deploy)")

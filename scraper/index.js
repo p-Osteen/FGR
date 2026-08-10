@@ -122,7 +122,7 @@ async function run() {
   let keepGoing = true;
 
   while (keepGoing) {
-    const BATCH_SIZE = 3;
+    const BATCH_SIZE = 10;
     const promises = [];
     for (let i = 0; i < BATCH_SIZE; i++) {
       promises.push(fetchPage(currentPage + i).then(html => ({ page: currentPage + i, html })));
