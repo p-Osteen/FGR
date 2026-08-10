@@ -31,15 +31,7 @@ def check_updates():
 def push_to_live():
     print("Building UI and pushing to live (GitHub Pages)...")
     
-    # 1. Build UI
-    print("Building React App...")
-    subprocess.run(["npm", "run", "build"], cwd=UI_DIR, shell=True)
-    
-    # 2. Push to GitHub Pages
-    # For a seamless GH pages deployment, the 'gh-pages' npm package is ideal.
-    # If not installed, we can fall back to standard git commands.
-    print("Deploying to gh-pages...")
-    subprocess.run(["npx", "gh-pages", "-d", "dist"], cwd=UI_DIR, shell=True)
+    print("Pushing updated source to main branch to trigger GitHub Actions deployment...")
     
     # Note: For the actual repo source, you can run normal git add/commit/push here as well
     print("Pushing raw source to main branch...")
