@@ -5,7 +5,7 @@ const gameDetailCache = {};
 export const fetchCatalog = async () => {
   if (catalogCache) return catalogCache;
   if (!catalogPromise) {
-    const url = `${import.meta.env.BASE_URL}games.json`;
+    const url = `${import.meta.env.BASE_URL}games.json?t=${Date.now()}`;
     catalogPromise = fetch(url)
       .then(res => { if (!res.ok) throw new Error('Failed to load catalog'); return res.json(); })
       .then(data => { catalogCache = data; return data; })
@@ -16,7 +16,7 @@ export const fetchCatalog = async () => {
 
 export const fetchGameDetail = async (id) => {
   if (gameDetailCache[id]) return gameDetailCache[id];
-  const url = `${import.meta.env.BASE_URL}games/${id}.json`;
+  const url = `${import.meta.env.BASE_URL}games/${id}.json?t=${Date.now()}`;
   const res = await fetch(url);
   if (!res.ok) throw new Error(`Game not found: ${id}`);
   const data = await res.json();
@@ -41,7 +41,7 @@ let pagesCache = null;
 export async function fetchPagesData() {
   if (pagesCache) return pagesCache;
   try {
-    const res = await fetch(`${import.meta.env.BASE_URL}pages.json`);
+    const res = await fetch(`${import.meta.env.BASE_URL}pages.json?t=${Date.now()}`);
     if (!res.ok) throw new Error('Failed to load static pages');
     pagesCache = await res.json();
     return pagesCache;

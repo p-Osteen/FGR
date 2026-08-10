@@ -18,9 +18,10 @@ async function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function urlToSlug(url) {
+function urlToSlug(url, dateStr) {
   const match = url.match(/fitgirl-repacks\.site\/([^\/]+)/);
-  return match ? match[1] : Buffer.from(url).toString('base64');
+  const slug = match ? match[1] : Buffer.from(url).toString('base64');
+  return dateStr ? `${slug}-${new Date(dateStr).getTime()}` : slug;
 }
 
 async function fetchPage(page) {
@@ -94,7 +95,7 @@ function parsePage(html) {
     });
 
     games.push({
-      id: urlToSlug(url), title, url, image, categories, date, 
+      id: urlToSlug(url, date), title, url, image, categories, date, 
       year: new Date(date).getFullYear().toString(),
       ...meta,
       discussionUrl,
