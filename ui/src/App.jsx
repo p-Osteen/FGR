@@ -17,6 +17,7 @@ export default function App() {
           <Suspense fallback={<div className="loading">Loading...</div>}>
             <Routes>
               <Route path="/" element={<Catalog />} />
+              <Route path="/:pageParam" element={<Catalog />} />
               <Route path="/game/:id" element={<GameDetail />} />
               <Route path="/page/:slug" element={<StaticPage />} />
             </Routes>

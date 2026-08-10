@@ -39,6 +39,7 @@ def push_to_live():
         
     print("Deploying to gh-pages...")
     dist_dir = os.path.join(UI_DIR, "dist")
+    shutil.copy(os.path.join(dist_dir, "index.html"), os.path.join(dist_dir, "404.html"))
     remote_url = subprocess.check_output(["git", "config", "--get", "remote.origin.url"], cwd=os.path.dirname(__file__)).decode("utf-8").strip()
     
     subprocess.run(["git", "init"], cwd=dist_dir, shell=True)

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { fetchCatalog, getFilters, formatDate } from '../dataStore';
 
 const PLACEHOLDER = `${import.meta.env.BASE_URL}placeholder.svg`;
@@ -43,8 +43,10 @@ export default function Catalog() {
   const [selectedCategories, setSelectedCategories] = useState(new Set());
   const [sortBy, setSortBy] = useState('newest');
   
-  // Pagination
-  const [page, setPage] = useState(1);
+  // Pagination via URL
+  const { pageParam } = useParams();
+  const navigate = useNavigate();
+  const page = parseInt(pageParam, 10) || 1;
   const limit = 24;
 
   useEffect(() => {
@@ -112,7 +114,9 @@ export default function Catalog() {
   }, [selectedYear]);
 
   useEffect(() => {
-    setPage(1);
+    if (page !== 1) {
+      navigate('/');
+    }
   }, [debouncedSearch, selectedYear, selectedMonth, selectedCategories, sortBy]);
 
   useEffect(() => {
@@ -240,7 +244,7 @@ export default function Catalog() {
                 <button 
                   className="btn" 
                   disabled={page === 1}
-                  onClick={() => setPage(p => p - 1)}
+                  onClick={() => navigate(`/${page - 1}`)}
                 >
                   Previous
                 </button>
@@ -248,7 +252,7 @@ export default function Catalog() {
                 <button 
                   className="btn" 
                   disabled={page === totalPages}
-                  onClick={() => setPage(p => p + 1)}
+                  onClick={() => navigate(`/${page + 1}`)}
                 >
                   Next
                 </button>
