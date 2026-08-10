@@ -738,6 +738,8 @@ body {
     border-right: none;
     border-bottom: 1px solid var(--surface-border);
     padding: 1.5rem;
+    position: static;
+    height: auto;
   }
 
   .content-area {
