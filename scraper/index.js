@@ -118,7 +118,7 @@ async function run() {
   const gamesMap = new Map();
   gamesData.forEach(g => gamesMap.set(g.id, g));
 
-  let currentPage = MODE === 'all' ? 1 : state.lastPage;
+  let currentPage = (MODE === 'resume') ? state.lastPage : 1;
   let keepGoing = true;
 
   while (keepGoing) {
@@ -176,7 +176,7 @@ async function run() {
     }
   }
   
-  if (MODE === 'all' || !keepGoing) fs.writeJsonSync(STATE_FILE, { lastPage: 1 });
+  fs.writeJsonSync(STATE_FILE, { lastPage: 1 });
   console.log(`Done. Total: ${gamesMap.size}`);
 }
 
