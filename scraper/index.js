@@ -52,6 +52,8 @@ function parsePage(html) {
     const image = $(el).find('.entry-content img').first().attr('src');
     const pText = $(el).find('.entry-content p').text();
     
+    if (pText.includes('This is just a notice')) return;
+    
     const meta = { genres: '', companies: '', languages: '', originalSize: '', repackSize: '' };
     const extract = (label) => {
       const match = pText.match(new RegExp(`${label}\\s*([^\\n\\r]+)`));
