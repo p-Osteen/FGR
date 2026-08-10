@@ -43,7 +43,7 @@ function parsePage(html) {
     const title = titleNode.text().trim();
     const url = titleNode.attr('href');
 
-    if (!title || title.toLowerCase().includes('upcoming repacks') || title.toLowerCase().includes('site updates')) return;
+    if (!title || title.toLowerCase().includes('upcoming repacks') || title.toLowerCase().includes('site updates') || title.toLowerCase().includes('updates digest')) return;
 
     const categories = [];
     $(el).find('.cat-links a').each((_, cat) => categories.push($(cat).text().trim()));
