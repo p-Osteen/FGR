@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { fetchCatalog, getFilters, formatDate } from '../dataStore';
 
@@ -113,9 +113,22 @@ export default function Catalog() {
     setSelectedMonth('');
   }, [selectedYear]);
 
+  // Handle out-of-bounds pages
   useEffect(() => {
-    if (page !== 1) {
-      navigate('/');
+    if (!loading && page > totalPages) {
+      navigate(totalPages === 1 ? '/' : `/${totalPages}`, { replace: true });
+    }
+  }, [loading, page, totalPages, navigate]);
+
+  const isInitialMount = useRef(true);
+
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+    } else {
+      if (page !== 1) {
+        navigate('/');
+      }
     }
   }, [debouncedSearch, selectedYear, selectedMonth, selectedCategories, sortBy]);
 
