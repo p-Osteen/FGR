@@ -84,8 +84,8 @@ function parsePage(html) {
     let mirrorsHtml = '';
     // Find all <h3> that contain "Download Mirrors" or "Game Updates"
     $(el).find('.entry-content h3').each((_, h3) => {
-      const h3Text = $(h3).text().trim();
-      if (h3Text.includes('Download Mirrors') || h3Text.includes('Game Updates')) {
+      const h3TextLower = $(h3).text().trim().toLowerCase();
+      if (h3TextLower.includes('download mirrors') || h3TextLower.includes('game updates')) {
          mirrorsHtml += '<h3>' + $(h3).html() + '</h3>';
          // The next siblings could be ul, style, div, p etc. We want everything until the next h3
          let next = $(h3).next();
