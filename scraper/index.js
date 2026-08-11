@@ -68,8 +68,15 @@ function parsePage(html) {
 
     let discussionUrl = '';
     $(el).find('a').each((_, a) => {
-      if ($(a).text().toLowerCase().includes('cs.rin.ru')) {
+      const aText = $(a).text().trim();
+      if (aText.toLowerCase().includes('cs.rin.ru')) {
         discussionUrl = $(a).attr('href');
+        const parent = $(a).parent();
+        if ((parent.is('p') || parent.is('li') || parent.is('div')) && parent.text().trim() === aText) {
+          parent.remove();
+        } else {
+          $(a).remove();
+        }
       }
     });
 
