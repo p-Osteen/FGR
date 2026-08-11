@@ -257,19 +257,6 @@ body {
   margin-top: auto;
   font-size: 0.8rem;
   color: var(--text-muted);
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-
-.repack-size {
-  background: rgba(248, 135, 255, 0.1);
-  color: var(--primary-color);
-  padding: 0.15rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  width: fit-content;
 }
 
 /* Pagination */

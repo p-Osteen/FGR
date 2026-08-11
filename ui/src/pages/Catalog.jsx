@@ -23,7 +23,6 @@ const GameCard = React.memo(({ game }) => (
       <div className="game-info">
         <h3 className="game-title" title={game.title}>{game.title}</h3>
         <div className="game-meta">
-          {game.repackSize && <span className="repack-size">{game.repackSize}</span>}
           <span className="date">{formatDate(game.date)}</span>
         </div>
       </div>
