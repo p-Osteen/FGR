@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -35,20 +36,29 @@ export default function Navbar() {
             >
               Repacks Troubleshooting &#9662;
             </button>
-            {dropdownOpen && (
-              <ul className="sub-menu">
-                <li>
-                  <Link to="/page/repacks-troubleshooting" onClick={() => setDropdownOpen(false)}>
-                    Repacks Troubleshooting
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/page/hypervisor-guide" onClick={() => setDropdownOpen(false)}>
-                    Hypervisor Guide
-                  </Link>
-                </li>
-              </ul>
-            )}
+            <AnimatePresence>
+              {dropdownOpen && (
+                <motion.ul 
+                  className="sub-menu"
+                  initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                  transition={{ type: "spring", damping: 20, stiffness: 300 }}
+                  style={{ transformOrigin: 'top center' }}
+                >
+                  <li>
+                    <Link to="/page/repacks-troubleshooting" onClick={() => setDropdownOpen(false)}>
+                      Repacks Troubleshooting
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/page/hypervisor-guide" onClick={() => setDropdownOpen(false)}>
+                      Hypervisor Guide
+                    </Link>
+                  </li>
+                </motion.ul>
+              )}
+            </AnimatePresence>
           </li>
         </ul>
       </nav>

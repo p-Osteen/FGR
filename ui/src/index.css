@@ -190,7 +190,7 @@ body {
   border: 1px solid var(--surface-border);
   border-radius: 12px;
   overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -199,12 +199,10 @@ body {
 .game-card:hover {
   border-color: rgba(255, 99, 146, 0.4);
   box-shadow: 0 8px 24px rgba(0,0,0,0.4), 0 0 12px rgba(255,99,146,0.1);
-  transform: translateY(-4px);
 }
 
 
 .game-card:hover {
-  transform: translateY(-4px);
   border-color: rgba(248, 135, 255, 0.4);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 0 0 15px rgba(248, 135, 255, 0.15);
 }
@@ -419,8 +417,7 @@ body {
 .nav-menu a { color: var(--text-color); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: var(--transition); }
 .nav-menu a:hover { color: var(--primary-color); }
 .has-dropdown { position: relative; padding-bottom: 1rem; margin-bottom: -1rem; }
-.sub-menu { display: none; position: absolute; top: 100%; left: 0; background: var(--surface-color); backdrop-filter: blur(12px); border: 1px solid var(--surface-border); border-radius: 8px; list-style: none; padding: 0.5rem 0; min-width: 250px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 100; }
-.has-dropdown:hover .sub-menu { display: block; animation: fadeIn 0.2s ease-in-out; }
+.sub-menu { position: absolute; top: 100%; left: 0; background: var(--surface-color); backdrop-filter: blur(12px); border: 1px solid var(--surface-border); border-radius: 8px; list-style: none; padding: 0.5rem 0; min-width: 250px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 100; }
 .sub-menu a { display: block; padding: 0.75rem 1.25rem; font-size: 0.85rem; }
 .sub-menu a:hover { background: rgba(248, 135, 255, 0.1); }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
@@ -575,7 +572,6 @@ body {
   border: 1px solid var(--surface-border); border-radius: 8px;
   list-style: none; padding: 0.5rem 0; min-width: 250px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 100;
-  animation: fadeIn 0.15s ease-in-out;
 }
 
 /* Updates Digest UI */
@@ -666,17 +662,6 @@ body {
 .update-item.open .update-icon {
   background: var(--primary-color);
   color: #fff;
-  transform: rotate(180deg);
-}
-
-.update-content-wrapper {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.update-item.open .update-content-wrapper {
-  grid-template-rows: 1fr;
 }
 
 .update-content-inner {

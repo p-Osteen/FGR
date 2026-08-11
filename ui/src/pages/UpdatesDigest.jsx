@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import DOMPurify from 'dompurify';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function UpdatesDigest({ pageData }) {
   const [updates, setUpdates] = useState([]);
@@ -56,16 +57,33 @@ export default function UpdatesDigest({ pageData }) {
           <div className={`update-item ${openId === update.id ? 'open' : ''}`} key={update.id}>
             <button className="update-header" onClick={() => toggleOpen(update.id)}>
               <span className="update-title">{update.title}</span>
-              <span className="update-icon">{openId === update.id ? '−' : '+'}</span>
+              <motion.span 
+                className="update-icon"
+                animate={{ rotate: openId === update.id ? 180 : 0 }}
+                transition={{ type: "spring", damping: 20, stiffness: 300 }}
+              >
+                +
+              </motion.span>
             </button>
-            <div className="update-content-wrapper">
-              <div className="update-content-inner">
-                <div 
-                  className="update-content og-mirrors-container"
-                  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(update.content) }}
-                />
-              </div>
-            </div>
+            <AnimatePresence initial={false}>
+              {openId === update.id && (
+                <motion.div
+                  key="content"
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                  style={{ overflow: 'hidden' }}
+                >
+                  <div className="update-content-inner">
+                    <div 
+                      className="update-content og-mirrors-container"
+                      dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(update.content) }}
+                    />
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         ))}
         {updates.length === 0 && (

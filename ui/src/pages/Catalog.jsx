@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { fetchCatalog, getFilters, formatDate } from '../dataStore';
+import { motion } from 'framer-motion';
 
 const PLACEHOLDER = `${import.meta.env.BASE_URL}placeholder.svg`;
 
@@ -16,7 +17,12 @@ const SkeletonCard = () => (
 
 const GameCard = ({ game }) => (
   <Link to={`/game/${game.id}`} className="game-card-link">
-    <div className="game-card">
+    <motion.div 
+      className="game-card"
+      whileHover={{ y: -4 }}
+      whileTap={{ scale: 0.97 }}
+      transition={{ type: "spring", damping: 20, stiffness: 300 }}
+    >
       <div className="game-image-wrapper">
         <img src={game.image || PLACEHOLDER} alt={game.title} className="game-image" loading="lazy" />
       </div>
@@ -26,7 +32,7 @@ const GameCard = ({ game }) => (
           <span className="date">{formatDate(game.date)}</span>
         </div>
       </div>
-    </div>
+    </motion.div>
   </Link>
 );
 
