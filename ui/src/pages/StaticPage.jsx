@@ -1,13 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { fetchPagesData } from '../dataStore';
 import UpdatesDigest from './UpdatesDigest';
 
 export default function StaticPage() {
   const { slug } = useParams();
+  const navigate = useNavigate();
   const [pageData, setPageData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+
+  const handleBack = (e) => {
+    e.preventDefault();
+    if (window.history.length > 2) {
+      navigate(-1);
+    } else {
+      navigate('/');
+    }
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -47,7 +57,7 @@ export default function StaticPage() {
   if (error || !pageData) {
     return (
       <div className="detail-page">
-        <Link to="/" className="back-link">&larr; Back to Catalog</Link>
+        <a href="/" onClick={handleBack} className="back-link">&larr; Back to Catalog</a>
         <div className="empty-state">{error || 'Page not found'}</div>
       </div>
     );
@@ -60,7 +70,7 @@ export default function StaticPage() {
 
   return (
     <div className="detail-page">
-      <Link to="/" className="back-link">&larr; Back to Catalog</Link>
+      <a href="/" onClick={handleBack} className="back-link">&larr; Back to Catalog</a>
       <div className="detail-content" style={{ display: 'block' }}>
         <h1 className="detail-title">{pageData.title}</h1>
         {pageData.content ? (

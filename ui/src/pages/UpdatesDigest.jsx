@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import DOMPurify from 'dompurify';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -7,6 +7,16 @@ export default function UpdatesDigest({ pageData }) {
   const [updates, setUpdates] = useState([]);
   const [headerHtml, setHeaderHtml] = useState('');
   const [openId, setOpenId] = useState(null);
+  const navigate = useNavigate();
+
+  const handleBack = (e) => {
+    e.preventDefault();
+    if (window.history.length > 2) {
+      navigate(-1);
+    } else {
+      navigate('/');
+    }
+  };
 
   useEffect(() => {
     if (!pageData || !pageData.content) return;
@@ -48,7 +58,7 @@ export default function UpdatesDigest({ pageData }) {
 
   return (
     <div className="detail-page updates-digest-page">
-      <Link to="/" className="back-link">&larr; Back to Catalog</Link>
+      <a href="/" onClick={handleBack} className="back-link">&larr; Back to Catalog</a>
       
       <div className="digest-header">
         <h1 className="detail-title">{pageData.title}</h1>

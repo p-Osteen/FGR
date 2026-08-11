@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { fetchGameDetail, formatDate } from '../dataStore';
 import DOMPurify from 'dompurify';
 import UpdatesDigest from './UpdatesDigest';
@@ -8,9 +8,19 @@ const PLACEHOLDER = `${import.meta.env.BASE_URL}placeholder.svg`;
 
 export default function GameDetail() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [game, setGame] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+
+  const handleBack = (e) => {
+    e.preventDefault();
+    if (window.history.length > 2) {
+      navigate(-1);
+    } else {
+      navigate('/');
+    }
+  };
 
   useEffect(() => {
     fetchGameDetail(id)
@@ -47,7 +57,7 @@ export default function GameDetail() {
   if (loading) {
     return (
       <div className="detail-page">
-        <Link to="/" className="back-link">&larr; Back to Catalog</Link>
+        <a href="/" onClick={handleBack} className="back-link">&larr; Back to Catalog</a>
         <div className="detail-content">
           <div className="detail-image-col">
             <div className="skeleton-image" style={{ width: '100%', paddingTop: '133%', borderRadius: '12px' }} />
@@ -68,7 +78,7 @@ export default function GameDetail() {
   if (error || !game) {
     return (
       <div className="detail-page">
-        <Link to="/" className="back-link">&larr; Back to Catalog</Link>
+        <a href="/" onClick={handleBack} className="back-link">&larr; Back to Catalog</a>
         <div className="empty-state">{error || 'Game not found'}</div>
       </div>
     );
@@ -85,7 +95,7 @@ export default function GameDetail() {
 
   return (
     <div className="detail-page">
-      <Link to="/" className="back-link">&larr; Back to Catalog</Link>
+      <a href="/" onClick={handleBack} className="back-link">&larr; Back to Catalog</a>
       <div className="detail-content">
         <div className="detail-image-col">
           <img src={game.image || PLACEHOLDER} alt={game.title} />
