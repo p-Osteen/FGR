@@ -77,14 +77,6 @@ export default function Catalog() {
     setPageInputValue(String(page));
   }, [page]);
 
-  const commitPageInput = useCallback(() => {
-    const p = parseInt(pageInputValue, 10);
-    if (p >= 1 && p <= totalPages && p !== page) {
-      navigate(`/${p}`);
-    } else {
-      setPageInputValue(String(page));
-    }
-  }, [pageInputValue, page, totalPages, navigate]);
 
   useEffect(() => {
     fetchCatalog().then(data => {
@@ -144,6 +136,16 @@ export default function Catalog() {
   }, [allGames, debouncedSearch, selectedYear, selectedMonth, selectedCategories, sortBy]);
 
   const totalPages = Math.ceil(filteredGames.length / limit) || 1;
+
+  const commitPageInput = useCallback(() => {
+    const p = parseInt(pageInputValue, 10);
+    if (p >= 1 && p <= totalPages && p !== page) {
+      navigate(`/${p}`);
+    } else {
+      setPageInputValue(String(page));
+    }
+  }, [pageInputValue, page, totalPages, navigate]);
+
   const paginatedGames = useMemo(() => {
     const start = (page - 1) * limit;
     return filteredGames.slice(start, start + limit);
