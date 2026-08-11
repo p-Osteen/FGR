@@ -2,6 +2,8 @@ import os
 import sys
 import subprocess
 import shutil
+import json
+from datetime import datetime
 
 SCRAPER_DIR = os.path.join(os.path.dirname(__file__), 'scraper')
 UI_DIR = os.path.join(os.path.dirname(__file__), 'ui')
@@ -28,8 +30,62 @@ def check_updates():
     print("Checking for updates...")
     subprocess.run(["node", "index.js", "update"], cwd=SCRAPER_DIR)
 
+def generate_sitemap():
+    print("Generating sitemap.xml...")
+    if not os.path.exists(GAMES_JSON):
+        print("games.json not found, skipping sitemap generation.")
+        return
+        
+    try:
+        with open(GAMES_JSON, 'r', encoding='utf-8') as f:
+            games = json.load(f)
+            
+        pages_json = os.path.join(PUBLIC_DIR, 'pages.json')
+        pages = {}
+        if os.path.exists(pages_json):
+            with open(pages_json, 'r', encoding='utf-8') as f:
+                pages = json.load(f)
+
+        sitemap = ['<?xml version="1.0" encoding="UTF-8"?>']
+        sitemap.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
+        
+        base_url = "https://p-osteen.github.io/FGR"
+        
+        # Root
+        sitemap.append(f'  <url>\\n    <loc>{base_url}/</loc>\\n    <changefreq>daily</changefreq>\\n    <priority>1.0</priority>\\n  </url>')
+        
+        # Static Pages
+        for slug in pages.keys():
+            sitemap.append(f'  <url>\\n    <loc>{base_url}/page/{slug}</loc>\\n    <changefreq>weekly</changefreq>\\n    <priority>0.8</priority>\\n  </url>')
+
+        # Games
+        for game in games:
+            game_id = game.get('id')
+            if not game_id:
+                continue
+            date_str = game.get('date', '')
+            lastmod = ""
+            try:
+                dt = datetime.fromisoformat(date_str.replace('Z', '+00:00'))
+                lastmod = f"\\n    <lastmod>{dt.strftime('%Y-%m-%d')}</lastmod>"
+            except Exception:
+                pass
+                
+            sitemap.append(f'  <url>\\n    <loc>{base_url}/game/{game_id}</loc>{lastmod}\\n    <changefreq>monthly</changefreq>\\n    <priority>0.6</priority>\\n  </url>')
+
+        sitemap.append('</urlset>')
+        
+        with open(os.path.join(PUBLIC_DIR, 'sitemap.xml'), 'w', encoding='utf-8') as f:
+            f.write('\\n'.join(sitemap).replace('\\n', '\n'))
+            
+        print(f"Sitemap generated with {len(games) + len(pages) + 1} URLs.")
+    except Exception as e:
+        print(f"Error generating sitemap: {e}")
+
 def push_to_live():
     print("Building UI and pushing to live (GitHub Pages)...")
+    
+    generate_sitemap()
     
     print("Building React App...")
     build_result = subprocess.run(["npm", "run", "build"], cwd=UI_DIR, shell=True)
