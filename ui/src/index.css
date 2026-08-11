@@ -258,8 +258,8 @@ body {
   font-size: 0.8rem;
   color: var(--text-muted);
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 0.35rem;
 }
 
 .repack-size {
@@ -269,7 +269,7 @@ body {
   border-radius: 4px;
   font-size: 0.75rem;
   font-weight: 600;
-  white-space: nowrap;
+  width: fit-content;
 }
 
 /* Pagination */
