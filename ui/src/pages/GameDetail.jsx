@@ -25,6 +25,12 @@ export default function GameDetail() {
   }, [id]);
 
   useEffect(() => {
+    if (game && game.title) {
+      document.title = `${game.title} - FitGirl Repacks`;
+    }
+  }, [game]);
+
+  useEffect(() => {
     if (!loading && game && game.mirrorsHtml) {
       const titles = document.querySelectorAll('.su-spoiler-title');
       const toggleSpoiler = function() {
@@ -39,7 +45,24 @@ export default function GameDetail() {
   }, [loading, game]);
 
   if (loading) {
-    return <div className="detail-page"><div className="loading">Loading details...</div></div>;
+    return (
+      <div className="detail-page">
+        <Link to="/" className="back-link">&larr; Back to Catalog</Link>
+        <div className="detail-content">
+          <div className="detail-image-col">
+            <div className="skeleton-image" style={{ width: '100%', paddingTop: '133%', borderRadius: '12px' }} />
+          </div>
+          <div className="detail-info-col" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            <div className="skeleton-line" style={{ height: '3.5rem', width: '80%' }} />
+            <div className="skeleton-line" style={{ height: '1.5rem', width: '40%', marginBottom: '1.5rem' }} />
+            <div className="skeleton-line" style={{ height: '1rem', width: '100%' }} />
+            <div className="skeleton-line" style={{ height: '1rem', width: '90%' }} />
+            <div className="skeleton-line" style={{ height: '1rem', width: '95%' }} />
+            <div className="skeleton-line" style={{ height: '1rem', width: '60%' }} />
+          </div>
+        </div>
+      </div>
+    );
   }
 
   if (error || !game) {
@@ -51,7 +74,8 @@ export default function GameDetail() {
     );
   }
 
-  if (id.includes('updates-digest')) {
+  // Data-driven detection: check categories instead of URL string matching
+  if (game.categories?.includes('Updates Digest')) {
     const pageData = {
       title: game.title,
       content: game.mirrorsHtml

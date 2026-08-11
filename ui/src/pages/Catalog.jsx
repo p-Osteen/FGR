@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useMemo, useRef } from 'react';
+import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { fetchCatalog, getFilters, formatDate } from '../dataStore';
-import { motion } from 'framer-motion';
 
 const PLACEHOLDER = `${import.meta.env.BASE_URL}placeholder.svg`;
 
-const SkeletonCard = () => (
+const SkeletonCard = React.memo(() => (
   <div className="game-card skeleton-card">
     <div className="game-image-wrapper skeleton-image" />
     <div className="game-info">
@@ -13,47 +12,79 @@ const SkeletonCard = () => (
       <div className="skeleton-line skeleton-date" />
     </div>
   </div>
-);
+));
 
-const GameCard = ({ game }) => (
+const GameCard = React.memo(({ game }) => (
   <Link to={`/game/${game.id}`} className="game-card-link">
-    <motion.div 
-      className="game-card"
-      whileHover={{ y: -4 }}
-      whileTap={{ scale: 0.97 }}
-      transition={{ type: "spring", damping: 20, stiffness: 300 }}
-    >
+    <div className="game-card">
       <div className="game-image-wrapper">
-        <img src={game.image || PLACEHOLDER} alt={game.title} className="game-image" loading="lazy" />
+        <img src={game.image || PLACEHOLDER} alt={game.title} className="game-image" loading="lazy" decoding="async" />
       </div>
       <div className="game-info">
         <h3 className="game-title" title={game.title}>{game.title}</h3>
         <div className="game-meta">
           <span className="date">{formatDate(game.date)}</span>
+          {game.repackSize && <span className="repack-size">{game.repackSize}</span>}
         </div>
       </div>
-    </motion.div>
+    </div>
   </Link>
-);
+));
 
 export default function Catalog() {
   const [allGames, setAllGames] = useState([]);
   const [filtersData, setFiltersData] = useState({ years: [], categories: [] });
   const [loading, setLoading] = useState(true);
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   
   // State for filters
-  const [search, setSearch] = useState('');
-  const [debouncedSearch, setDebouncedSearch] = useState('');
-  const [selectedYear, setSelectedYear] = useState('');
-  const [selectedMonth, setSelectedMonth] = useState('');
-  const [selectedCategories, setSelectedCategories] = useState(new Set());
-  const [sortBy, setSortBy] = useState('newest');
+  const [search, setSearch] = useState(() => sessionStorage.getItem('fgr_search') || '');
+  const [debouncedSearch, setDebouncedSearch] = useState(search);
+  const [selectedYear, setSelectedYear] = useState(() => sessionStorage.getItem('fgr_year') || '');
+  const [selectedMonth, setSelectedMonth] = useState(() => sessionStorage.getItem('fgr_month') || '');
+  const [selectedCategories, setSelectedCategories] = useState(() => {
+    try {
+      const saved = sessionStorage.getItem('fgr_categories');
+      if (saved) return new Set(JSON.parse(saved));
+    } catch (e) {}
+    return new Set();
+  });
+  const [sortBy, setSortBy] = useState(() => sessionStorage.getItem('fgr_sort') || 'newest');
+
+  // Sync state to sessionStorage
+  useEffect(() => {
+    sessionStorage.setItem('fgr_search', search);
+    sessionStorage.setItem('fgr_year', selectedYear);
+    sessionStorage.setItem('fgr_month', selectedMonth);
+    sessionStorage.setItem('fgr_sort', sortBy);
+    sessionStorage.setItem('fgr_categories', JSON.stringify(Array.from(selectedCategories)));
+  }, [search, selectedYear, selectedMonth, sortBy, selectedCategories]);
+
+  // Set document title
+  useEffect(() => {
+    document.title = 'Catalog - FitGirl Repacks';
+  }, []);
   
   // Pagination via URL
   const { pageParam } = useParams();
   const navigate = useNavigate();
   const page = parseInt(pageParam, 10) || 1;
   const limit = 24;
+
+  // Local state for page input (#10 fix)
+  const [pageInputValue, setPageInputValue] = useState(String(page));
+  useEffect(() => {
+    setPageInputValue(String(page));
+  }, [page]);
+
+  const commitPageInput = useCallback(() => {
+    const p = parseInt(pageInputValue, 10);
+    if (p >= 1 && p <= totalPages && p !== page) {
+      navigate(`/${p}`);
+    } else {
+      setPageInputValue(String(page));
+    }
+  }, [pageInputValue, page, totalPages, navigate]);
 
   useEffect(() => {
     fetchCatalog().then(data => {
@@ -76,24 +107,27 @@ export default function Catalog() {
     });
   };
 
+  const clearAllFilters = () => {
+    setSearch('');
+    setSelectedYear('');
+    setSelectedMonth('');
+    setSelectedCategories(new Set());
+    setSortBy('newest');
+  };
+
   const filteredGames = useMemo(() => {
     let result = allGames;
     
     if (debouncedSearch) {
       const s = debouncedSearch.toLowerCase();
-      result = result.filter(g => 
-        g.title.toLowerCase().includes(s) || 
-        (g.categories && g.categories.some(c => c.toLowerCase().includes(s)))
-      );
+      result = result.filter(g => g._searchString.includes(s));
     }
     
     if (selectedYear) {
       result = result.filter(g => g.year === selectedYear);
       if (selectedMonth !== '') {
-        result = result.filter(g => {
-          const d = new Date(g.date);
-          return !isNaN(d) && d.getMonth() === parseInt(selectedMonth, 10);
-        });
+        const m = parseInt(selectedMonth, 10);
+        result = result.filter(g => g._month === m);
       }
     }
     
@@ -101,10 +135,10 @@ export default function Catalog() {
       result = result.filter(g => g.categories && g.categories.some(c => selectedCategories.has(c)));
     }
     
-    if (sortBy === 'newest') result = [...result].sort((a, b) => new Date(b.date) - new Date(a.date));
-    else if (sortBy === 'oldest') result = [...result].sort((a, b) => new Date(a.date) - new Date(b.date));
-    else if (sortBy === 'az') result = [...result].sort((a, b) => a.title.localeCompare(b.title));
-    else if (sortBy === 'za') result = [...result].sort((a, b) => b.title.localeCompare(a.title));
+    if (sortBy === 'newest') result = [...result].sort((a, b) => b._timestamp - a._timestamp);
+    else if (sortBy === 'oldest') result = [...result].sort((a, b) => a._timestamp - b._timestamp);
+    else if (sortBy === 'az') result = [...result].sort((a, b) => a._sortTitle < b._sortTitle ? -1 : 1);
+    else if (sortBy === 'za') result = [...result].sort((a, b) => a._sortTitle > b._sortTitle ? -1 : 1);
 
     return result;
   }, [allGames, debouncedSearch, selectedYear, selectedMonth, selectedCategories, sortBy]);
@@ -139,14 +173,23 @@ export default function Catalog() {
   }, [debouncedSearch, selectedYear, selectedMonth, selectedCategories, sortBy]);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (window.scrollY > 0) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }, [page, debouncedSearch, selectedYear, selectedMonth, selectedCategories, sortBy]);
 
   const hasFilters = debouncedSearch || selectedYear || selectedCategories.size > 0;
 
   return (
     <div className="main-layout">
-      <aside className="sidebar">
+      <button 
+        className="filter-toggle-btn" 
+        onClick={() => setMobileFiltersOpen(o => !o)}
+      >
+        {mobileFiltersOpen ? '✕ Hide Filters' : '☰ Filters'}
+      </button>
+
+      <aside className={`sidebar ${mobileFiltersOpen ? 'open' : ''}`}>
         <div className="filter-group">
           <h3>Search</h3>
           <input 
@@ -189,12 +232,14 @@ export default function Catalog() {
         )}
 
         <div className="filter-group">
-          <h3>Categories</h3>
-          {selectedCategories.size > 0 && (
-            <button className="clear-filter-btn" onClick={() => setSelectedCategories(new Set())}>
-              Clear ({selectedCategories.size})
-            </button>
-          )}
+          <div className="filter-group-header">
+            <h3>Categories</h3>
+            {selectedCategories.size > 0 && (
+              <button className="clear-filter-btn" onClick={() => setSelectedCategories(new Set())}>
+                Clear ({selectedCategories.size})
+              </button>
+            )}
+          </div>
           <div className="filter-list">
             {filtersData.categories.map(c => (
               <label key={c} className="filter-label">
@@ -213,6 +258,11 @@ export default function Catalog() {
 
       <main className="content-area">
         <div className="sort-bar">
+          {hasFilters && (
+            <button className="clear-all-btn" onClick={clearAllFilters}>
+              Clear All Filters
+            </button>
+          )}
           <label htmlFor="sort-select" className="sort-label">Sort:</label>
           <select id="sort-select" className="sort-select" value={sortBy} onChange={e => setSortBy(e.target.value)}>
             <option value="newest">Newest first</option>
@@ -242,7 +292,7 @@ export default function Catalog() {
                 <button onClick={() => setSelectedCategories(new Set())}>&#10005;</button>
               </span>
             )}
-            <span className="filter-result-count">{filteredGames.length} results</span>
+            <span className="filter-result-count">{filteredGames.length.toLocaleString()} results</span>
           </div>
         )}
 
@@ -263,17 +313,49 @@ export default function Catalog() {
                 <button 
                   className="btn" 
                   disabled={page === 1}
+                  onClick={() => navigate(`/1`)}
+                  title="First Page"
+                >
+                  &laquo; First
+                </button>
+                <button 
+                  className="btn" 
+                  disabled={page === 1}
                   onClick={() => navigate(`/${page - 1}`)}
                 >
-                  Previous
+                  &lsaquo; Prev
                 </button>
-                <span>Page {page} of {totalPages}</span>
+                
+                <span className="page-indicator">
+                  Page 
+                  <input 
+                    type="number" 
+                    className="page-input search-input"
+                    value={pageInputValue}
+                    min={1}
+                    max={totalPages}
+                    onChange={(e) => setPageInputValue(e.target.value)}
+                    onKeyDown={(e) => { if (e.key === 'Enter') commitPageInput(); }}
+                    onBlur={commitPageInput}
+                    style={{ width: '70px', padding: '0.4rem', margin: '0 0.5rem', textAlign: 'center' }}
+                  /> 
+                  of {totalPages}
+                </span>
+
                 <button 
                   className="btn" 
                   disabled={page === totalPages}
                   onClick={() => navigate(`/${page + 1}`)}
                 >
-                  Next
+                  Next &rsaquo;
+                </button>
+                <button 
+                  className="btn" 
+                  disabled={page === totalPages}
+                  onClick={() => navigate(`/${totalPages}`)}
+                  title="Last Page"
+                >
+                  Last &raquo;
                 </button>
               </div>
             )}

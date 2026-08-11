@@ -14,14 +14,23 @@ export default function App() {
       <div className="app-container">
         <Navbar />
         <ErrorBoundary>
-          <Suspense fallback={<div className="loading">Loading...</div>}>
-            <Routes>
-              <Route path="/" element={<Catalog />} />
-              <Route path="/:pageParam" element={<Catalog />} />
-              <Route path="/game/:id" element={<GameDetail />} />
-              <Route path="/page/:slug" element={<StaticPage />} />
-            </Routes>
-          </Suspense>
+          <main className="main-content-wrapper">
+            <Suspense fallback={
+              <div className="detail-page" style={{ maxWidth: '1200px', margin: '0 auto', width: '100%', padding: '2rem' }}>
+                <div className="skeleton-line" style={{ height: '3rem', width: '50%', margin: '0 0 2rem' }} />
+                <div className="skeleton-line" style={{ height: '1.5rem', width: '100%', margin: '0 0 1rem' }} />
+                <div className="skeleton-line" style={{ height: '1.5rem', width: '90%', margin: '0 0 1rem' }} />
+                <div className="skeleton-line" style={{ height: '1.5rem', width: '95%', margin: '0 0 1rem' }} />
+              </div>
+            }>
+              <Routes>
+                <Route path="/" element={<Catalog />} />
+                <Route path="/:pageParam" element={<Catalog />} />
+                <Route path="/game/:id" element={<GameDetail />} />
+                <Route path="/page/:slug" element={<StaticPage />} />
+              </Routes>
+            </Suspense>
+          </main>
         </ErrorBoundary>
         <footer className="site-footer">
           <p>

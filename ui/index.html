@@ -7,6 +7,16 @@
     <title>FitGirl Repacks</title>
     <meta name="description" content="A clean, modern browser for FitGirl Repacks. Search 7,800+ game repacks by title, year, and genre." />
 
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Load Inter font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet" />
+
+    <!-- Preload catalog data so it starts fetching in parallel with JS bundle -->
+    <link rel="preload" href="/FGR/games.json" as="fetch" crossorigin />
+
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://p-osteen.github.io/FGR/" />

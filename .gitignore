@@ -7,3 +7,5 @@ __pycache__/
 ui/public/games/
 ui/public/games.json
 scraper/state.json
+*.zip
+*.log

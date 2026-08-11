@@ -36,6 +36,12 @@ export default function UpdatesDigest({ pageData }) {
     
   }, [pageData]);
 
+  useEffect(() => {
+    if (pageData && pageData.title) {
+      document.title = `${pageData.title} - FitGirl Repacks`;
+    }
+  }, [pageData]);
+
   const toggleOpen = (id) => {
     setOpenId(openId === id ? null : id);
   };

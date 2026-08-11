@@ -44,10 +44,6 @@ export default function StaticPage() {
     return <div className="detail-page"><div className="loading">Loading page...</div></div>;
   }
 
-  if (slug && slug.includes('updates-digest')) {
-    return <UpdatesDigest pageData={pageData} />;
-  }
-
   if (error || !pageData) {
     return (
       <div className="detail-page">
@@ -55,6 +51,11 @@ export default function StaticPage() {
         <div className="empty-state">{error || 'Page not found'}</div>
       </div>
     );
+  }
+
+  // Data-driven detection: check categories instead of URL string matching
+  if (pageData.categories?.includes('Updates Digest')) {
+    return <UpdatesDigest pageData={pageData} />;
   }
 
   return (
