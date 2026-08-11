@@ -87,9 +87,9 @@ function parsePage(html) {
       const h3Text = $(h3).text().trim();
       if (h3Text.includes('Download Mirrors') || h3Text.includes('Game Updates')) {
          mirrorsHtml += '<h3>' + $(h3).html() + '</h3>';
-         // The next siblings could be ul, style, div, etc. We want everything until the next h3 or p
+         // The next siblings could be ul, style, div, p etc. We want everything until the next h3
          let next = $(h3).next();
-         while (next.length && next[0].tagName !== 'h3' && next[0].tagName !== 'p') {
+         while (next.length && next[0].tagName !== 'h3') {
            mirrorsHtml += $.html(next);
            next = next.next();
          }
