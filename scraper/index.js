@@ -129,17 +129,26 @@ async function run() {
   gamesData.forEach(g => gamesMap.set(g.id, g));
 
   if (MODE === 'update') {
-    console.log("Checking the first page for updates...");
-    const html = await fetchPage(1);
-    if (html) {
-      const { games } = parsePage(html);
-      const hasNewGames = games.some(g => !gamesMap.has(g.id));
-      if (!hasNewGames) {
-        console.log("No new games found on the first page. Catalog is up to date.");
-        return;
+    console.log("Checking the first 5 pages for updates...");
+    const pagesToCheck = [1, 2, 3, 4, 5];
+    const htmls = await Promise.all(pagesToCheck.map(page => fetchPage(page)));
+    
+    let hasNewGames = false;
+    for (const html of htmls) {
+      if (html) {
+        const { games } = parsePage(html);
+        if (games.some(g => !gamesMap.has(g.id))) {
+          hasNewGames = true;
+          break;
+        }
       }
-      console.log("New games detected on the first page, starting update process...");
     }
+
+    if (!hasNewGames) {
+      console.log("No new games found on the first 5 pages. Catalog is up to date.");
+      return;
+    }
+    console.log("New games detected on the first 5 pages, starting update process...");
   }
 
   let currentPage = (MODE === 'resume') ? state.lastPage : 1;
