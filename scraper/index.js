@@ -128,6 +128,20 @@ async function run() {
   const gamesMap = new Map();
   gamesData.forEach(g => gamesMap.set(g.id, g));
 
+  if (MODE === 'update') {
+    console.log("Checking the first page for updates...");
+    const html = await fetchPage(1);
+    if (html) {
+      const { games } = parsePage(html);
+      const hasNewGames = games.some(g => !gamesMap.has(g.id));
+      if (!hasNewGames) {
+        console.log("No new games found on the first page. Catalog is up to date.");
+        return;
+      }
+      console.log("New games detected on the first page, starting update process...");
+    }
+  }
+
   let currentPage = (MODE === 'resume') ? state.lastPage : 1;
   let keepGoing = true;
 
@@ -166,7 +180,7 @@ async function run() {
       });
     }
 
-    if (MODE === 'update' && newGamesAddedBatch === 0 && anyGamesFound && currentPage > 1) {
+    if (MODE === 'update' && newGamesAddedBatch === 0 && anyGamesFound) {
       break;
     }
 

@@ -10,7 +10,7 @@ if %errorLevel% neq 0 (
 echo Administrative privileges confirmed.
 echo Setting up FGR_Update_Scraper scheduled task...
 
-powershell -Command "Unregister-ScheduledTask -TaskName 'FGR_Update_Scraper' -Confirm:$false -ErrorAction SilentlyContinue; $action = New-ScheduledTaskAction -Execute 'cmd.exe' -Argument '/c run_task.bat' -WorkingDirectory '%~dp0.'; $trigger = New-ScheduledTaskTrigger -AtLogOn; $dummy = New-ScheduledTaskTrigger -Once -At (Get-Date) -RepetitionInterval (New-TimeSpan -Hours 3); $trigger.Repetition = $dummy.Repetition; Register-ScheduledTask -TaskName 'FGR_Update_Scraper' -Action $action -Trigger $trigger -Force | Out-Null; Write-Host 'Task FGR_Update_Scraper successfully (re)created!'"
+powershell -Command "Unregister-ScheduledTask -TaskName 'FGR_Update_Scraper' -Confirm:$false -ErrorAction SilentlyContinue; $action = New-ScheduledTaskAction -Execute 'cmd.exe' -Argument '/c run_task.bat' -WorkingDirectory '%~dp0.'; $trigger = New-ScheduledTaskTrigger -AtLogOn; $dummy = New-ScheduledTaskTrigger -Once -At (Get-Date) -RepetitionInterval (New-TimeSpan -Hours 3); $trigger.Repetition = $dummy.Repetition; $settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable; Register-ScheduledTask -TaskName 'FGR_Update_Scraper' -Action $action -Trigger $trigger -Settings $settings -Force | Out-Null; Start-ScheduledTask -TaskName 'FGR_Update_Scraper'; Write-Host 'Task FGR_Update_Scraper successfully created and started!'"
 
 echo.
 pause
