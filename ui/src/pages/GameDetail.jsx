@@ -123,6 +123,33 @@ export default function GameDetail() {
               </p>
             )}
           </div>
+
+          {game.backwardsCompatibility && (
+            <div className="compatibility-notice">
+              <strong>Compatibility Notice:</strong> {game.backwardsCompatibility}
+            </div>
+          )}
+
+          {game.repackFeatures && game.repackFeatures.length > 0 && (
+            <div className="features-section">
+              <h2>Repack Features</h2>
+              <ul>
+                {game.repackFeatures.map((feature, index) => (
+                  <li key={index}>{feature}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {game.gameDescriptionHtml && (
+            <details className="description-tile">
+              <summary>Game Description</summary>
+              <div 
+                className="description-content"
+                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(game.gameDescriptionHtml) }}
+              />
+            </details>
+          )}
           
           <div className="download-section">
             <h2>Download Links</h2>
@@ -135,6 +162,19 @@ export default function GameDetail() {
               <p>No links available.</p>
             )}
           </div>
+
+          {game.screenshots && game.screenshots.length > 0 && (
+            <div className="screenshots-section">
+              <h2>Screenshots</h2>
+              <div className="screenshots-grid">
+                {game.screenshots.map((src, index) => (
+                  <a key={index} href={src} target="_blank" rel="noopener noreferrer">
+                    <img src={src} alt={`${game.title} screenshot ${index + 1}`} loading="lazy" />
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

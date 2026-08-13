@@ -864,3 +864,133 @@ body {
     font-size: 0.85rem;
   }
 }
+
+/* NEW SECTIONS: Screenshots, Features, Description, Compatibility */
+
+.screenshots-section, .features-section {
+  margin-top: 2rem;
+}
+
+.screenshots-section h2, .features-section h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.screenshots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.screenshots-grid a {
+  display: block;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid var(--surface-border);
+  transition: var(--transition);
+}
+
+.screenshots-grid a:hover {
+  border-color: var(--primary-color);
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(248, 135, 255, 0.2);
+}
+
+.screenshots-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.features-section ul {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.features-section li {
+  position: relative;
+  padding-left: 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-color);
+}
+
+.features-section li::before {
+  content: "•";
+  color: var(--primary-color);
+  position: absolute;
+  left: 0;
+  font-size: 1.2rem;
+  top: -2px;
+}
+
+.description-tile {
+  margin-top: 2rem;
+  background: var(--surface-color);
+  border: 1px solid var(--surface-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.description-tile summary {
+  padding: 1rem 1.5rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.03);
+  transition: var(--transition);
+  outline: none;
+  list-style: none; /* Hide default arrow in some browsers */
+  position: relative;
+}
+
+.description-tile summary::-webkit-details-marker {
+  display: none;
+}
+
+.description-tile summary::after {
+  content: "+";
+  position: absolute;
+  right: 1.5rem;
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  line-height: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.3s ease;
+}
+
+.description-tile[open] summary::after {
+  content: "−";
+}
+
+.description-tile summary:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.description-content {
+  padding: 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  border-top: 1px solid var(--surface-border);
+}
+
+.description-content p {
+  margin-bottom: 1rem;
+}
+
+.compatibility-notice {
+  margin-top: 1.5rem;
+  padding: 1rem 1.5rem;
+  background: rgba(255, 60, 60, 0.1);
+  border-left: 4px solid #ff3c3c;
+  border-radius: 0 8px 8px 0;
+  color: #ffcccc;
+  font-size: 0.95rem;
+}

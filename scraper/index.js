@@ -103,12 +103,46 @@ function parsePage(html) {
       }
     });
 
+    let screenshots = [];
+    let repackFeatures = [];
+    $(el).find('.entry-content h3').each((_, h3) => {
+      const text = $(h3).text().trim().toLowerCase();
+      if (text.includes('screenshots')) {
+         $(h3).next('p').find('img').each((_, img) => {
+            let src = $(img).attr('src');
+            if (src) {
+              src = src.replace(/\.240p\.jpg$/, '');
+              screenshots.push(src);
+            }
+         });
+      } else if (text.includes('repack features')) {
+         $(h3).next('ul').find('li').each((_, li) => {
+            repackFeatures.push($(li).text().trim());
+         });
+      }
+    });
+
+    let gameDescriptionHtml = '';
+    let backwardsCompatibility = '';
+    $(el).find('.su-spoiler-title').each((_, titleDiv) => {
+      const text = $(titleDiv).text().trim().toLowerCase();
+      if (text.includes('game description')) {
+        gameDescriptionHtml = $(titleDiv).next('.su-spoiler-content').html();
+      } else if (text.includes('backwards compatibility')) {
+        backwardsCompatibility = $(titleDiv).next('.su-spoiler-content').text().trim();
+      }
+    });
+
     games.push({
       id: urlToSlug(url, date), title, url, image, categories, date, 
       year: new Date(date).getFullYear().toString(),
       ...meta,
       discussionUrl,
-      mirrorsHtml
+      mirrorsHtml,
+      screenshots,
+      repackFeatures,
+      gameDescriptionHtml,
+      backwardsCompatibility
     });
   });
 
@@ -179,6 +213,10 @@ async function run() {
         // Create lightweight object for the main catalog
         const lightweight = { ...g };
         delete lightweight.mirrorsHtml;
+        delete lightweight.screenshots;
+        delete lightweight.repackFeatures;
+        delete lightweight.gameDescriptionHtml;
+        delete lightweight.backwardsCompatibility;
 
         if (!gamesMap.has(g.id)) {
           gamesMap.set(g.id, lightweight);
