@@ -98,17 +98,17 @@ def push_to_live():
     shutil.copy(os.path.join(dist_dir, "index.html"), os.path.join(dist_dir, "404.html"))
     remote_url = subprocess.check_output(["git", "config", "--get", "remote.origin.url"], cwd=os.path.dirname(__file__)).decode("utf-8").strip()
     
-    subprocess.run(["git", "init"], cwd=dist_dir, shell=True)
-    subprocess.run(["git", "checkout", "-b", "gh-pages"], cwd=dist_dir, shell=True)
-    subprocess.run(["git", "add", "."], cwd=dist_dir, shell=True)
-    subprocess.run(["git", "commit", "-m", "Auto-deploy"], cwd=dist_dir, shell=True)
-    subprocess.run(["git", "push", "-f", remote_url, "gh-pages"], cwd=dist_dir, shell=True)
+    subprocess.run(["git", "init", "-q"], cwd=dist_dir, shell=True)
+    subprocess.run(["git", "checkout", "-q", "-b", "gh-pages"], cwd=dist_dir, shell=True)
+    subprocess.run(["git", "-c", "core.safecrlf=false", "add", "."], cwd=dist_dir, shell=True)
+    subprocess.run(["git", "commit", "-q", "-m", "Auto-deploy"], cwd=dist_dir, shell=True)
+    subprocess.run(["git", "push", "-q", "-f", remote_url, "gh-pages"], cwd=dist_dir, shell=True)
     
     # Note: For the actual repo source, you can run normal git add/commit/push here as well
     print("Pushing raw source to main branch...")
-    subprocess.run(["git", "add", "."], cwd=os.path.dirname(__file__), shell=True)
-    subprocess.run(["git", "commit", "-m", "Auto-update catalog"], cwd=os.path.dirname(__file__), shell=True)
-    subprocess.run(["git", "push"], cwd=os.path.dirname(__file__), shell=True)
+    subprocess.run(["git", "-c", "core.safecrlf=false", "add", "."], cwd=os.path.dirname(__file__), shell=True)
+    subprocess.run(["git", "commit", "-q", "-m", "Auto-update catalog"], cwd=os.path.dirname(__file__), shell=True)
+    subprocess.run(["git", "push", "-q"], cwd=os.path.dirname(__file__), shell=True)
     print("Done!")
 
 def main():
