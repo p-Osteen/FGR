@@ -129,16 +129,6 @@ export default function GameDetail() {
               <strong>Compatibility Notice:</strong> {game.backwardsCompatibility}
             </div>
           )}
-
-          {game.gameDescriptionHtml && (
-            <details className="description-tile">
-              <summary>Game Description</summary>
-              <div 
-                className="description-content"
-                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(game.gameDescriptionHtml) }}
-              />
-            </details>
-          )}
           
           <div className="download-section">
             <h2>Download Links</h2>
@@ -174,6 +164,16 @@ export default function GameDetail() {
                 ))}
               </ul>
             </div>
+          )}
+
+          {game.gameDescriptionHtml && (
+            <details className="description-tile">
+              <summary>Game Description</summary>
+              <div 
+                className="description-content"
+                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(game.gameDescriptionHtml) }}
+              />
+            </details>
           )}
         </div>
       </div>
