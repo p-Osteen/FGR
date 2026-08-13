@@ -130,17 +130,6 @@ export default function GameDetail() {
             </div>
           )}
 
-          {game.repackFeatures && game.repackFeatures.length > 0 && (
-            <div className="features-section">
-              <h2>Repack Features</h2>
-              <ul>
-                {game.repackFeatures.map((feature, index) => (
-                  <li key={index}>{feature}</li>
-                ))}
-              </ul>
-            </div>
-          )}
-
           {game.gameDescriptionHtml && (
             <details className="description-tile">
               <summary>Game Description</summary>
@@ -173,6 +162,17 @@ export default function GameDetail() {
                   </a>
                 ))}
               </div>
+            </div>
+          )}
+
+          {game.repackFeatures && game.repackFeatures.length > 0 && (
+            <div className="features-section">
+              <h2>Repack Features</h2>
+              <ul>
+                {game.repackFeatures.map((feature, index) => (
+                  <li key={index}>{feature}</li>
+                ))}
+              </ul>
             </div>
           )}
         </div>
