@@ -65,6 +65,21 @@ export async function fetchPagesData() {
   }
 }
 
+let metadataCache = null;
+let metadataPromise = null;
+
+export async function fetchMetadata() {
+  if (metadataCache) return metadataCache;
+  if (!metadataPromise) {
+    const url = `${import.meta.env.BASE_URL}metadata.json`;
+    metadataPromise = fetch(url)
+      .then(res => { if (!res.ok) throw new Error('Failed to load metadata'); return res.json(); })
+      .then(data => { metadataCache = data; return data; })
+      .catch(err => { console.error('Error fetching metadata:', err); metadataPromise = null; return { lastUpdated: null }; });
+  }
+  return metadataPromise;
+}
+
 export function formatDate(dateStr) {
   const d = new Date(dateStr);
   if (isNaN(d)) return '';

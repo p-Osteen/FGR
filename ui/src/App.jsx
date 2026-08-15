@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import ErrorBoundary from './components/ErrorBoundary';
@@ -8,7 +8,19 @@ import './index.css';
 const GameDetail = lazy(() => import('./pages/GameDetail'));
 const StaticPage = lazy(() => import('./pages/StaticPage'));
 
+import { fetchMetadata } from './dataStore';
+
 export default function App() {
+  const [lastUpdated, setLastUpdated] = useState(null);
+
+  useEffect(() => {
+    fetchMetadata().then(data => {
+      if (data && data.lastUpdated) {
+        setLastUpdated(data.lastUpdated);
+      }
+    });
+  }, []);
+
   return (
     <Router basename="/FGR">
       <div className="app-container">
@@ -38,6 +50,11 @@ export default function App() {
             It was created to provide a cleaner, more modern, and easier-to-use interface than the original site. 
             All data is sourced from the official FitGirl Repacks site.
           </p>
+          {lastUpdated && (
+            <p className="last-updated" style={{ marginTop: '0.5rem', color: 'var(--text-muted, #888)' }}>
+              Last updated on: {new Date(lastUpdated).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' })}
+            </p>
+          )}
         </footer>
       </div>
     </Router>

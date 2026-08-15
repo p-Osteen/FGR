@@ -180,6 +180,7 @@ async function run() {
 
     if (!hasNewGames) {
       console.log("No new games found on the first 5 pages. Catalog is up to date.");
+      fs.writeJsonSync(path.join(UI_PUBLIC_DIR, 'metadata.json'), { lastUpdated: new Date().toISOString() }, { spaces: 2 });
       return;
     }
     console.log("New games detected on the first 5 pages, starting update process...");
@@ -248,6 +249,7 @@ async function run() {
   }
   
   fs.writeJsonSync(STATE_FILE, { lastPage: 1 });
+  fs.writeJsonSync(path.join(UI_PUBLIC_DIR, 'metadata.json'), { lastUpdated: new Date().toISOString() }, { spaces: 2 });
   console.log(`Done. Total: ${gamesMap.size}`);
 }
 
