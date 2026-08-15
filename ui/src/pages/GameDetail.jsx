@@ -12,6 +12,37 @@ export default function GameDetail() {
   const [game, setGame] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [lightboxIndex, setLightboxIndex] = useState(null);
+
+  const openLightbox = (index, e) => {
+    e.preventDefault();
+    setLightboxIndex(index);
+  };
+
+  const closeLightbox = () => {
+    setLightboxIndex(null);
+  };
+
+  const prevImage = (e) => {
+    e.stopPropagation();
+    setLightboxIndex((prev) => (prev > 0 ? prev - 1 : game.screenshots.length - 1));
+  };
+
+  const nextImage = (e) => {
+    e.stopPropagation();
+    setLightboxIndex((prev) => (prev < game.screenshots.length - 1 ? prev + 1 : 0));
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (lightboxIndex === null) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') prevImage(e);
+      if (e.key === 'ArrowRight') nextImage(e);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [lightboxIndex, game]);
 
   const handleBack = (e) => {
     e.preventDefault();
@@ -147,7 +178,7 @@ export default function GameDetail() {
               <h2>Screenshots</h2>
               <div className="screenshots-grid">
                 {game.screenshots.map((src, index) => (
-                  <a key={index} href={src} target="_blank" rel="noopener noreferrer">
+                  <a key={index} href={src} onClick={(e) => openLightbox(index, e)}>
                     <img src={src} alt={`${game.title} screenshot ${index + 1}`} loading="lazy" />
                   </a>
                 ))}
@@ -177,6 +208,25 @@ export default function GameDetail() {
           )}
         </div>
       </div>
+
+      {lightboxIndex !== null && game.screenshots && (
+        <div className="lightbox-overlay" onClick={closeLightbox}>
+          <div className="lightbox-content">
+            <button className="lightbox-close" onClick={closeLightbox}>&times;</button>
+            <button className="lightbox-prev" onClick={prevImage}>&#10094;</button>
+            <img 
+              src={game.screenshots[lightboxIndex]} 
+              alt={`Screenshot ${lightboxIndex + 1}`} 
+              className="lightbox-img" 
+              onClick={(e) => e.stopPropagation()}
+            />
+            <button className="lightbox-next" onClick={nextImage}>&#10095;</button>
+          </div>
+          <div className="lightbox-caption">
+            {lightboxIndex + 1} / {game.screenshots.length}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

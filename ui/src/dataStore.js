@@ -9,15 +9,22 @@ export const fetchCatalog = async () => {
     catalogPromise = fetch(url)
       .then(res => { if (!res.ok) throw new Error('Failed to load catalog'); return res.json(); })
       .then(data => { 
-        data.forEach(g => {
+        const filteredData = data.filter(g => {
+          if (!g.categories) return true;
+          const cats = g.categories.map(c => c.toLowerCase());
+          return !cats.includes('amelie r&d department') && 
+                 !cats.includes('russian movies') && 
+                 !cats.includes('uncategorized');
+        });
+        filteredData.forEach(g => {
           const d = new Date(g.date);
           g._timestamp = d.getTime();
           g._month = d.getMonth();
           g._searchString = (g.title + ' ' + (g.categories ? g.categories.join(' ') : '')).toLowerCase();
           g._sortTitle = g.title.toLowerCase();
         });
-        catalogCache = data; 
-        return data; 
+        catalogCache = filteredData; 
+        return filteredData; 
       })
       .catch(err => { console.error(err); catalogPromise = null; return []; });
   }
