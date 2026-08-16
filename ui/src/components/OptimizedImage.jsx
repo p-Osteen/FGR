@@ -35,21 +35,6 @@ const OptimizedImage = React.memo(function OptimizedImage({
     }
   }, [src]);
 
-  // Timeout fallback: if image hasn't loaded after 8s, show placeholder
-  useEffect(() => {
-    if (loaded || error) return;
-
-    timeoutRef.current = setTimeout(() => {
-      if (!loaded) {
-        setError(true);
-        setLoaded(true);
-      }
-    }, 8000);
-
-    return () => {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    };
-  }, [src, loaded, error]);
 
   const handleLoad = useCallback(() => {
     setLoaded(true);
@@ -80,6 +65,7 @@ const OptimizedImage = React.memo(function OptimizedImage({
         loading={priority ? 'eager' : 'lazy'}
         decoding="async"
         fetchPriority={priority ? 'high' : undefined}
+        referrerPolicy="no-referrer"
         onLoad={handleLoad}
         onError={handleError}
       />

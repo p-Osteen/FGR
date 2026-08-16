@@ -169,7 +169,7 @@ export default function GameDetail() {
               <div className="screenshots-grid">
                 {game.screenshots.map((src, index) => (
                   <a key={index} href={src} onClick={(e) => openLightbox(index, e)}>
-                    <img src={src} alt={`${game.title} screenshot ${index + 1}`} loading="lazy" />
+                    <img src={src} alt={`${game.title} screenshot ${index + 1}`} loading="lazy" referrerPolicy="no-referrer" />
                   </a>
                 ))}
               </div>
@@ -208,6 +208,7 @@ export default function GameDetail() {
               src={game.screenshots[lightboxIndex]} 
               alt={`Screenshot ${lightboxIndex + 1}`} 
               className="lightbox-img" 
+              referrerPolicy="no-referrer"
               onClick={(e) => e.stopPropagation()}
             />
             <button className="lightbox-next" onClick={nextImage}>&#10095;</button>
