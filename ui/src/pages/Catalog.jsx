@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { fetchCatalog, getFilters, formatDate } from '../dataStore';
-import OptimizedImage from '../components/OptimizedImage';
 import BackToTop from '../components/BackToTop';
 
 const PLACEHOLDER = `${import.meta.env.BASE_URL}placeholder.svg`;
@@ -16,16 +15,12 @@ const SkeletonCard = React.memo(() => (
   </div>
 ));
 
-const GameCard = React.memo(({ game, priority }) => (
+const GameCard = React.memo(({ game }) => (
   <Link to={`/game/${game.id}`} className="game-card-link">
     <div className="game-card">
-      <OptimizedImage
-        src={game.image}
-        alt={game.title}
-        wrapperClassName="game-image-wrapper"
-        className="game-image"
-        priority={priority}
-      />
+      <div className="game-image-wrapper">
+        <img src={game.image || PLACEHOLDER} alt={game.title} className="game-image" loading="lazy" decoding="async" />
+      </div>
       <div className="game-info">
         <h3 className="game-title" title={game.title}>{game.title}</h3>
         <div className="game-meta">
@@ -336,8 +331,8 @@ export default function Catalog() {
         ) : paginatedGames.length > 0 ? (
           <>
             <div className="grid">
-              {paginatedGames.map((game, index) => (
-                <GameCard key={game.id} game={game} priority={index < 6} />
+              {paginatedGames.map((game) => (
+                <GameCard key={game.id} game={game} />
               ))}
             </div>
             

@@ -3,7 +3,6 @@ import { useParams, Link } from 'react-router-dom';
 import { fetchGameDetail, formatDate } from '../dataStore';
 import DOMPurify from 'dompurify';
 import UpdatesDigest from './UpdatesDigest';
-import OptimizedImage from '../components/OptimizedImage';
 import useBackNavigation from '../hooks/useBackNavigation';
 import useSpoilerToggle from '../hooks/useSpoilerToggle';
 
@@ -113,12 +112,10 @@ export default function GameDetail() {
       <a href="/" onClick={handleBack} className="back-link">&larr; Back to Catalog</a>
       <div className="detail-content">
         <div className="detail-image-col">
-          <OptimizedImage
-            src={game.image}
+          <img
+            src={game.image || `${import.meta.env.BASE_URL}placeholder.svg`}
             alt={game.title}
-            wrapperClassName="detail-image-optimized"
             className="detail-cover-img"
-            priority={true}
           />
         </div>
         <div className="detail-info-col">
