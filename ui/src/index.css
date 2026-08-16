@@ -55,15 +55,7 @@ body {
   text-decoration: none;
 }
 
-.topbar h1 {
-  font-size: 1.8rem;
-  font-weight: 800;
-  letter-spacing: -1px;
-  background: linear-gradient(90deg, #fff, var(--primary-color));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+/* .topbar h1 is styled below in the Navbar Fixes section */
 
 .search-bar {
   flex: 1;
@@ -239,11 +231,12 @@ body {
 .game-image-wrapper {
   position: relative;
   width: 100%;
-  padding-top: 133%; /* 3:4 aspect ratio */
+  padding-top: 133%; /* 3:4 aspect ratio — overridden by OptimizedImage wrapper when used */
   background: #111;
   overflow: hidden;
 }
 
+/* Legacy: only applies if game-image is used without OptimizedImage (e.g. skeleton) */
 .game-image {
   position: absolute;
   top: 0;
@@ -254,9 +247,6 @@ body {
   transition: transform 0.4s ease;
 }
 
-.game-card:hover .game-image {
-  transform: scale(1.05);
-}
 
 .game-info {
   padding: 1rem;
@@ -456,7 +446,7 @@ body {
 .nav-menu a { color: var(--text-color); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: var(--transition); }
 .nav-menu a:hover { color: var(--primary-color); }
 .has-dropdown { position: relative; padding-bottom: 1rem; margin-bottom: -1rem; }
-.sub-menu { position: absolute; top: 100%; left: 0; background: var(--surface-color); backdrop-filter: blur(12px); border: 1px solid var(--surface-border); border-radius: 8px; list-style: none; padding: 0.5rem 0; min-width: 250px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 100; }
+/* .sub-menu is styled below in the Navbar Fixes section */
 .sub-menu a { display: block; padding: 0.75rem 1.25rem; font-size: 0.85rem; }
 .sub-menu a:hover { background: rgba(248, 135, 255, 0.1); }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
@@ -542,20 +532,20 @@ body {
 
 /* Skeleton */
 @keyframes shimmer {
-  0% { background-position: -400px 0; }
-  100% { background-position: 400px 0; }
+  0% { background-position: -800px 0; }
+  100% { background-position: 800px 0; }
 }
 .skeleton-card { pointer-events: none; }
 .skeleton-image {
-  background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.09) 50%, rgba(255,255,255,0.04) 75%);
-  background-size: 400px 100%;
-  animation: shimmer 1.4s ease-in-out infinite;
+  background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.07) 50%, rgba(255,255,255,0.03) 75%);
+  background-size: 800px 100%;
+  animation: shimmer 2.8s ease-in-out infinite;
 }
 .skeleton-line {
   border-radius: 4px;
-  background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.09) 50%, rgba(255,255,255,0.04) 75%);
-  background-size: 400px 100%;
-  animation: shimmer 1.4s ease-in-out infinite;
+  background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.07) 50%, rgba(255,255,255,0.03) 75%);
+  background-size: 800px 100%;
+  animation: shimmer 2.8s ease-in-out infinite;
 }
 .skeleton-title { height: 14px; width: 85%; margin-bottom: 0.4rem; }
 .skeleton-date { height: 11px; width: 45%; margin-top: auto; }
@@ -1069,4 +1059,129 @@ body {
   .lightbox-prev { left: 10px; }
   .lightbox-next { right: 10px; }
   .lightbox-close { top: -45px; right: 10px; }
+}
+
+/* ================================ */
+/* OptimizedImage Component         */
+/* ================================ */
+.optimized-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  background: #111;
+}
+
+.optimized-image-shimmer {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.07) 50%, rgba(255,255,255,0.03) 75%);
+  background-size: 800px 100%;
+  animation: shimmer 2.8s ease-in-out infinite;
+  z-index: 1;
+}
+
+.optimized-image {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: 2;
+}
+
+.optimized-image--loaded {
+  opacity: 1;
+}
+
+/* Game card specific: wrapper needs the aspect ratio padding */
+.game-card .optimized-image-wrapper {
+  padding-top: 133%; /* 3:4 */
+}
+
+/* Hover zoom still works through the OptimizedImage */
+.game-card:hover .optimized-image {
+  transform: scale(1.05);
+  transition: opacity 0.35s ease, transform 0.4s ease;
+}
+
+/* Grid performance: skip rendering off-screen cards */
+.grid {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 800px;
+}
+
+/* Detail page cover image */
+.detail-image-optimized {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  padding-top: 133%;
+}
+
+.detail-image-optimized .optimized-image {
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* ================================ */
+/* Back to Top Button               */
+/* ================================ */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: #fff;
+  border: none;
+  font-size: 1.4rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(248, 135, 255, 0.4);
+  z-index: 100;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeInUp 0.3s ease;
+}
+
+.back-to-top:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 24px rgba(248, 135, 255, 0.6);
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================================ */
+/* Catalog Count & Keyboard Hint    */
+/* ================================ */
+.catalog-count {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.kbd-hint {
+  display: inline-block;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid var(--surface-border);
+  border-radius: 4px;
+  padding: 0.05rem 0.4rem;
+  font-size: 0.7rem;
+  font-family: var(--font-family);
+  color: var(--text-muted);
+  margin-left: 0.4rem;
+  vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+  .kbd-hint { display: none; }
+  .back-to-top { bottom: 1rem; right: 1rem; width: 42px; height: 42px; font-size: 1.2rem; }
 }

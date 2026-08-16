@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { fetchCatalog, getFilters, formatDate } from '../dataStore';
+import OptimizedImage from '../components/OptimizedImage';
+import BackToTop from '../components/BackToTop';
 
 const PLACEHOLDER = `${import.meta.env.BASE_URL}placeholder.svg`;
 
@@ -14,12 +16,16 @@ const SkeletonCard = React.memo(() => (
   </div>
 ));
 
-const GameCard = React.memo(({ game }) => (
+const GameCard = React.memo(({ game, priority }) => (
   <Link to={`/game/${game.id}`} className="game-card-link">
     <div className="game-card">
-      <div className="game-image-wrapper">
-        <img src={game.image || PLACEHOLDER} alt={game.title} className="game-image" loading="lazy" decoding="async" />
-      </div>
+      <OptimizedImage
+        src={game.image}
+        alt={game.title}
+        wrapperClassName="game-image-wrapper"
+        className="game-image"
+        priority={priority}
+      />
       <div className="game-info">
         <h3 className="game-title" title={game.title}>{game.title}</h3>
         <div className="game-meta">
@@ -50,6 +56,8 @@ export default function Catalog() {
   });
   const [sortBy, setSortBy] = useState(() => sessionStorage.getItem('fgr_sort') || 'newest');
 
+  const searchInputRef = useRef(null);
+
   // Sync state to sessionStorage
   useEffect(() => {
     sessionStorage.setItem('fgr_search', search);
@@ -62,6 +70,21 @@ export default function Catalog() {
   // Set document title
   useEffect(() => {
     document.title = 'Catalog - FitGirl Repacks';
+  }, []);
+
+  // Keyboard shortcut: "/" to focus search
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === '/' && document.activeElement?.tagName !== 'INPUT' && document.activeElement?.tagName !== 'TEXTAREA') {
+        e.preventDefault();
+        searchInputRef.current?.focus();
+      }
+      if (e.key === 'Escape' && document.activeElement === searchInputRef.current) {
+        searchInputRef.current?.blur();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
   
   // Pagination via URL
@@ -192,8 +215,9 @@ export default function Catalog() {
 
       <aside className={`sidebar ${mobileFiltersOpen ? 'open' : ''}`}>
         <div className="filter-group">
-          <h3>Search</h3>
+          <h3>Search <kbd className="kbd-hint">/</kbd></h3>
           <input 
+            ref={searchInputRef}
             type="text" 
             className="search-input" 
             placeholder="Search games..." 
@@ -259,6 +283,14 @@ export default function Catalog() {
 
       <main className="content-area">
         <div className="sort-bar">
+          {/* Total game count */}
+          <span className="catalog-count">
+            {loading ? '...' : (
+              hasFilters
+                ? `${filteredGames.length.toLocaleString()} of ${allGames.length.toLocaleString()}`
+                : `${allGames.length.toLocaleString()} repacks`
+            )}
+          </span>
           {hasFilters && (
             <button className="clear-all-btn" onClick={clearAllFilters}>
               Clear All Filters
@@ -304,8 +336,8 @@ export default function Catalog() {
         ) : paginatedGames.length > 0 ? (
           <>
             <div className="grid">
-              {paginatedGames.map(game => (
-                <GameCard key={game.id} game={game} />
+              {paginatedGames.map((game, index) => (
+                <GameCard key={game.id} game={game} priority={index < 6} />
               ))}
             </div>
             
@@ -367,6 +399,8 @@ export default function Catalog() {
           </div>
         )}
       </main>
+
+      <BackToTop />
     </div>
   );
 }

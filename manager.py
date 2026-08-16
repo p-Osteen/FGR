@@ -3,18 +3,30 @@ import sys
 import subprocess
 import shutil
 import json
+import stat
 from datetime import datetime
+
+def on_rm_error(func, path, exc_info):
+    """
+    Error handler for shutil.rmtree.
+    If the error is due to an access error (read only file)
+    it attempts to add write permission and then retries.
+    """
+    os.chmod(path, stat.S_IWRITE)
+    func(path)
 
 SCRAPER_DIR = os.path.join(os.path.dirname(__file__), 'scraper')
 UI_DIR = os.path.join(os.path.dirname(__file__), 'ui')
 PUBLIC_DIR = os.path.join(UI_DIR, 'public')
 GAMES_JSON = os.path.join(PUBLIC_DIR, 'games.json')
+GAMES_DIR = os.path.join(PUBLIC_DIR, 'games')
 STATE_JSON = os.path.join(SCRAPER_DIR, 'state.json')
 
 def scrape_all():
     print("Starting full scrape...")
-    subprocess.run(["node", "index.js", "all"], cwd=SCRAPER_DIR)
-GAMES_DIR = os.path.join(PUBLIC_DIR, 'games')
+    result = subprocess.run(["node", "index.js", "all"], cwd=SCRAPER_DIR)
+    if result.returncode != 0:
+        print("Scrape failed.")
 
 def clear_all():
     print("Clearing all data...")
@@ -28,7 +40,9 @@ def clear_all():
 
 def check_updates():
     print("Checking for updates...")
-    subprocess.run(["node", "index.js", "update"], cwd=SCRAPER_DIR)
+    result = subprocess.run(["node", "index.js", "update"], cwd=SCRAPER_DIR)
+    if result.returncode != 0:
+        print("Update check failed.")
 
 def generate_sitemap():
     print("Generating sitemap.xml...")
@@ -98,17 +112,30 @@ def push_to_live():
     shutil.copy(os.path.join(dist_dir, "index.html"), os.path.join(dist_dir, "404.html"))
     remote_url = subprocess.check_output(["git", "config", "--get", "remote.origin.url"], cwd=os.path.dirname(__file__)).decode("utf-8").strip()
     
+    # Clean any leftover .git from previous deploys to prevent 'branch already exists' errors
+    dist_git = os.path.join(dist_dir, ".git")
+    if os.path.exists(dist_git):
+        shutil.rmtree(dist_git, onerror=on_rm_error)
+    
     subprocess.run(["git", "init", "-q"], cwd=dist_dir, shell=True)
     subprocess.run(["git", "checkout", "-q", "-b", "gh-pages"], cwd=dist_dir, shell=True)
     subprocess.run(["git", "-c", "core.safecrlf=false", "add", "."], cwd=dist_dir, shell=True)
     subprocess.run(["git", "commit", "-q", "-m", "Auto-deploy"], cwd=dist_dir, shell=True)
-    subprocess.run(["git", "push", "-q", "-f", remote_url, "gh-pages"], cwd=dist_dir, shell=True)
+    
+    push_result = subprocess.run(["git", "push", "-q", "-f", remote_url, "gh-pages"], cwd=dist_dir, shell=True)
+    if push_result.returncode != 0:
+        print("Failed to push to gh-pages.")
+        return
     
     # Note: For the actual repo source, you can run normal git add/commit/push here as well
     print("Pushing raw source to main branch...")
     subprocess.run(["git", "-c", "core.safecrlf=false", "add", "."], cwd=os.path.dirname(__file__), shell=True)
     subprocess.run(["git", "commit", "-q", "-m", "Auto-update catalog"], cwd=os.path.dirname(__file__), shell=True)
-    subprocess.run(["git", "push", "-q"], cwd=os.path.dirname(__file__), shell=True)
+    
+    push_src = subprocess.run(["git", "push", "-q"], cwd=os.path.dirname(__file__), shell=True)
+    if push_src.returncode != 0:
+        print("Warning: Failed to push source to main branch.")
+    
     print("Done!")
 
 def main():

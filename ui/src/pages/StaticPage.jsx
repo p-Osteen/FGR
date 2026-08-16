@@ -1,23 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { fetchPagesData } from '../dataStore';
+import DOMPurify from 'dompurify';
 import UpdatesDigest from './UpdatesDigest';
+import useBackNavigation from '../hooks/useBackNavigation';
+import useSpoilerToggle from '../hooks/useSpoilerToggle';
 
 export default function StaticPage() {
   const { slug } = useParams();
-  const navigate = useNavigate();
+  const handleBack = useBackNavigation();
   const [pageData, setPageData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  const handleBack = (e) => {
-    e.preventDefault();
-    if (window.history.length > 2) {
-      navigate(-1);
-    } else {
-      navigate('/');
-    }
-  };
+  // Use shared spoiler toggle hook
+  useSpoilerToggle(!loading && pageData && !!pageData.content);
 
   useEffect(() => {
     setLoading(true);
@@ -37,18 +34,10 @@ export default function StaticPage() {
   }, [slug]);
 
   useEffect(() => {
-    if (!loading && pageData && pageData.content) {
-      const titles = document.querySelectorAll('.su-spoiler-title');
-      const toggleSpoiler = function() {
-        const parent = this.parentElement;
-        parent.classList.toggle('su-spoiler-closed');
-      };
-      titles.forEach(t => t.addEventListener('click', toggleSpoiler));
-      return () => {
-        titles.forEach(t => t.removeEventListener('click', toggleSpoiler));
-      };
+    if (pageData && pageData.title) {
+      document.title = `${pageData.title} - FitGirl Repacks`;
     }
-  }, [loading, pageData]);
+  }, [pageData]);
 
   if (loading) {
     return <div className="detail-page"><div className="loading">Loading page...</div></div>;
@@ -76,7 +65,7 @@ export default function StaticPage() {
         {pageData.content ? (
           <div 
             className="og-mirrors-container static-html-content"
-            dangerouslySetInnerHTML={{ __html: pageData.content }}
+            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(pageData.content) }}
             style={{ marginTop: '2rem' }}
           />
         ) : (

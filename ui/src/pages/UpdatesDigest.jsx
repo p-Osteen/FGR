@@ -1,22 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import DOMPurify from 'dompurify';
 import { motion, AnimatePresence } from 'framer-motion';
+import useBackNavigation from '../hooks/useBackNavigation';
 
 export default function UpdatesDigest({ pageData }) {
   const [updates, setUpdates] = useState([]);
   const [headerHtml, setHeaderHtml] = useState('');
   const [openId, setOpenId] = useState(null);
-  const navigate = useNavigate();
-
-  const handleBack = (e) => {
-    e.preventDefault();
-    if (window.history.length > 2) {
-      navigate(-1);
-    } else {
-      navigate('/');
-    }
-  };
+  const handleBack = useBackNavigation();
 
   useEffect(() => {
     if (!pageData || !pageData.content) return;

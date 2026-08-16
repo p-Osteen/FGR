@@ -1,38 +1,45 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import { fetchGameDetail, formatDate } from '../dataStore';
 import DOMPurify from 'dompurify';
 import UpdatesDigest from './UpdatesDigest';
+import OptimizedImage from '../components/OptimizedImage';
+import useBackNavigation from '../hooks/useBackNavigation';
+import useSpoilerToggle from '../hooks/useSpoilerToggle';
 
 const PLACEHOLDER = `${import.meta.env.BASE_URL}placeholder.svg`;
 
 export default function GameDetail() {
   const { id } = useParams();
-  const navigate = useNavigate();
+  const handleBack = useBackNavigation();
   const [game, setGame] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [lightboxIndex, setLightboxIndex] = useState(null);
 
-  const openLightbox = (index, e) => {
+  // Use shared spoiler toggle hook
+  useSpoilerToggle(!loading && game && !!game.mirrorsHtml);
+
+  const openLightbox = useCallback((index, e) => {
     e.preventDefault();
     setLightboxIndex(index);
-  };
+  }, []);
 
-  const closeLightbox = () => {
+  const closeLightbox = useCallback(() => {
     setLightboxIndex(null);
-  };
+  }, []);
 
-  const prevImage = (e) => {
+  const prevImage = useCallback((e) => {
     e.stopPropagation();
-    setLightboxIndex((prev) => (prev > 0 ? prev - 1 : game.screenshots.length - 1));
-  };
+    setLightboxIndex((prev) => (prev > 0 ? prev - 1 : (game?.screenshots?.length || 1) - 1));
+  }, [game]);
 
-  const nextImage = (e) => {
+  const nextImage = useCallback((e) => {
     e.stopPropagation();
-    setLightboxIndex((prev) => (prev < game.screenshots.length - 1 ? prev + 1 : 0));
-  };
+    setLightboxIndex((prev) => (prev < (game?.screenshots?.length || 1) - 1 ? prev + 1 : 0));
+  }, [game]);
 
+  // Fixed: stable callback references via useCallback, proper deps
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (lightboxIndex === null) return;
@@ -42,16 +49,7 @@ export default function GameDetail() {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [lightboxIndex, game]);
-
-  const handleBack = (e) => {
-    e.preventDefault();
-    if (window.history.length > 2) {
-      navigate(-1);
-    } else {
-      navigate('/');
-    }
-  };
+  }, [lightboxIndex, closeLightbox, prevImage, nextImage]);
 
   useEffect(() => {
     fetchGameDetail(id)
@@ -70,20 +68,6 @@ export default function GameDetail() {
       document.title = `${game.title} - FitGirl Repacks`;
     }
   }, [game]);
-
-  useEffect(() => {
-    if (!loading && game && game.mirrorsHtml) {
-      const titles = document.querySelectorAll('.su-spoiler-title');
-      const toggleSpoiler = function() {
-        const parent = this.parentElement;
-        parent.classList.toggle('su-spoiler-closed');
-      };
-      titles.forEach(t => t.addEventListener('click', toggleSpoiler));
-      return () => {
-        titles.forEach(t => t.removeEventListener('click', toggleSpoiler));
-      };
-    }
-  }, [loading, game]);
 
   if (loading) {
     return (
@@ -129,7 +113,13 @@ export default function GameDetail() {
       <a href="/" onClick={handleBack} className="back-link">&larr; Back to Catalog</a>
       <div className="detail-content">
         <div className="detail-image-col">
-          <img src={game.image || PLACEHOLDER} alt={game.title} />
+          <OptimizedImage
+            src={game.image}
+            alt={game.title}
+            wrapperClassName="detail-image-optimized"
+            className="detail-cover-img"
+            priority={true}
+          />
         </div>
         <div className="detail-info-col">
           <h1 className="detail-title">{game.title}</h1>

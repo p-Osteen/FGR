@@ -3,7 +3,7 @@ dist/
 .env
 .DS_Store
 __pycache__/
-*.md
+CHANGELOG.md
 ui/public/games/
 ui/public/games.json
 scraper/state.json
