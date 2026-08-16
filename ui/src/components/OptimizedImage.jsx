@@ -103,7 +103,6 @@ const OptimizedImage = React.memo(function OptimizedImage({
           className={`optimized-image ${className} ${loaded ? 'optimized-image--loaded' : ''}`}
           decoding="async"
           fetchPriority={priority ? 'high' : undefined}
-          referrerPolicy="no-referrer"
           onLoad={handleLoad}
           onError={handleError}
         />
