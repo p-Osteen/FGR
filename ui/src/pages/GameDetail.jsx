@@ -126,40 +126,31 @@ export default function GameDetail() {
 
   return (
     <div className="detail-page">
-      <a href="/" onClick={handleBack} className="back-link">&larr; Back to Catalog</a>
-      <div className="detail-content">
-        <div className="detail-image-col">
-          <img src={game.image || PLACEHOLDER} alt={game.title} />
-        </div>
-        <div className="detail-info-col">
-          <h1 className="detail-title">{game.title}</h1>
-          <div className="detail-tags">
-            <span className="tag">Added: {formatDate(game.date)}</span>
-            {game.categories && game.categories.map(c => (
-              <span key={c} className="tag">{c}</span>
-            ))}
-          </div>
-
-          <div className="metadata-section">
-            {game.genres && <p><strong>Genres/Tags:</strong> {game.genres}</p>}
-            {game.companies && <p><strong>Companies:</strong> {game.companies}</p>}
-            {game.languages && <p><strong>Languages:</strong> {game.languages}</p>}
-            {game.originalSize && <p><strong>Original Size:</strong> {game.originalSize}</p>}
-            {game.repackSize && <p><strong>Repack Size:</strong> {game.repackSize}</p>}
-            {game.discussionUrl && (
-              <p>
-                <a href={game.discussionUrl} target="_blank" rel="noopener noreferrer">
-                  Discussion and (possible) future updates on CS.RIN.RU thread
-                </a>
-              </p>
-            )}
-          </div>
-
-          {game.backwardsCompatibility && (
-            <div className="compatibility-notice">
-              <strong>Compatibility Notice:</strong> {game.backwardsCompatibility}
+      <div className="detail-hero">
+        <div 
+          className="detail-hero-bg" 
+          style={{ backgroundImage: `url(${game.screenshots?.[0] || game.image || PLACEHOLDER})` }} 
+        />
+        <div className="detail-hero-overlay"></div>
+        <div className="detail-hero-content">
+          <a href="/" onClick={handleBack} className="back-link">&larr; Back to Catalog</a>
+          <div className="hero-info">
+            <h1 className="detail-title">{game.title}</h1>
+            <div className="detail-tags">
+              <span className="tag hero-tag">Added: {formatDate(game.date)}</span>
+              {game.categories && game.categories.map(c => (
+                <span key={c} className="tag hero-tag">{c}</span>
+              ))}
             </div>
-          )}
+          </div>
+        </div>
+      </div>
+
+      <div className="detail-content">
+        <div className="detail-sidebar">
+          <div className="detail-image-wrapper">
+            <img src={game.image || PLACEHOLDER} alt={game.title} className="detail-poster" />
+          </div>
           
           <div className="download-section">
             <h2>Download Links</h2>
@@ -172,39 +163,63 @@ export default function GameDetail() {
               <p>No links available.</p>
             )}
           </div>
+        </div>
 
-          {game.screenshots && game.screenshots.length > 0 && (
-            <div className="screenshots-section">
-              <h2>Screenshots</h2>
-              <div className="screenshots-grid">
-                {game.screenshots.map((src, index) => (
-                  <a key={index} href={src} onClick={(e) => openLightbox(index, e)}>
-                    <img src={src} alt={`${game.title} screenshot ${index + 1}`} loading="lazy" />
-                  </a>
-                ))}
-              </div>
+        <div className="detail-main">
+          <div className="metadata-grid">
+            {game.genres && <div className="meta-card"><span className="meta-label">Genres/Tags</span><span className="meta-value">{game.genres}</span></div>}
+            {game.companies && <div className="meta-card"><span className="meta-label">Companies</span><span className="meta-value">{game.companies}</span></div>}
+            {game.languages && <div className="meta-card"><span className="meta-label">Languages</span><span className="meta-value">{game.languages}</span></div>}
+            {game.originalSize && <div className="meta-card"><span className="meta-label">Original Size</span><span className="meta-value">{game.originalSize}</span></div>}
+            {game.repackSize && <div className="meta-card"><span className="meta-label">Repack Size</span><span className="meta-value">{game.repackSize}</span></div>}
+          </div>
+
+          {game.discussionUrl && (
+            <div className="discussion-link-wrapper">
+              <a href={game.discussionUrl} target="_blank" rel="noopener noreferrer" className="discussion-link">
+                &#128172; Discussion and future updates on CS.RIN.RU
+              </a>
+            </div>
+          )}
+
+          {game.backwardsCompatibility && (
+            <div className="compatibility-notice">
+              <strong>Compatibility Notice:</strong> {game.backwardsCompatibility}
             </div>
           )}
 
           {game.repackFeatures && game.repackFeatures.length > 0 && (
             <div className="features-section">
               <h2>Repack Features</h2>
-              <ul>
+              <ul className="styled-features-list">
                 {game.repackFeatures.map((feature, index) => (
-                  <li key={index}>{feature}</li>
+                  <li key={index}><span className="feature-icon">&#10003;</span> <span dangerouslySetInnerHTML={{__html: feature}} /></li>
                 ))}
               </ul>
             </div>
           )}
 
           {game.gameDescriptionHtml && (
-            <details className="description-tile">
-              <summary>Game Description</summary>
+            <div className="description-section">
+              <h2>Game Description</h2>
               <div 
                 className="description-content"
                 dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(game.gameDescriptionHtml) }}
               />
-            </details>
+            </div>
+          )}
+
+          {game.screenshots && game.screenshots.length > 0 && (
+            <div className="screenshots-section">
+              <h2>Screenshots</h2>
+              <div className="screenshots-grid-masonry">
+                {game.screenshots.map((src, index) => (
+                  <a key={index} href={src} onClick={(e) => openLightbox(index, e)} className="screenshot-item">
+                    <img src={src} alt={`${game.title} screenshot ${index + 1}`} loading="lazy" />
+                  </a>
+                ))}
+              </div>
+            </div>
           )}
         </div>
       </div>
