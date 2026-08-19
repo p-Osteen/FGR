@@ -1,5 +1,54 @@
 [
   {
+    "id": "wild-blue-skies-1787101822000",
+    "title": "Wild Blue Skies – v1.0.4.0",
+    "url": "https://fitgirl-repacks.site/wild-blue-skies/",
+    "image": "https://i1.imageban.ru/out/2026/08/19/a614165012ba98ce924d4315e7eaa714.jpg",
+    "categories": [],
+    "date": "2026-08-19T04:10:22+03:00",
+    "year": "2026",
+    "genres": "Arcade, Gun game, Third-person, 3D",
+    "companies": "Chuhai Labs, Vitei Backroom, Balor Games",
+    "languages": "ENG/MULTI6",
+    "originalSize": "1.7 GB",
+    "repackSize": "722 MB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=157501"
+  },
+  {
+    "id": "ruins-of-dawn-1787100006000",
+    "title": "Ruins of Dawn – v1.08",
+    "url": "https://fitgirl-repacks.site/ruins-of-dawn/",
+    "image": "https://i1.imageban.ru/out/2026/08/19/e3e2f5e53eda31e94a0f84f4f8a92dd1.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-08-19T03:40:06+03:00",
+    "year": "2026",
+    "genres": "RPG, Action RPG, Top-down, 3D",
+    "companies": "",
+    "languages": "ENG/MULTI2",
+    "originalSize": "2.3 GB",
+    "repackSize": "1.4 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=160722"
+  },
+  {
+    "id": "go-home-annie-1787087415000",
+    "title": "Go Home Annie – v1.0.65",
+    "url": "https://fitgirl-repacks.site/go-home-annie/",
+    "image": "https://i3.imageban.ru/out/2025/01/05/6d3ab87740faa0f97d0084d9491b77cf.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-08-19T00:10:15+03:00",
+    "year": "2026",
+    "genres": "Adventure, First-person, 3D",
+    "companies": "MisfitVillage, Nordic Current",
+    "languages": "RUS/ENG/MULTI9",
+    "originalSize": "11.5 GB",
+    "repackSize": "7.1 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=123933"
+  },
+  {
     "id": "quick-filecrypt-test-poll-1787021684000",
     "title": "Quick FileCrypt Test Poll",
     "url": "https://fitgirl-repacks.site/quick-filecrypt-test-poll/",
@@ -120,9 +169,7 @@
     "title": "Assassin’s Creed: Black Flag Resynced – Deluxe Edition, v1.0.6 + 10 DLCs/Bonuses",
     "url": "https://fitgirl-repacks.site/assassins-creed-black-flag-resynced/",
     "image": "https://i4.imageban.ru/out/2026/08/17/5a35e7ed76da8d2f68da097d233d555a.jpg",
-    "categories": [
-      "Lossless Repack"
-    ],
+    "categories": [],
     "date": "2026-08-17T02:00:15+03:00",
     "year": "2026",
     "genres": "Action, Open world, Stealth, Pirate/Privateer, Third-person, 3D",
@@ -222,7 +269,10 @@
     "title": "Mafia: The Old Country – Definitive Edition, Build 24657362 + 5 DLCs",
     "url": "https://fitgirl-repacks.site/mafia-the-old-country/",
     "image": "https://i2.imageban.ru/out/2026/08/16/b8584f528e859dc895eeaec4136ccd2f.jpg",
-    "categories": [],
+    "categories": [
+      "Hypervisor Bypass",
+      "Lossless Repack"
+    ],
     "date": "2026-08-16T04:00:43+03:00",
     "year": "2026",
     "genres": "Action, Shooter, Driving, Open world, Stealth, Third-person, 3D",
