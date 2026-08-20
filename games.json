@@ -1,5 +1,105 @@
 [
   {
+    "id": "twisted-tower-1787171565000",
+    "title": "Twisted Tower – v1.0.3",
+    "url": "https://fitgirl-repacks.site/twisted-tower/",
+    "image": "https://i8.imageban.ru/out/2026/08/19/ac214a93e0c36c9e710d5a88833c2870.jpg",
+    "categories": [],
+    "date": "2026-08-19T23:32:45+03:00",
+    "year": "2026",
+    "genres": "Action, Shooter, First-person, 3D, Horror",
+    "companies": "3D Realms, Atmos Games",
+    "languages": "",
+    "originalSize": "3.1 GB",
+    "repackSize": "2.3 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=133889"
+  },
+  {
+    "id": "starsand-island-1787167081000",
+    "title": "Starsand Island – v1.0.0.13838.213299 + 5 DLCs",
+    "url": "https://fitgirl-repacks.site/starsand-island/",
+    "image": "https://i2.imageban.ru/out/2026/08/19/738aabf17795adf25ad69174fb6c15a8.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-08-19T22:18:01+03:00",
+    "year": "2026",
+    "genres": "Lifestyle, Managerial, Third-person, 3D",
+    "companies": "",
+    "languages": "ENG/MULTI4",
+    "originalSize": "7.2 GB",
+    "repackSize": "4.8 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=140597"
+  },
+  {
+    "id": "darkest-dungeon-1787160644000",
+    "title": "Darkest Dungeon: The Collector’s Edition, v27760 + 7 DLCs/Bonuses",
+    "url": "https://fitgirl-repacks.site/darkest-dungeon/",
+    "image": "https://i3.imageban.ru/out/2026/08/19/8f61c797a4d77b2e31be39dfdfda27e7.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-08-19T20:30:44+03:00",
+    "year": "2026",
+    "genres": "RPG, Level randomization, Permanent death, Side, 2D, Turn-based",
+    "companies": "",
+    "languages": "RUS/ENG/MULTI12",
+    "originalSize": "5.1 GB",
+    "repackSize": "2/2.2 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=67084"
+  },
+  {
+    "id": "little-sim-world-1787150699000",
+    "title": "Little Sim World – v1.0.0 (Release)",
+    "url": "https://fitgirl-repacks.site/little-sim-world/",
+    "image": "https://i4.imageban.ru/out/2026/08/19/7b13d63125b042abb7236d182c05ba88.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-08-19T17:44:59+03:00",
+    "year": "2026",
+    "genres": "Lifestyle, Managerial, Item crafting, Top-down, 2D",
+    "companies": "",
+    "languages": "RUS/ENG/MULTI7",
+    "originalSize": "1.8 GB",
+    "repackSize": "827 MB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=141414"
+  },
+  {
+    "id": "astrobuilder-1787146530000",
+    "title": "Astrobuilder – v1.0.8d6e340.143",
+    "url": "https://fitgirl-repacks.site/astrobuilder/",
+    "image": "https://i8.imageban.ru/out/2026/08/19/bc7aaebf15e76f1d4dd3d41e28563154.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-08-19T16:35:30+03:00",
+    "year": "2026",
+    "genres": "Managerial, RPG, Content randomization, Open world, Top-down, 3D",
+    "companies": "",
+    "languages": "ENG/CHS",
+    "originalSize": "7.7 GB",
+    "repackSize": "2.7 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=148496"
+  },
+  {
+    "id": "snow-plowing-simulator-1787139038000",
+    "title": "Snow Plowing Simulator: Ski Resort Edition – v1.2.1 (2607161537) + DLC",
+    "url": "https://fitgirl-repacks.site/snow-plowing-simulator/",
+    "image": "https://i5.imageban.ru/out/2025/06/19/90dd2e4ae9dbdce72a0604c9ea3eede5.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-08-19T14:30:38+03:00",
+    "year": "2026",
+    "genres": "Lifestyle, First-person, 3D",
+    "companies": "PlayWay, FreeMind",
+    "languages": "RUS/ENG/MULTI12",
+    "originalSize": "9 GB",
+    "repackSize": "6.4 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=126352"
+  },
+  {
     "id": "wild-blue-skies-1787101822000",
     "title": "Wild Blue Skies – v1.0.4.0",
     "url": "https://fitgirl-repacks.site/wild-blue-skies/",
@@ -33,7 +133,7 @@
   },
   {
     "id": "go-home-annie-1787087415000",
-    "title": "Go Home Annie – v1.0.65",
+    "title": "Go Home Annie: An SCP Game – v1.0.65",
     "url": "https://fitgirl-repacks.site/go-home-annie/",
     "image": "https://i3.imageban.ru/out/2025/01/05/6d3ab87740faa0f97d0084d9491b77cf.jpg",
     "categories": [
@@ -169,7 +269,9 @@
     "title": "Assassin’s Creed: Black Flag Resynced – Deluxe Edition, v1.0.6 + 10 DLCs/Bonuses",
     "url": "https://fitgirl-repacks.site/assassins-creed-black-flag-resynced/",
     "image": "https://i4.imageban.ru/out/2026/08/17/5a35e7ed76da8d2f68da097d233d555a.jpg",
-    "categories": [],
+    "categories": [
+      "Lossless Repack"
+    ],
     "date": "2026-08-17T02:00:15+03:00",
     "year": "2026",
     "genres": "Action, Open world, Stealth, Pirate/Privateer, Third-person, 3D",
@@ -269,10 +371,7 @@
     "title": "Mafia: The Old Country – Definitive Edition, Build 24657362 + 5 DLCs",
     "url": "https://fitgirl-repacks.site/mafia-the-old-country/",
     "image": "https://i2.imageban.ru/out/2026/08/16/b8584f528e859dc895eeaec4136ccd2f.jpg",
-    "categories": [
-      "Hypervisor Bypass",
-      "Lossless Repack"
-    ],
+    "categories": [],
     "date": "2026-08-16T04:00:43+03:00",
     "year": "2026",
     "genres": "Action, Shooter, Driving, Open world, Stealth, Third-person, 3D",
