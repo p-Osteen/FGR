@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { fetchCatalog, getFilters, formatDate } from '../dataStore';
 import BackToTop from '../components/BackToTop';
+import OptimizedImage from '../components/OptimizedImage';
 
 const PLACEHOLDER = `${import.meta.env.BASE_URL}placeholder.svg`;
 
@@ -18,9 +19,7 @@ const SkeletonCard = React.memo(() => (
 const GameCard = React.memo(({ game }) => (
   <Link to={`/game/${game.id}`} className="game-card-link">
     <div className="game-card">
-      <div className="game-image-wrapper">
-        <img src={game.image || PLACEHOLDER} alt={game.title} className="game-image" loading="lazy" decoding="async" />
-      </div>
+      <OptimizedImage src={game.image} alt={game.title} proxyWidth={400} />
       <div className="game-info">
         <h3 className="game-title" title={game.title}>{game.title}</h3>
         <div className="game-meta">
@@ -212,6 +211,8 @@ export default function Catalog() {
         <div className="filter-group">
           <h3>Search <kbd className="kbd-hint">/</kbd></h3>
           <input 
+            id="search-input"
+            name="search"
             ref={searchInputRef}
             type="text" 
             className="search-input" 
@@ -224,6 +225,8 @@ export default function Catalog() {
         <div className="filter-group">
           <h3>Year Released</h3>
           <select 
+            id="year-select"
+            name="year"
             className="search-input" 
             value={selectedYear} 
             onChange={e => setSelectedYear(e.target.value)}
@@ -239,6 +242,8 @@ export default function Catalog() {
           <div className="filter-group">
             <h3>Month Released</h3>
             <select 
+              id="month-select"
+              name="month"
               className="search-input" 
               value={selectedMonth} 
               onChange={e => setSelectedMonth(e.target.value)}
@@ -292,7 +297,7 @@ export default function Catalog() {
             </button>
           )}
           <label htmlFor="sort-select" className="sort-label">Sort:</label>
-          <select id="sort-select" className="sort-select" value={sortBy} onChange={e => setSortBy(e.target.value)}>
+          <select id="sort-select" name="sort" className="sort-select" value={sortBy} onChange={e => setSortBy(e.target.value)}>
             <option value="newest">Newest first</option>
             <option value="oldest">Oldest first</option>
             <option value="az">A &rarr; Z</option>
@@ -357,6 +362,8 @@ export default function Catalog() {
                 <span className="page-indicator">
                   Page 
                   <input 
+                    id="page-input"
+                    name="page"
                     type="number" 
                     className="page-input search-input"
                     value={pageInputValue}

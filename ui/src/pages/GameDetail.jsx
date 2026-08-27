@@ -2,9 +2,11 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { fetchGameDetail, formatDate } from '../dataStore';
 import DOMPurify from 'dompurify';
+import { motion, AnimatePresence } from 'framer-motion';
 import UpdatesDigest from './UpdatesDigest';
 import useBackNavigation from '../hooks/useBackNavigation';
 import useSpoilerToggle from '../hooks/useSpoilerToggle';
+import OptimizedImage, { getProxyUrl } from '../components/OptimizedImage';
 
 const PLACEHOLDER = `${import.meta.env.BASE_URL}placeholder.svg`;
 
@@ -112,10 +114,10 @@ export default function GameDetail() {
       <a href="/" onClick={handleBack} className="back-link">&larr; Back to Catalog</a>
       <div className="detail-content">
         <div className="detail-image-col">
-          <img
-            src={game.image || `${import.meta.env.BASE_URL}placeholder.svg`}
-            alt={game.title}
-            className="detail-cover-img"
+          <OptimizedImage 
+            src={game.image} 
+            alt={game.title} 
+            className="detail-image-optimized" 
           />
         </div>
         <div className="detail-info-col">
@@ -166,7 +168,7 @@ export default function GameDetail() {
               <div className="screenshots-grid">
                 {game.screenshots.map((src, index) => (
                   <a key={index} href={src} onClick={(e) => openLightbox(index, e)}>
-                    <img src={src} alt={`${game.title} screenshot ${index + 1}`} loading="lazy" />
+                    <OptimizedImage src={src} alt={`${game.title} screenshot ${index + 1}`} proxyWidth={400} />
                   </a>
                 ))}
               </div>
@@ -196,24 +198,37 @@ export default function GameDetail() {
         </div>
       </div>
 
-      {lightboxIndex !== null && game.screenshots && (
-        <div className="lightbox-overlay" onClick={closeLightbox}>
-          <div className="lightbox-content">
-            <button className="lightbox-close" onClick={closeLightbox}>&times;</button>
-            <button className="lightbox-prev" onClick={prevImage}>&#10094;</button>
-            <img 
-              src={game.screenshots[lightboxIndex]} 
-              alt={`Screenshot ${lightboxIndex + 1}`} 
-              className="lightbox-img" 
-              onClick={(e) => e.stopPropagation()}
-            />
-            <button className="lightbox-next" onClick={nextImage}>&#10095;</button>
-          </div>
-          <div className="lightbox-caption">
-            {lightboxIndex + 1} / {game.screenshots.length}
-          </div>
-        </div>
-      )}
+      <AnimatePresence>
+        {lightboxIndex !== null && game.screenshots && (
+          <motion.div 
+            className="lightbox-overlay" 
+            onClick={closeLightbox}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <div className="lightbox-content">
+              <button className="lightbox-close" onClick={closeLightbox}>&times;</button>
+              <button className="lightbox-prev" onClick={prevImage}>&#10094;</button>
+              <motion.img 
+                key={lightboxIndex}
+                src={getProxyUrl(game.screenshots[lightboxIndex])} 
+                alt={`Screenshot ${lightboxIndex + 1}`} 
+                className="lightbox-img" 
+                onClick={(e) => e.stopPropagation()}
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              />
+              <button className="lightbox-next" onClick={nextImage}>&#10095;</button>
+            </div>
+            <div className="lightbox-caption">
+              {lightboxIndex + 1} / {game.screenshots.length}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
