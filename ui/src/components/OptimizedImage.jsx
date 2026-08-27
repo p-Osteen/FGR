@@ -1,62 +1,88 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 
 const PLACEHOLDER = `${import.meta.env.BASE_URL}placeholder.svg`;
+const MAX_RETRIES = 2;
+const RETRY_DELAY = 2000; // ms
+const LOAD_TIMEOUT = 8000; // ms — if image hasn't loaded in 8s, give up
 
-export function getProxyUrl(url, width = null) {
-  if (!url || !url.startsWith('http')) return url;
-  let proxy = `https://wsrv.nl/?url=${encodeURIComponent(url)}&output=webp`;
-  if (width) proxy += `&w=${width}`;
-  return proxy;
-}
-
-export default function OptimizedImage({ src, alt, className = '', proxyWidth = 0, ...props }) {
-  const [stage, setStage] = useState(0); // 0: Proxy, 1: Direct, 2: Placeholder
+export default function OptimizedImage({ src, alt, className = '', ...props }) {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isFailed, setIsFailed] = useState(false);
+  const [retryCount, setRetryCount] = useState(0);
   const imgRef = useRef(null);
+  const retryTimerRef = useRef(null);
+  const timeoutRef = useRef(null);
 
+  const clearTimers = useCallback(() => {
+    clearTimeout(retryTimerRef.current);
+    clearTimeout(timeoutRef.current);
+  }, []);
+
+  // Reset state when src changes
   useEffect(() => {
-    setStage(0);
+    clearTimers();
     setIsLoaded(false);
-  }, [src]);
+    setIsFailed(false);
+    setRetryCount(0);
+    return clearTimers;
+  }, [src, clearTimers]);
 
+  // Start a load timeout whenever the src or retryCount changes
   useEffect(() => {
-    if (imgRef.current && imgRef.current.complete && imgRef.current.naturalWidth > 0) {
+    if (isLoaded || isFailed || !src) return;
+
+    clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(() => {
+      // Image hasn't loaded in time — treat as failed
+      if (!isLoaded) {
+        setIsFailed(true);
+      }
+    }, LOAD_TIMEOUT);
+
+    return () => clearTimeout(timeoutRef.current);
+  }, [src, retryCount, isLoaded, isFailed]);
+
+  // Check if image is already cached/complete on mount
+  useEffect(() => {
+    const img = imgRef.current;
+    if (img && img.complete && img.naturalWidth > 0) {
+      clearTimers();
       setIsLoaded(true);
     }
-  }, [src, stage]);
+  }, [src, retryCount, clearTimers]);
 
-  const getStageSrc = () => {
-    if (!src) return PLACEHOLDER;
-    const isExternal = src.startsWith('http');
-    
-    if (stage === 0) {
-      return isExternal ? getProxyUrl(src, proxyWidth) : src;
-    }
-    if (stage === 1) {
-      return src;
-    }
-    return PLACEHOLDER;
-  };
+  const handleLoad = useCallback(() => {
+    clearTimers();
+    setIsLoaded(true);
+  }, [clearTimers]);
 
-  const handleError = () => {
-    if (stage < 2) {
-      setStage(prev => prev + 1);
+  const handleError = useCallback(() => {
+    if (retryCount < MAX_RETRIES) {
+      retryTimerRef.current = setTimeout(() => {
+        setRetryCount(prev => prev + 1);
+      }, RETRY_DELAY + Math.random() * 500);
     } else {
-      setIsLoaded(true); // Treat placeholder as loaded
+      clearTimers();
+      setIsFailed(true);
     }
-  };
+  }, [retryCount, clearTimers]);
 
-  const finalSrc = getStageSrc();
+  // Build the src — append a cache-buster on retries to force a new connection
+  const finalSrc = isFailed || !src
+    ? PLACEHOLDER
+    : retryCount > 0
+      ? `${src}${src.includes('?') ? '&' : '?'}_r=${retryCount}`
+      : src;
 
   return (
     <div className={`optimized-image-wrapper ${className}`}>
-      {!isLoaded && stage < 2 && <div className="optimized-image-shimmer" />}
+      {!isLoaded && !isFailed && <div className="optimized-image-shimmer" />}
       <img
         ref={imgRef}
         src={finalSrc}
         alt={alt}
-        className={`optimized-image ${isLoaded || stage === 2 ? 'optimized-image--loaded' : ''}`}
-        onLoad={() => setIsLoaded(true)}
+        className={`optimized-image ${isLoaded || isFailed ? 'optimized-image--loaded' : ''}`}
+        onLoad={handleLoad}
         onError={handleError}
         loading="lazy"
         decoding="async"
@@ -65,3 +91,5 @@ export default function OptimizedImage({ src, alt, className = '', proxyWidth = 
     </div>
   );
 }
+
+

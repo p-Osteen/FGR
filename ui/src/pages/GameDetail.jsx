@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import UpdatesDigest from './UpdatesDigest';
 import useBackNavigation from '../hooks/useBackNavigation';
 import useSpoilerToggle from '../hooks/useSpoilerToggle';
-import OptimizedImage, { getProxyUrl } from '../components/OptimizedImage';
+import OptimizedImage from '../components/OptimizedImage';
 
 const PLACEHOLDER = `${import.meta.env.BASE_URL}placeholder.svg`;
 
@@ -168,7 +168,7 @@ export default function GameDetail() {
               <div className="screenshots-grid">
                 {game.screenshots.map((src, index) => (
                   <a key={index} href={src} onClick={(e) => openLightbox(index, e)}>
-                    <OptimizedImage src={src} alt={`${game.title} screenshot ${index + 1}`} proxyWidth={400} />
+                    <OptimizedImage src={src} alt={`${game.title} screenshot ${index + 1}`} />
                   </a>
                 ))}
               </div>
@@ -213,7 +213,7 @@ export default function GameDetail() {
               <button className="lightbox-prev" onClick={prevImage}>&#10094;</button>
               <motion.img 
                 key={lightboxIndex}
-                src={getProxyUrl(game.screenshots[lightboxIndex])} 
+                src={game.screenshots[lightboxIndex]} 
                 alt={`Screenshot ${lightboxIndex + 1}`} 
                 className="lightbox-img" 
                 onClick={(e) => e.stopPropagation()}
