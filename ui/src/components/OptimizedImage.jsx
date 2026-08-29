@@ -5,7 +5,7 @@ const MAX_RETRIES = 2;
 const RETRY_DELAY = 2000; // ms
 const LOAD_TIMEOUT = 8000; // ms — if image hasn't loaded in 8s, give up
 
-export default function OptimizedImage({ src, alt, className = '', ...props }) {
+export default function OptimizedImage({ src, alt, className = '', priority = false, ...props }) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isFailed, setIsFailed] = useState(false);
   const [retryCount, setRetryCount] = useState(0);
@@ -84,8 +84,9 @@ export default function OptimizedImage({ src, alt, className = '', ...props }) {
         className={`optimized-image ${isLoaded || isFailed ? 'optimized-image--loaded' : ''}`}
         onLoad={handleLoad}
         onError={handleError}
-        loading="lazy"
-        decoding="async"
+        loading={priority ? 'eager' : 'lazy'}
+        decoding={priority ? 'sync' : 'async'}
+        {...(priority ? { fetchpriority: 'high' } : {})}
         {...props}
       />
     </div>

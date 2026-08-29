@@ -118,7 +118,7 @@ body {
 }
 
 
-.filter-group h3 {
+.filter-group h2 {
   font-size: 0.9rem;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -557,7 +557,7 @@ body {
   align-items: center;
   margin-bottom: 1rem;
 }
-.filter-group-header h3 {
+.filter-group-header h2 {
   margin-bottom: 0;
 }
 
@@ -1177,4 +1177,15 @@ body {
 @media (max-width: 768px) {
   .kbd-hint { display: none; }
   .back-to-top { bottom: 1rem; right: 1rem; width: 42px; height: 42px; font-size: 1.2rem; }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }

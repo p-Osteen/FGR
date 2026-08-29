@@ -209,7 +209,8 @@ export default function Catalog() {
 
       <aside className={`sidebar ${mobileFiltersOpen ? 'open' : ''}`}>
         <div className="filter-group">
-          <h3>Search <kbd className="kbd-hint">/</kbd></h3>
+          <h2>Search <kbd className="kbd-hint">/</kbd></h2>
+          <label htmlFor="search-input" className="visually-hidden">Search games</label>
           <input 
             id="search-input"
             name="search"
@@ -223,7 +224,8 @@ export default function Catalog() {
         </div>
 
         <div className="filter-group">
-          <h3>Year Released</h3>
+          <h2>Year Released</h2>
+          <label htmlFor="year-select" className="visually-hidden">Year Released</label>
           <select 
             id="year-select"
             name="year"
@@ -240,7 +242,8 @@ export default function Catalog() {
 
         {selectedYear && (
           <div className="filter-group">
-            <h3>Month Released</h3>
+            <h2>Month Released</h2>
+            <label htmlFor="month-select" className="visually-hidden">Month Released</label>
             <select 
               id="month-select"
               name="month"
@@ -258,7 +261,7 @@ export default function Catalog() {
 
         <div className="filter-group">
           <div className="filter-group-header">
-            <h3>Categories</h3>
+            <h2>Categories</h2>
             {selectedCategories.size > 0 && (
               <button className="clear-filter-btn" onClick={() => setSelectedCategories(new Set())}>
                 Clear ({selectedCategories.size})
@@ -336,8 +339,8 @@ export default function Catalog() {
         ) : paginatedGames.length > 0 ? (
           <>
             <div className="grid">
-              {paginatedGames.map((game) => (
-                <GameCard key={game.id} game={game} />
+              {paginatedGames.map((game, index) => (
+                <GameCard key={game.id} game={game} priority={index < 6} />
               ))}
             </div>
             
@@ -365,6 +368,7 @@ export default function Catalog() {
                     id="page-input"
                     name="page"
                     type="number" 
+                    aria-label="Page number"
                     className="page-input search-input"
                     value={pageInputValue}
                     min={1}
