@@ -1,5 +1,39 @@
 [
   {
+    "id": "eldara-1788820632000",
+    "title": "Eldara",
+    "url": "https://fitgirl-repacks.site/eldara/",
+    "image": "https://i7.imageban.ru/out/2026/09/08/66055b99b538e9c11914ab5d46d07ad9.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-09-08T01:37:12+03:00",
+    "year": "2026",
+    "genres": "Incremental game, Side, 2D, Fantasy",
+    "companies": "",
+    "languages": "",
+    "originalSize": "1.4 GB",
+    "repackSize": "911 MB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=159442"
+  },
+  {
+    "id": "terrascape-1788814865000",
+    "title": "TerraScape: Deluxe Edition – v2.1.0.3 + 2 DLCs/Bonuses",
+    "url": "https://fitgirl-repacks.site/terrascape/",
+    "image": "https://i8.imageban.ru/out/2024/07/18/78f52e853f5713e6970861f272a24f53.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-09-08T00:01:05+03:00",
+    "year": "2026",
+    "genres": "Logic, Strategy, Puzzle, 3D",
+    "companies": "Bitfall Studios, Stray Fawn Studio, Instinct3",
+    "languages": "RUS/ENG/MULTI12",
+    "originalSize": "2.4 GB",
+    "repackSize": "1.3 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=129940"
+  },
+  {
     "id": "far-cry-5-1788733824000",
     "title": "Far Cry 5: Gold Edition – v1.016 + 5 DLCs",
     "url": "https://fitgirl-repacks.site/far-cry-5/",
@@ -839,9 +873,7 @@
     "title": "Nicktoons & The Dice of Destiny – Deluxe Edition, Build 22242179 + 3 DLC/Bonuses",
     "url": "https://fitgirl-repacks.site/nicktoons-and-the-dice-of-destiny/",
     "image": "https://i7.imageban.ru/out/2025/10/06/9e10a93f38f9720ba417c2e2782594dc.jpg",
-    "categories": [
-      "Lossless Repack"
-    ],
+    "categories": [],
     "date": "2026-08-27T03:00:46+03:00",
     "year": "2026",
     "genres": "Arcade, Beat 'em up (Brawler), Top, 3D",
@@ -973,9 +1005,7 @@
     "title": "Above the Snow: The Alpine Bundle – v1.3.0 + DLC",
     "url": "https://fitgirl-repacks.site/above-the-snow/",
     "image": "https://i7.imageban.ru/out/2026/05/31/e35ddb864210ae2b2bbe6e5d3408e32c.jpg",
-    "categories": [
-      "Lossless Repack"
-    ],
+    "categories": [],
     "date": "2026-08-25T04:00:45+03:00",
     "year": "2026",
     "genres": "Management, Top, 3D",
@@ -1073,7 +1103,9 @@
     "title": "Mexican Ninja – v1.0.02022",
     "url": "https://fitgirl-repacks.site/mexican-ninja/",
     "image": "https://i7.imageban.ru/out/2026/08/22/381cd0664c8e5377749f3bb6da648489.jpg",
-    "categories": [],
+    "categories": [
+      "Lossless Repack"
+    ],
     "date": "2026-08-22T23:00:02+03:00",
     "year": "2026",
     "genres": "Arcade, Beat 'em up (Brawler), Side, 2D",
