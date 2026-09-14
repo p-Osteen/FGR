@@ -71,6 +71,24 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://p-osteen.github.io/FGR/game/tiny-bakery-1789348983000</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://p-osteen.github.io/FGR/game/kiborg-1789333830000</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://p-osteen.github.io/FGR/game/sunken-engine-1789325791000</loc>
+    <lastmod>2026-09-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://p-osteen.github.io/FGR/game/age-of-empires-3-definitive-edition-1789261206000</loc>
     <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
