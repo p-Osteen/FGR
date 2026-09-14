@@ -1,12 +1,112 @@
 [
   {
+    "id": "tiny-bakery-1789348983000",
+    "title": "Tiny Bakery",
+    "url": "https://fitgirl-repacks.site/tiny-bakery/",
+    "image": "https://i7.imageban.ru/out/2026/09/14/dee9af28c512268894936b0dcb73567d.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-09-14T04:23:03+03:00",
+    "year": "2026",
+    "genres": "Managerial, Isometric, 3D",
+    "companies": "",
+    "languages": "RUS/ENG/MULTI10",
+    "originalSize": "2.2 GB",
+    "repackSize": "693 MB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=161342"
+  },
+  {
+    "id": "kiborg-1789333830000",
+    "title": "KIBORG: Deluxe Edition, v2026.08.06:1:83 + 3 DLCs/Bonuses",
+    "url": "https://fitgirl-repacks.site/kiborg/",
+    "image": "https://i4.imageban.ru/out/2025/05/02/0929a89b3c2c9492b16458a34f6d74c8.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-09-14T00:10:30+03:00",
+    "year": "2026",
+    "genres": "Action, Beat 'em up (Brawler), Third-person, 3D",
+    "companies": "",
+    "languages": "RUS/ENG/MULTI12",
+    "originalSize": "12.2 GB",
+    "repackSize": "6.7~8.5 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=132324"
+  },
+  {
+    "id": "sunken-engine-1789325791000",
+    "title": "Sunken Engine – v1.0.33",
+    "url": "https://fitgirl-repacks.site/sunken-engine/",
+    "image": "https://i1.imageban.ru/out/2026/09/13/9a9358e391a9eabac71e36c0d3e17501.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-09-13T21:56:31+03:00",
+    "year": "2026",
+    "genres": "Lifestyle, First-person, 3D, Horror",
+    "companies": "PlayWay, Two Nomads Studio",
+    "languages": "RUS/ENG/MULTI25",
+    "originalSize": "2.3 GB",
+    "repackSize": "1.3 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=152210"
+  },
+  {
+    "id": "age-of-empires-3-definitive-edition-1789261206000",
+    "title": "Age of Empires III: Definitive Edition – v100.19.18309 + 6 DLCs/Bonuses",
+    "url": "https://fitgirl-repacks.site/age-of-empires-3-definitive-edition/",
+    "image": "https://i2.imageban.ru/out/2021/08/03/32caa842af6a124f337970e5ae7cafcf.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-09-13T04:00:06+03:00",
+    "year": "2026",
+    "genres": "Strategy, RTS, Isometric, 3D",
+    "companies": "Tantalus Media, World’s Edge, Xbox Game Studios",
+    "languages": "RUS/ENG/MULTI13",
+    "originalSize": "39.7 GB",
+    "repackSize": "from 21 GB [Selective Download]",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=103427"
+  },
+  {
+    "id": "model-kit-shop-simulator-1789257442000",
+    "title": "Model Kit Shop Simulator",
+    "url": "https://fitgirl-repacks.site/model-kit-shop-simulator/",
+    "image": "https://i8.imageban.ru/out/2026/09/13/5274aaea3bebce8ff5ae852f87b30c44.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-09-13T02:57:22+03:00",
+    "year": "2026",
+    "genres": "Lifestyle, First-person, 3D",
+    "companies": "Tenacity Games, PlayWay",
+    "languages": "RUS/ENG/MULTI29",
+    "originalSize": "5.3 GB",
+    "repackSize": "1.2 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=161360"
+  },
+  {
+    "id": "caribbean-legend-age-of-pirates-1789246914000",
+    "title": "Caribbean Legend: Age of Pirates – v1.2 + 3 DLCs",
+    "url": "https://fitgirl-repacks.site/caribbean-legend-age-of-pirates/",
+    "image": "https://i1.imageban.ru/out/2026/03/23/d5f8677118fbb58c2cafbe6b94b9c93d.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-09-13T00:01:54+03:00",
+    "year": "2026",
+    "genres": "RPG, Open world, Pirate/Privateer, Third-person, 3D, Combat ships",
+    "companies": "Valkyrie Initiative, BlackMark Studio",
+    "languages": "RUS/ENG/MULTI8",
+    "originalSize": "24.2 GB",
+    "repackSize": "14.2 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=156393"
+  },
+  {
     "id": "the-crust-1789175540000",
     "title": "The Crust – v1.0.5 (Release) + Bonus OST",
     "url": "https://fitgirl-repacks.site/the-crust/",
     "image": "https://i1.imageban.ru/out/2026/09/12/0c40cd719541f68907493b012d5b9e4f.jpg",
-    "categories": [
-      "Lossless Repack"
-    ],
+    "categories": [],
     "date": "2026-09-12T04:12:20+03:00",
     "year": "2026",
     "genres": "Managerial, Strategy, Item crafting, Survival, Isometric, 3D, Science fiction",
@@ -273,9 +373,7 @@
     "title": "Tiny Eden",
     "url": "https://fitgirl-repacks.site/tiny-eden/",
     "image": "https://i7.imageban.ru/out/2026/09/09/7b06a020ef64b36a76605cabc1e83504.jpg",
-    "categories": [
-      "Lossless Repack"
-    ],
+    "categories": [],
     "date": "2026-09-09T05:50:12+03:00",
     "year": "2026",
     "genres": "Lifestyle, Managerial, First-person, 3D",
@@ -407,10 +505,7 @@
     "title": "Far Cry 5: Gold Edition – v1.016 + 5 DLCs",
     "url": "https://fitgirl-repacks.site/far-cry-5/",
     "image": "https://i2.imageban.ru/out/2026/09/07/6448ed32da7d2767d98e2d3e95e14ebc.jpg",
-    "categories": [
-      "Hypervisor Bypass",
-      "Lossless Repack"
-    ],
+    "categories": [],
     "date": "2026-09-07T01:30:24+03:00",
     "year": "2026",
     "genres": "Action, Shooter, Open world, First-person, 3D",
@@ -613,7 +708,10 @@
     "title": "Onimusha: Way of the Sword – Premium Deluxe Edition, v01.000.001 + 24 DLCs",
     "url": "https://fitgirl-repacks.site/onimusha-way-of-the-sword/",
     "image": "https://i2.imageban.ru/out/2026/09/04/e34a46c0921cf64b28f0e2d67eb716f7.jpg",
-    "categories": [],
+    "categories": [
+      "Hypervisor Bypass",
+      "Lossless Repack"
+    ],
     "date": "2026-09-04T22:41:36+03:00",
     "year": "2026",
     "genres": "Action, Third-person, 3D",
@@ -853,7 +951,7 @@
     "companies": "",
     "languages": "ENG/MULTI8",
     "originalSize": "31.3 GB",
-    "repackSize": "24.3 GBCrimson_Moon_Update_v1.0.0.162350-ElAmigos.rar (Source: ElAmigos)",
+    "repackSize": "24.3 GB",
     "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=155348"
   },
   {
