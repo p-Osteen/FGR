@@ -71,6 +71,24 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://p-osteen.github.io/FGR/game/iracing-studios-nascar-26-1789608426000</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://p-osteen.github.io/FGR/game/chainstaff-1789603232000</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://p-osteen.github.io/FGR/game/ragnar-1789585823000</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://p-osteen.github.io/FGR/game/runescape-dragonwilds-1789516865000</loc>
     <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
