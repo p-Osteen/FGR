@@ -71,6 +71,24 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://p-osteen.github.io/FGR/game/mechwarrior-5-mercenaries-1791936007000</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://p-osteen.github.io/FGR/game/project-spark-1791929413000</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://p-osteen.github.io/FGR/game/lego-party-1791915629000</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://p-osteen.github.io/FGR/game/paperhead-1791856105000</loc>
     <lastmod>2026-10-13</lastmod>
     <changefreq>monthly</changefreq>
