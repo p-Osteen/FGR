@@ -1,13 +1,513 @@
 [
   {
-    "id": "planet-zoo-2-1793326302000",
-    "title": "Planet Zoo 2: Deluxe Edition – v1.0.7.1031590 + 2 DLCs",
-    "url": "https://fitgirl-repacks.site/planet-zoo-2/",
-    "image": "https://i3.imageban.ru/out/2026/10/30/5633219b5ab5194ad8b79d5c71d61e2a.jpg",
+    "id": "silica-1793842575000",
+    "title": "Silica – v1.0.15 (Release)",
+    "url": "https://fitgirl-repacks.site/silica/",
+    "image": "https://i6.imageban.ru/out/2026/11/05/a7efa88c8b96f651603fd562476b1d03.jpg",
+    "categories": [],
+    "date": "2026-11-05T04:36:15+03:00",
+    "year": "2026",
+    "genres": "Action, Shooter, Strategy, RTS, Open world, First-person, Third-person, 3D",
+    "companies": "",
+    "languages": "RUS/ENG/MULTI9",
+    "originalSize": "26 GB",
+    "repackSize": "17.9 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=131386"
+  },
+  {
+    "id": "cairn-1793837735000",
+    "title": "Cairn: Deluxe Edition – v1.1.593s_2337 + 4 DLCs/Bonuses",
+    "url": "https://fitgirl-repacks.site/cairn/",
+    "image": "https://i5.imageban.ru/out/2026/01/30/8db1d9765278a79978c1da266207f216.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-05T03:15:35+03:00",
+    "year": "2026",
+    "genres": "Adventure, Simulator, Survival, Third-person, 3D",
+    "companies": "",
+    "languages": "RUS/ENG/MULTI11",
+    "originalSize": "11.1 GB",
+    "repackSize": "8.5 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=141268"
+  },
+  {
+    "id": "warrior-cats-clans-of-the-forest-1793834343000",
+    "title": "Warrior Cats: Clans of the Forest + 2 DLCs",
+    "url": "https://fitgirl-repacks.site/warrior-cats-clans-of-the-forest/",
+    "image": "https://i8.imageban.ru/out/2026/11/05/c037f7410bc21d38c1743bdb3eb219ae.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-05T02:19:03+03:00",
+    "year": "2026",
+    "genres": "Action, RPG, Third-person, 3D, Turn-based",
+    "companies": "Bamtang Games, Trailmark Games",
+    "languages": "ENG/MULTI6",
+    "originalSize": "3.4 GB",
+    "repackSize": "2.1 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=160579"
+  },
+  {
+    "id": "distant-worlds-2-1793826088000",
+    "title": "Distant Worlds 2 – v1.3.7.9 + 5 DLCs",
+    "url": "https://fitgirl-repacks.site/distant-worlds-2/",
+    "image": "https://i1.imageban.ru/out/2022/03/11/6be42e4b488bbe76d4c9cfaf83a60821.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-05T00:01:28+03:00",
+    "year": "2026",
+    "genres": "Strategy, 4X, Pausable real-time, 3D",
+    "companies": "CodeForce, Slitherine Ltd.",
+    "languages": "ENG",
+    "originalSize": "19.1 GB",
+    "repackSize": "7.2 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=111391"
+  },
+  {
+    "id": "cop-bastard-1793748936000",
+    "title": "COP BASTARD – v1.00b3",
+    "url": "https://fitgirl-repacks.site/cop-bastard/",
+    "image": "https://i3.imageban.ru/out/2026/11/04/808d8e825abd39b6d576f0abcfc0b91d.jpg",
+    "categories": [],
+    "date": "2026-11-04T02:35:36+03:00",
+    "year": "2026",
+    "genres": "Action, Shooter, First-person, 3D",
+    "companies": "targim., Retrovibe Games",
+    "languages": "RUS/ENG/MULTI12",
+    "originalSize": "2.4 GB",
+    "repackSize": "1.3 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=147704"
+  },
+  {
+    "id": "probably-stolen-cyberpunk-shopkeeper-sim-1793744261000",
+    "title": "Probably Stolen: Cyberpunk Shopkeeper Sim, v1.00-REV2 + Bonus OST",
+    "url": "https://fitgirl-repacks.site/probably-stolen-cyberpunk-shopkeeper-sim/",
+    "image": "https://i3.imageban.ru/out/2026/11/03/46e6feabd43fbd12c55e82de36ad6964.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-04T01:17:41+03:00",
+    "year": "2026",
+    "genres": "Lifestyle, Managerial, Item crafting, 2D, Cyberpunk",
+    "companies": "Questing Goose Studio, tinyBuild",
+    "languages": "RUS/ENG/MULTI8",
+    "originalSize": "3.2 GB",
+    "repackSize": "324/585 MB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=160601"
+  },
+  {
+    "id": "you-are-empty-absolute-edition-1793738286000",
+    "title": "You Are Empty: Absolute Edition Complete – Hotfix 3 + Bonus OST",
+    "url": "https://fitgirl-repacks.site/you-are-empty-absolute-edition/",
+    "image": "https://i8.imageban.ru/out/2026/11/03/077f5b3f4d59467c4f6e1ee1a6987cfe.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-03T23:38:06+03:00",
+    "year": "2026",
+    "genres": "Action, Shooter, First-person, 3D",
+    "companies": "Digital Spray Studios, Mandel ArtPlains, Jordan Freeman Group, ZOOM Platform Media, Strategy First, BillionTech",
+    "languages": "RUS/ENG/MULTI5",
+    "originalSize": "2.5 GB",
+    "repackSize": "1.5 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=160811"
+  },
+  {
+    "id": "chained-together-1793732419000",
+    "title": "Chained Together – v1.11.1 + 2 DLCs",
+    "url": "https://fitgirl-repacks.site/chained-together/",
+    "image": "https://i3.imageban.ru/out/2024/07/03/00821ac3dc3fa3291da12656d470c290.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-03T22:00:19+03:00",
+    "year": "2026",
+    "genres": "Arcade, Jump and run, Third-person, 3D",
+    "companies": "",
+    "languages": "",
+    "originalSize": "8.4 GB",
+    "repackSize": "5.2 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=135127"
+  },
+  {
+    "id": "toy-shire-1793731432000",
+    "title": "Toy Shire – v1.00 (Release)",
+    "url": "https://fitgirl-repacks.site/toy-shire/",
+    "image": "https://i5.imageban.ru/out/2026/11/03/83cf1b6795a3e30dba29443ce38dae1a.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-03T21:43:52+03:00",
+    "year": "2026",
+    "genres": "Tower defense, First-person, Top-down, 3D",
+    "companies": "Bluespy Studios, Catoptric Games",
+    "languages": "RUS/ENG/MULTI11",
+    "originalSize": "1.3 GB",
+    "repackSize": "865 MB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=133126"
+  },
+  {
+    "id": "resonance-of-fate-4k-hd-edition-1793656805000",
+    "title": "Resonance of Fate (End of Eternity) 4K/HD Edition – ENHANCED REMASTER, Build 25984155 + High Resolution Texture Pack DLC",
+    "url": "https://fitgirl-repacks.site/resonance-of-fate-4k-hd-edition/",
+    "image": "https://i4.imageban.ru/out/2026/11/02/e29c19e63fc90700819ea7e18efd1123.jpg",
+    "categories": [],
+    "date": "2026-11-03T01:00:05+03:00",
+    "year": "2026",
+    "genres": "RPG, 3D, Steampunk, Japanese, Turn-based",
+    "companies": "",
+    "languages": "ENG/MULTI6",
+    "originalSize": "76.6 GB",
+    "repackSize": "25.9/29.2 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=92687"
+  },
+  {
+    "id": "hunting-simulator-3-1793654932000",
+    "title": "Hunting Simulator 3: Apex Predator Edition – v1.0.0-451.118880 + 2 DLCs",
+    "url": "https://fitgirl-repacks.site/hunting-simulator-3/",
+    "image": "https://i4.imageban.ru/out/2026/11/02/06d6a8c5fd1468249fe476462670fc51.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-03T00:28:52+03:00",
+    "year": "2026",
+    "genres": "Sports, Open world, First-person, Third-person, 3D",
+    "companies": "Nacon Studio Ghent, Nacon",
+    "languages": "RUS/ENG/MULTI11",
+    "originalSize": "19.4 GB",
+    "repackSize": "14.6 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=144800"
+  },
+  {
+    "id": "crackdown-3-ultimate-edition-1793647245000",
+    "title": "Crackdown 3: Ultimate Edition, v1.0.3162.2 + All DLCs + Multiplayer",
+    "url": "https://fitgirl-repacks.site/crackdown-3-ultimate-edition/",
+    "image": "https://i4.imageban.ru/out/2022/03/21/ef5f645399f539b9675955c81ee45c27.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-02T22:20:45+03:00",
+    "year": "2026",
+    "genres": "Action, Shooter, Driving, Open world, Third-person, 3D",
+    "companies": "Reagent Games, Sumo Digital, Xbox Game Studios",
+    "languages": "ENG/MULTI8",
+    "originalSize": "21.1 GB",
+    "repackSize": "from 10.7 GB [Selective Download]",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=38&t=72417"
+  },
+  {
+    "id": "static-dread-the-submarine-1793636504000",
+    "title": "Static Dread: The Submarine – Deluxe Edition, Build 20260917T1313Z + 3 DLCs/Bonuses",
+    "url": "https://fitgirl-repacks.site/static-dread-the-submarine/",
+    "image": "https://i1.imageban.ru/out/2026/11/02/947d4d5c4f2acf207e1613df90613dc4.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-02T19:21:44+03:00",
+    "year": "2026",
+    "genres": "Adventure, First-person, 3D, Horror",
+    "companies": "solarsuit.games, Polden Publishing",
+    "languages": "RUS/ENG/MULTI9",
+    "originalSize": "1.5 GB",
+    "repackSize": "638 MB/1.1 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=152688"
+  },
+  {
+    "id": "ecstatica-1793632522000",
+    "title": "Ecstatica (Remastered) + Bonus OST",
+    "url": "https://fitgirl-repacks.site/ecstatica/",
+    "image": "https://i7.imageban.ru/out/2026/11/02/178dde57ddedf2ab9d95cfcd74f6f74e.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-02T18:15:22+03:00",
+    "year": "2026",
+    "genres": "Adventure, Survival, Third-person, 3D models on 2D backgrounds, Horror",
+    "companies": "Psygnosis, SNEG, Andrew Spencer Studios",
+    "languages": "RUS/ENG/MULTI10",
+    "originalSize": "10.6 GB",
+    "repackSize": "from 866 MB [Selective Download]",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=160124"
+  },
+  {
+    "id": "harvest-moon-echoes-of-teradea-1793627739000",
+    "title": "Harvest Moon: Echoes of Teradea – v1.3.0 + 2 DLCs",
+    "url": "https://fitgirl-repacks.site/harvest-moon-echoes-of-teradea/",
+    "image": "https://i6.imageban.ru/out/2026/11/02/1f85df8dbccf604ddc0a0ee760a896b2.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-02T16:55:39+03:00",
+    "year": "2026",
+    "genres": "Lifestyle, Managerial, RPG, Third-person, 3D, Japanese",
+    "companies": "Imagica Geeq, Natsume",
+    "languages": "ENG/MULTI7",
+    "originalSize": "3.7 GB",
+    "repackSize": "1.3 GB",
+    "discussionUrl": ""
+  },
+  {
+    "id": "croc-2-kingdom-of-the-gobbos-1793579039000",
+    "title": "Croc 2: Kingdom of the Gobbos",
+    "url": "https://fitgirl-repacks.site/croc-2-kingdom-of-the-gobbos/",
+    "image": "https://i2.imageban.ru/out/2026/11/02/a8df7f6ed71b65f35b340bcaf95cad5d.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-02T03:23:59+03:00",
+    "year": "2026",
+    "genres": "Arcade, Jump and run, Third-person, 3D",
+    "companies": "Argonaut Software, Fox Interactive, Argonaut Games",
+    "languages": "ENG/MULTI5",
+    "originalSize": "11.4 GB",
+    "repackSize": "from 2.6 GB [Selective Download]",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=162604"
+  },
+  {
+    "id": "ravenswatch-1793570413000",
+    "title": "Ravenswatch: Year One Edition – v1.06.00.04.27511 + 12 DLCs/Bonuses",
+    "url": "https://fitgirl-repacks.site/ravenswatch/",
+    "image": "https://i1.imageban.ru/out/2024/09/27/2413aadfdbe62a0cb2ad1890a3b65dff.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-02T01:00:13+03:00",
+    "year": "2026",
+    "genres": "RPG, Action RPG, Top view, 3D",
+    "companies": "Passtech Games, Nacon",
+    "languages": "RUS/ENG/MULTI12",
+    "originalSize": "4.1 GB",
+    "repackSize": "2.1/2.3 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=124520"
+  },
+  {
+    "id": "absolutely-nothing-good-1793567662000",
+    "title": "ABSOLUTELY NOTHING GOOD",
+    "url": "https://fitgirl-repacks.site/absolutely-nothing-good/",
+    "image": "https://i2.imageban.ru/out/2026/11/01/5639d1c2dbf72c6a66a31096c117b98c.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-02T00:14:22+03:00",
+    "year": "2026",
+    "genres": "Adventure, Lifestyle, First-person, 3D, Horror",
+    "companies": "",
+    "languages": "RUS/ENG/MULTI18",
+    "originalSize": "5.8 GB",
+    "repackSize": "3.2 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=162404"
+  },
+  {
+    "id": "deep-rock-galactic-1793556025000",
+    "title": "Deep Rock Galactic: Deluxe Edition, v1.40.158958.0 + 13 DLCs/Bonuses",
+    "url": "https://fitgirl-repacks.site/deep-rock-galactic/",
+    "image": "https://i2.imageban.ru/out/2021/11/05/d217da034ad8d3753ccc6d5b4d727131.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-01T21:00:25+03:00",
+    "year": "2026",
+    "genres": "Action, Shooter, First-person, 3D",
+    "companies": "Ghost Ship Games, Coffee Stain Studios",
+    "languages": "RUS/ENG/MULTI15",
+    "originalSize": "5.3 GB",
+    "repackSize": "2.6/2.8 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=81377"
+  },
+  {
+    "id": "the-wolf-among-us-remastered-1793497316000",
+    "title": "The Wolf Among Us Remastered",
+    "url": "https://fitgirl-repacks.site/the-wolf-among-us-remastered/",
+    "image": "https://i4.imageban.ru/out/2026/11/01/ace0e3534801e20b5ef590b3dec0bd6a.jpg",
+    "categories": [],
+    "date": "2026-11-01T04:41:56+03:00",
+    "year": "2026",
+    "genres": "Adventure, Third-person, 3D, Detective fiction",
+    "companies": "PM Studios, Telltale Games",
+    "languages": "ENG/MULTI4",
+    "originalSize": "16.5 GB",
+    "repackSize": "from 5.2 GB [Selective Download]",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=159012"
+  },
+  {
+    "id": "onimusha-way-of-the-sword-1793494836000",
+    "title": "Onimusha: Way of the Sword – Premium Deluxe Edition, v01.000.001 + 23 DLCs",
+    "url": "https://fitgirl-repacks.site/onimusha-way-of-the-sword/",
+    "image": "https://i2.imageban.ru/out/2026/11/01/359ed2953dd9aa297dc3f0b6524b99ad.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-01T04:00:36+03:00",
+    "year": "2026",
+    "genres": "Action, Third-person, 3D",
+    "companies": "",
+    "languages": "RUS/ENG/MULTI14",
+    "originalSize": "52.8 GB",
+    "repackSize": "39.3 GBDownload and unpack them OVER setup files listed below, with overwriting.",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=145148"
+  },
+  {
+    "id": "anomalith-1793491205000",
+    "title": "ANOMALITH: Digital Deluxe Edition + 5 DLCs/Bonuses",
+    "url": "https://fitgirl-repacks.site/anomalith/",
+    "image": "https://i5.imageban.ru/out/2026/11/01/1c70a433212fd32ed738390ffa244773.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-01T03:00:05+03:00",
+    "year": "2026",
+    "genres": "Action, Shooter, Survival, Third-person, 3D, Horror",
+    "companies": "Winning Entertainment Group, FuRyu",
+    "languages": "ENG/MULTI5",
+    "originalSize": "20.3 GB",
+    "repackSize": "9.3/9.4 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=158694"
+  },
+  {
+    "id": "labyrinthine-1793487615000",
+    "title": "Labyrinthine: Supporter Edition, Build 26227185 + 2 DLCs",
+    "url": "https://fitgirl-repacks.site/labyrinthine/",
+    "image": "https://i3.imageban.ru/out/2023/08/26/75aa3560cb191f7dc084c8d67e7e3625.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-01T02:00:15+03:00",
+    "year": "2026",
+    "genres": "Adventure, First-person, 3D, Horror",
+    "companies": "",
+    "languages": "RUS/ENG/MULTI16",
+    "originalSize": "20.8 GB",
+    "repackSize": "7.5 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=107972"
+  },
+  {
+    "id": "game-keeper-somebody-messed-up-my-shop-1793481965000",
+    "title": "Game Keeper: Somebody Messed Up My Shop!",
+    "url": "https://fitgirl-repacks.site/game-keeper-somebody-messed-up-my-shop/",
+    "image": "https://i2.imageban.ru/out/2026/10/31/ce1c958927c435738b1c3b407eb4bdcd.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-01T00:26:05+03:00",
+    "year": "2026",
+    "genres": "Lifestyle, Logic, Hidden object, First-person, 3D",
+    "companies": "",
+    "languages": "RUS/ENG/MULTI27",
+    "originalSize": "1.9 GB",
+    "repackSize": "1.1 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=161950"
+  },
+  {
+    "id": "risk-of-rain-2-1793473226000",
+    "title": "Risk of Rain 2 Bundle, v1.5.0 #1210 + 7 DLCs/Bonuses",
+    "url": "https://fitgirl-repacks.site/risk-of-rain-2/",
+    "image": "https://i1.imageban.ru/out/2022/03/02/b5aaf95f6959cc64f1c732350052b8df.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-10-31T22:00:26+03:00",
+    "year": "2026",
+    "genres": "Arcade, Run and gun, Permanent death, Third-person, 3D",
+    "companies": "Hopoo Games, Gearbox Software",
+    "languages": "RUS/ENG/MULTI11",
+    "originalSize": "4.9 GB",
+    "repackSize": "2/2.3 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=93802"
+  },
+  {
+    "id": "phantom-blade-zero-1793410974000",
+    "title": "Phantom Blade Zero: Deluxe Edition – v301524-17219 + 2 DLCs",
+    "url": "https://fitgirl-repacks.site/phantom-blade-zero/",
+    "image": "https://i1.imageban.ru/out/2026/10/31/73dca9b0ed13f92c8f1a83af09fcf3ac.jpg",
     "categories": [
       "Hypervisor Bypass",
       "Lossless Repack"
     ],
+    "date": "2026-10-31T04:42:54+03:00",
+    "year": "2026",
+    "genres": "RPG, Action RPG, Third-person, 3D",
+    "companies": "",
+    "languages": "RUS/ENG/MULTI15",
+    "originalSize": "140.6 GB",
+    "repackSize": "110.8 GBPhantom_Blade_Zero_Update_from_v301524_to_v302256_Hypervisor-ElAmigos.rar (Source: ElAmigos)",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=41&t=153737"
+  },
+  {
+    "id": "project-hunt-1793406053000",
+    "title": "Project Hunt: Maps & Weapons Bundle – Build 26240711 + 9 DLCs",
+    "url": "https://fitgirl-repacks.site/project-hunt/",
+    "image": "https://i3.imageban.ru/out/2024/04/06/adaf0eac62f8458fa68224f562581df3.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-10-31T03:20:53+03:00",
+    "year": "2026",
+    "genres": "Sports, Hunting, First-person, 3D",
+    "companies": "",
+    "languages": "RUS/ENG/MULTI116",
+    "originalSize": "35.3 GB",
+    "repackSize": "24.4 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=139582"
+  },
+  {
+    "id": "stygian-outer-gods-1793404733000",
+    "title": "Stygian: Outer Gods – v05b68d5f",
+    "url": "https://fitgirl-repacks.site/stygian-outer-gods/",
+    "image": "https://i3.imageban.ru/out/2026/10/31/931b562ba7c29e3adfffd3680fcad6e8.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-10-31T02:58:53+03:00",
+    "year": "2026",
+    "genres": "Action, Survival, First-person, 3D, Horror",
+    "companies": "Misterial Games, Fulqrum Publishing",
+    "languages": "RUS/ENG/MULTI8",
+    "originalSize": "12.8 GB",
+    "repackSize": "9.5 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=139914"
+  },
+  {
+    "id": "keep-driving-1793394061000",
+    "title": "Keep Driving – v1.4.3.2d",
+    "url": "https://fitgirl-repacks.site/keep-driving/",
+    "image": "https://i6.imageban.ru/out/2025/02/08/2d2b8dd1f61be0046db3b1ea3789e638.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-10-31T00:01:01+03:00",
+    "year": "2026",
+    "genres": "Adventure, Driving, Side, 2D, Retro look",
+    "companies": "",
+    "languages": "RUS/ENG/MULTi10",
+    "originalSize": "703 MB",
+    "repackSize": "337 MB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=143624"
+  },
+  {
+    "id": "princess-maker-children-of-revelation-1793391529000",
+    "title": "Princess Maker: Children of Revelation",
+    "url": "https://fitgirl-repacks.site/princess-maker-children-of-revelation/",
+    "image": "https://i7.imageban.ru/out/2026/10/30/77101c22ef4187e71458afe957c838fa.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-10-30T23:18:49+03:00",
+    "year": "2026",
+    "genres": "Lifestyle, RPG, Side, Top-down, 2D",
+    "companies": "",
+    "languages": "ENG/MULTI5",
+    "originalSize": "2.8 GB",
+    "repackSize": "907 MB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=149803"
+  },
+  {
+    "id": "planet-zoo-2-1793326302000",
+    "title": "Planet Zoo 2: Deluxe Edition – v1.0.7.1031590 + 2 DLCs",
+    "url": "https://fitgirl-repacks.site/planet-zoo-2/",
+    "image": "https://i3.imageban.ru/out/2026/10/30/5633219b5ab5194ad8b79d5c71d61e2a.jpg",
+    "categories": [],
     "date": "2026-10-30T05:11:42+03:00",
     "year": "2026",
     "genres": "Managerial, Strategy, 3D, Real-time",
@@ -190,7 +690,9 @@
     "title": "Dying Light 2: Stay Human – Ultimate Edition – v1.30.0 + 31 DLCs + Bonus Content + Windows 7 Fix",
     "url": "https://fitgirl-repacks.site/dying-light-2-stay-human/",
     "image": "https://i2.imageban.ru/out/2023/02/02/a1b3cfd6460c2971fa25f7bae85b6249.jpg",
-    "categories": [],
+    "categories": [
+      "Lossless Repack"
+    ],
     "date": "2026-10-28T12:00:54+03:00",
     "year": "2026",
     "genres": "Action, Open world, Horror, Post-apocalyptic, Zombies, First-person, 3D",
@@ -341,7 +843,9 @@
     "title": "Mortal Shell II: Devout Edition – v97404+1875 + 2 DLCs",
     "url": "https://fitgirl-repacks.site/mortal-shell-2/",
     "image": "https://i6.imageban.ru/out/2026/08/18/ba7f0a7b70ab27309cafdc0069d2ea07.jpg",
-    "categories": [],
+    "categories": [
+      "Lossless Repack"
+    ],
     "date": "2026-10-26T04:00:41+03:00",
     "year": "2026",
     "genres": "RPG, Action RPG, Third-person, 3D",
