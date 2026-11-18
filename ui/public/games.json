@@ -1,5 +1,627 @@
 [
   {
+    "id": "black-mesa-1794967222000",
+    "title": "Black Mesa: Definitive Edition – Build 26713286",
+    "url": "https://fitgirl-repacks.site/black-mesa/",
+    "image": "https://i4.imageban.ru/out/2026/11/18/0adedb7efd089bbc5f6b7d9c2f2ebfe1.jpg",
+    "categories": [],
+    "date": "2026-11-18T05:00:22+03:00",
+    "year": "2026",
+    "genres": "Action, Shooter, First-person, 3D",
+    "companies": "",
+    "languages": "RUS/ENG/MULTI30",
+    "originalSize": "16.5 GB",
+    "repackSize": "9.7 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=67649"
+  },
+  {
+    "id": "saloon-simulator-1794964161000",
+    "title": "Saloon Simulator – v1.0-17904",
+    "url": "https://fitgirl-repacks.site/saloon-simulator/",
+    "image": "https://i3.imageban.ru/out/2026/11/18/c6fba7e39d6221f390f34c7dac4e113f.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-18T04:09:21+03:00",
+    "year": "2026",
+    "genres": "Lifestyle, First-person, 3D, Western",
+    "companies": "RockGame, Glivi Games",
+    "languages": "RUS/ENG/MULTI12",
+    "originalSize": "10.1 GB",
+    "repackSize": "7.1 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=123559"
+  },
+  {
+    "id": "star-fox-1794957244000",
+    "title": "Star Fox – v1.2.0 + Switch 2 Emulator + Recomp",
+    "url": "https://fitgirl-repacks.site/star-fox/",
+    "image": "https://i5.imageban.ru/out/2026/11/17/7af6d3d3bdaaac541f3dd20901d6707c.jpg",
+    "categories": [
+      "Lossless Repack",
+      "Switch 2 Emulated"
+    ],
+    "date": "2026-11-18T02:14:04+03:00",
+    "year": "2026",
+    "genres": "Arcade, Gun game, Third-person, 3D",
+    "companies": "Velan Studios, Nintendo",
+    "languages": "ENG/MULTI11",
+    "originalSize": "16.3 GB",
+    "repackSize": "9.6/10.3 GB",
+    "discussionUrl": ""
+  },
+  {
+    "id": "the-rogue-prince-of-persia-1794943856000",
+    "title": "The Rogue Prince of Persia – v1.1.0",
+    "url": "https://fitgirl-repacks.site/the-rogue-prince-of-persia/",
+    "image": "https://i1.imageban.ru/out/2025/08/20/b03829cddbbbdd7c6a696d4379422bd5.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-17T22:30:56+03:00",
+    "year": "2026",
+    "genres": "Arcade, Jump and run, Side, 2D",
+    "companies": "Ubisoft Entertainment, Evil Empire",
+    "languages": "RUS/ENG/MULTI15",
+    "originalSize": "867 MB",
+    "repackSize": "445 MB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=140003"
+  },
+  {
+    "id": "nocturnal-2-1794935914000",
+    "title": "Nocturnal 2 – v1.0.0",
+    "url": "https://fitgirl-repacks.site/nocturnal-2/",
+    "image": "https://i2.imageban.ru/out/2026/11/17/c24eee784f1af2dd1fe0763e595ceb72.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-17T20:18:34+03:00",
+    "year": "2026",
+    "genres": "Arcade, Jump and run, Side, 2D",
+    "companies": "",
+    "languages": "RUS/ENG/MULTI10",
+    "originalSize": "1.8 GB",
+    "repackSize": "754 MB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=145908&p=3628971#p3628971"
+  },
+  {
+    "id": "ball-x-pit-1794864016000",
+    "title": "BALL x PIT: The Rise and Fall of Ballbylon Bundle, v1.308 + 3 DLCs/Bonuses",
+    "url": "https://fitgirl-repacks.site/ball-x-pit/",
+    "image": "https://i7.imageban.ru/out/2025/10/20/801710ee815ae35f1787fd6f6e6d9ee7.jpg",
+    "categories": [
+      "Lossless Repack",
+      "Pink Paw Award"
+    ],
+    "date": "2026-11-17T00:20:16+03:00",
+    "year": "2026",
+    "genres": "Arcade, Shoot 'em up, Top, 2D",
+    "companies": "Kenny Sun, Devolver Digital",
+    "languages": "RUS/ENG/MULTI16",
+    "originalSize": "2.6 GB",
+    "repackSize": "203/383 MB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=149130&p=3379489"
+  },
+  {
+    "id": "frontier-path-of-shadows-1794861084000",
+    "title": "Frontier: Path of Shadows + 4 DLCs/Bonuses",
+    "url": "https://fitgirl-repacks.site/frontier-path-of-shadows/",
+    "image": "https://i2.imageban.ru/out/2026/11/16/426e0afff5deb5a10655bdd35864edc4.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-16T23:31:24+03:00",
+    "year": "2026",
+    "genres": "Strategy, Tactics, Isometric, 2D, Turn-based",
+    "companies": "3_Publishing, Oduvan Games",
+    "languages": "RUS/ENG/MULTI14",
+    "originalSize": "2.5 GB",
+    "repackSize": "295/694 MB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=161394"
+  },
+  {
+    "id": "frontier-tale-1794858425000",
+    "title": "Frontier Tale – v2.1.2",
+    "url": "https://fitgirl-repacks.site/frontier-tale/",
+    "image": "https://i2.imageban.ru/out/2026/11/16/574786548d50e60ab098f82b0af4b7d3.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-16T22:47:05+03:00",
+    "year": "2026",
+    "genres": "Lifestyle, Managerial, RPG, Top-down, 3D",
+    "companies": "Apophis Game Studio, NPC Entertainment",
+    "languages": "ENG/MULTI4",
+    "originalSize": "3.5 GB",
+    "repackSize": "603 MB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=163006"
+  },
+  {
+    "id": "frontier-paladin-1794853845000",
+    "title": "Frontier Paladin – Build 25255980",
+    "url": "https://fitgirl-repacks.site/frontier-paladin/",
+    "image": "https://i4.imageban.ru/out/2026/05/24/e603ab22d849b835ab47c911f4125cd8.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-16T21:30:45+03:00",
+    "year": "2026",
+    "genres": "RPG, Action RPG, Top, 3D",
+    "companies": "",
+    "languages": "",
+    "originalSize": "11.1 GB",
+    "repackSize": "8.2 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=147001"
+  },
+  {
+    "id": "ilomilo-plus-1794852516000",
+    "title": "ilomilo plus – v1.1.43.0",
+    "url": "https://fitgirl-repacks.site/ilomilo-plus/",
+    "image": "https://i2.imageban.ru/out/2026/11/16/42ca1c39b0f2faa702e8e9378457c551.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-16T21:08:36+03:00",
+    "year": "2026",
+    "genres": "Arcade, Jump and run, Logic, 3D",
+    "companies": "",
+    "languages": "ENG/MULTI9",
+    "originalSize": "232 GB",
+    "repackSize": "179 MB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=38&t=117251"
+  },
+  {
+    "id": "unbroken-the-awakening-1794792981000",
+    "title": "Unbroken: The Awakening",
+    "url": "https://fitgirl-repacks.site/unbroken-the-awakening/",
+    "image": "https://i6.imageban.ru/out/2026/11/16/04782a4205a3c796b29d836382b6846f.jpg",
+    "categories": [],
+    "date": "2026-11-16T04:36:21+03:00",
+    "year": "2026",
+    "genres": "RPG, Action RPG, First-person, 3D",
+    "companies": "",
+    "languages": "RUS/ENG/MULTI3",
+    "originalSize": "25.8 GB",
+    "repackSize": "6.9 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=150059"
+  },
+  {
+    "id": "ground-branch-1794786956000",
+    "title": "GROUND BRANCH – v1.1.0 Build 22612",
+    "url": "https://fitgirl-repacks.site/ground-branch/",
+    "image": "https://i3.imageban.ru/out/2026/07/17/bf8aee48569843ec4ac7a5ef798b20b8.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-16T02:55:56+03:00",
+    "year": "2026",
+    "genres": "Action, Tactical shooter, First-person, 3D",
+    "companies": "BlackFoot Studios, MicroProse Software",
+    "languages": "",
+    "originalSize": "34.6 GB",
+    "repackSize": "23.3 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=91859"
+  },
+  {
+    "id": "ancient-wars-sparta-hd-1794784938000",
+    "title": "Ancient Wars: Sparta HD",
+    "url": "https://fitgirl-repacks.site/ancient-wars-sparta-hd/",
+    "image": "https://i4.imageban.ru/out/2026/11/16/60b1090f647992fb42f9b1cf24f848c2.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-16T02:22:18+03:00",
+    "year": "2026",
+    "genres": "Strategy, 3D, Real-time",
+    "companies": "",
+    "languages": "RUS/ENG/MULTI17",
+    "originalSize": "6.8 GB",
+    "repackSize": "4.7 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=157092"
+  },
+  {
+    "id": "mr-prepper-1794777631000",
+    "title": "Mr. Prepper: Complete Edition – v1.44h + 4 DLCs/Bonuses",
+    "url": "https://fitgirl-repacks.site/mr-prepper/",
+    "image": "https://i1.imageban.ru/out/2022/08/01/22b7c5b9d58a9abedd0527624306d0cb.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-16T00:20:31+03:00",
+    "year": "2026",
+    "genres": "Managerial, Survival, Post-apocalyptic, Side, 2D",
+    "companies": "Rejected Games, PlayWay S.A.",
+    "languages": "RUS/ENG/MULTI17",
+    "originalSize": "3.7 GB",
+    "repackSize": "2.1 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=85436"
+  },
+  {
+    "id": "fish-and-hike-1794774717000",
+    "title": "Fish & Hike",
+    "url": "https://fitgirl-repacks.site/fish-and-hike/",
+    "image": "https://i7.imageban.ru/out/2026/11/15/e8ffdbc76164c3f1d8242ff596b4c116.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-15T23:31:57+03:00",
+    "year": "2026",
+    "genres": "Lifestyle, Angling, Top-down, 3D",
+    "companies": "Sleepwalking Potatoes, Frozen Way",
+    "languages": "RUS/ENG/MULTI14",
+    "originalSize": "2.6 GB",
+    "repackSize": "904 MB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=158997"
+  },
+  {
+    "id": "world-war-z-aftermath-1794700851000",
+    "title": "World War Z: Aftermath – Deluxe Edition – v2.51 (0.1.MS.1400437/1403270) + 25 DLCs",
+    "url": "https://fitgirl-repacks.site/world-war-z-aftermath/",
+    "image": "https://i4.imageban.ru/out/2021/09/20/ac78fb452e33b1bb4b49615c79c73f44.jpg",
+    "categories": [],
+    "date": "2026-11-15T03:00:51+03:00",
+    "year": "2026",
+    "genres": "Action, Shooter, Third-person, 3D, Zombies",
+    "companies": "Saber Interactive, Paramount Digital Entertainment",
+    "languages": "RUS/ENG/MULTI12",
+    "originalSize": "61.3 GB",
+    "repackSize": "34.6 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=38&t=91823"
+  },
+  {
+    "id": "hazard-levels-1794697797000",
+    "title": "Hazard Levels: Deluxe Edition – v1.0.0.10272 + 5 DLCs",
+    "url": "https://fitgirl-repacks.site/hazard-levels/",
+    "image": "https://i1.imageban.ru/out/2026/11/15/713a8c1fa3fadd11c2382a4f4dcbe7c6.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-15T02:09:57+03:00",
+    "year": "2026",
+    "genres": "Action, Shooter, Third-person, 3D",
+    "companies": "",
+    "languages": "RUS/ENG/MULTI13",
+    "originalSize": "9.1 GB",
+    "repackSize": "5.9 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=154902"
+  },
+  {
+    "id": "suri-the-seventh-note-1794694033000",
+    "title": "SURI: The Seventh Note – Deluxe Edition, v1.007 + 2 DLCs",
+    "url": "https://fitgirl-repacks.site/suri-the-seventh-note/",
+    "image": "https://i8.imageban.ru/out/2026/11/15/3099de17e9261b860304f464a4910d0f.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-15T01:07:13+03:00",
+    "year": "2026",
+    "genres": "Arcade, Jump and run, Rhythm, Side, 2D",
+    "companies": "",
+    "languages": "ENG/MULTI8",
+    "originalSize": "3.8 GB",
+    "repackSize": "1.7 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=162626"
+  },
+  {
+    "id": "survival-fountain-of-youth-1794690089000",
+    "title": "Survival: Fountain of Youth – Captain’s Edition, Build_1835 + 3 DLCs",
+    "url": "https://fitgirl-repacks.site/survival-fountain-of-youth/",
+    "image": "https://i3.imageban.ru/out/2024/05/22/04b153b31be90af01e629123bc7422d0.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-15T00:01:29+03:00",
+    "year": "2026",
+    "genres": "Action, Open world, Survival, First-person, 3D",
+    "companies": "Odinsoft, Twin Sails Interactive",
+    "languages": "RUS/ENG/MULTI10",
+    "originalSize": "22.9 GB",
+    "repackSize": "8.6 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=125250"
+  },
+  {
+    "id": "the-witchs-bakery-1794685873000",
+    "title": "The Witch’s Bakery",
+    "url": "https://fitgirl-repacks.site/the-witchs-bakery/",
+    "image": "https://i4.imageban.ru/out/2026/11/14/666cfc89596869a8427973ec8c2cbbcd.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-14T22:51:13+03:00",
+    "year": "2026",
+    "genres": "Adventure, Side, 2D",
+    "companies": "Silver Lining Interactive, Sunny Lab",
+    "languages": "ENG/MULTI8",
+    "originalSize": "5.9 GB",
+    "repackSize": "2.1 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=160806"
+  },
+  {
+    "id": "witch-cabin-cleanup-1794682156000",
+    "title": "Witch Cabin Cleanup – v1.0.0.0",
+    "url": "https://fitgirl-repacks.site/witch-cabin-cleanup/",
+    "image": "https://i1.imageban.ru/out/2026/11/14/5e5ac787a52fd54ef7f00416a1e3333c.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-14T21:49:16+03:00",
+    "year": "2026",
+    "genres": "Lifestyle, Logic, Hidden object, First-person, 3D",
+    "companies": "",
+    "languages": "RUS/ENG/MULTI20",
+    "originalSize": "3.6 GB",
+    "repackSize": "2.2 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=162195"
+  },
+  {
+    "id": "football-manager-27-1794625106000",
+    "title": "Football Manager 27 – v27.0.1",
+    "url": "https://fitgirl-repacks.site/football-manager-27/",
+    "image": "https://i7.imageban.ru/out/2026/11/14/b8b8dda50addd9b5172ed5f98f53f962.jpg",
+    "categories": [],
+    "date": "2026-11-14T05:58:26+03:00",
+    "year": "2026",
+    "genres": "Managerial, Sports, Soccer, Strategy, 2D, 3D, Real-time, Turn-based",
+    "companies": "Sega, Sports Interactive",
+    "languages": "RUS/ENG/MULTI20",
+    "originalSize": "8.2 GB",
+    "repackSize": "4.4 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=161915"
+  },
+  {
+    "id": "mario-kart-world-1794618893000",
+    "title": "Mario Kart World – v1.8.0 + Switch 2 Emulator",
+    "url": "https://fitgirl-repacks.site/mario-kart-world/",
+    "image": "https://i7.imageban.ru/out/2026/11/14/b3ca98e78584f9c3f8821429bd6f20ed.jpg",
+    "categories": [
+      "Lossless Repack",
+      "Switch 2 Emulated"
+    ],
+    "date": "2026-11-14T04:14:53+03:00",
+    "year": "2026",
+    "genres": "Arcade, Racing, 3D, Karts",
+    "companies": "Nintendo, Nintendo EPD",
+    "languages": "RUS/ENG/MULTI16",
+    "originalSize": "21.9 GB",
+    "repackSize": "16.6 GB",
+    "discussionUrl": ""
+  },
+  {
+    "id": "warno-1794611457000",
+    "title": "WARNO: Gold Edition, v210942 + 25 DLCs",
+    "url": "https://fitgirl-repacks.site/warno/",
+    "image": "https://i2.imageban.ru/out/2024/05/24/4128d008172b76523a2ff98b1f1f8f3a.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-14T02:10:57+03:00",
+    "year": "2026",
+    "genres": "Strategy, Wargame, Isometric, 3D, Real-time",
+    "companies": "",
+    "languages": "RUS/ENG/MULTI6",
+    "originalSize": "87.5 GB",
+    "repackSize": "35.8 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=118939"
+  },
+  {
+    "id": "terrible-lizards-1794607037000",
+    "title": "Terrible Lizards",
+    "url": "https://fitgirl-repacks.site/terrible-lizards/",
+    "image": "https://i5.imageban.ru/out/2026/11/13/3a31415e510fecdddff3df9afb6c2d18.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-14T00:57:17+03:00",
+    "year": "2026",
+    "genres": "Action, Jump and run, First-person, 3D, Horror",
+    "companies": "Behaviour Interactive, WDR Studios, Digital Pajamas",
+    "languages": "RUS/ENG/MULTI9",
+    "originalSize": "15 GB",
+    "repackSize": "11.7 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=162588"
+  },
+  {
+    "id": "project-motor-racing-1794598223000",
+    "title": "Project Motor Racing: Year 1 Bundle, v2.3.0.3 + 7 DLCs",
+    "url": "https://fitgirl-repacks.site/project-motor-racing/",
+    "image": "https://i2.imageban.ru/out/2025/11/26/b1688939fafa9a22b14765b0e2d122dd.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-13T22:30:23+03:00",
+    "year": "2026",
+    "genres": "Racing, Simulation, Physics-based, First-person, Third-person, 3D",
+    "companies": "Straight4 Studios, GIANTS Software",
+    "languages": "RUS/ENG/MULTI23",
+    "originalSize": "30.7 GB",
+    "repackSize": "12.6 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=148028"
+  },
+  {
+    "id": "motorcycle-ride-infinity-1794596659000",
+    "title": "Motorcycle Ride: Infinity – v1.1",
+    "url": "https://fitgirl-repacks.site/motorcycle-ride-infinity/",
+    "image": "https://i6.imageban.ru/out/2026/11/13/21889f537b8982be5c79210ba94653da.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-13T22:04:19+03:00",
+    "year": "2026",
+    "genres": "Arcade, Driving, First-person, 3D",
+    "companies": "",
+    "languages": "RUS/ENG/MULTI31",
+    "originalSize": "4.6 GB",
+    "repackSize": "2.8 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=162816"
+  },
+  {
+    "id": "star-wars-galactic-racer-1794529805000",
+    "title": "STAR WARS: Galactic Racer – Deluxe Edition, vCL386500 + 3 DLCs/Bonuses",
+    "url": "https://fitgirl-repacks.site/star-wars-galactic-racer/",
+    "image": "https://i1.imageban.ru/out/2026/11/13/8f6f3913e84798d0fcffbfc4ee07affb.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-13T03:30:05+03:00",
+    "year": "2026",
+    "genres": "Arcade, Racing, Star Wars, Vehicular combat, First-person, Third-person, 3D",
+    "companies": "Fuse Games, Secret Mode",
+    "languages": "ENG/MULTI14",
+    "originalSize": "35.4 GB",
+    "repackSize": "25.4/26.2 GBDownload and unpack them OVER setup files listed below, with overwriting.",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=153764"
+  },
+  {
+    "id": "takeover-2-1794528064000",
+    "title": "Takeover 2: Deluxe Edition + Bonus OSTs",
+    "url": "https://fitgirl-repacks.site/takeover-2/",
+    "image": "https://i5.imageban.ru/out/2026/11/13/4661609b2fe6d9fe14ac2d19ebfe3edb.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-13T03:01:04+03:00",
+    "year": "2026",
+    "genres": "Arcade, Beat 'em up (Brawler), Side, 2D",
+    "companies": "",
+    "languages": "ENG/MULTI5",
+    "originalSize": "6.1 GB",
+    "repackSize": "3.9 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=156414"
+  },
+  {
+    "id": "atom-rpg-post-apocalyptic-indie-game-1794513601000",
+    "title": "ATOM RPG: Post-apocalyptic Indie Game – Expansion Edition, v1.2.1 + 2 DLCs/Bonuses",
+    "url": "https://fitgirl-repacks.site/atom-rpg-post-apocalyptic-indie-game/",
+    "image": "https://i3.imageban.ru/out/2024/01/03/e3165913ba6a78ad465ad71362f95c4a.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-12T23:00:01+03:00",
+    "year": "2026",
+    "genres": "RPG, Isometric, 3D, Turn-based",
+    "companies": "",
+    "languages": "RUS/ENG/MULTi13",
+    "originalSize": "7.8 GB",
+    "repackSize": "from 3.4 GB [Selective Download]",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=79684"
+  },
+  {
+    "id": "hydro-thunder-hurricane-1794510170000",
+    "title": "Hydro Thunder Hurricane – v1.2.0.0",
+    "url": "https://fitgirl-repacks.site/hydro-thunder-hurricane/",
+    "image": "https://i2.imageban.ru/out/2026/11/12/0e6d4f709956d47ed3ad8e0842bb512b.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-12T22:02:50+03:00",
+    "year": "2026",
+    "genres": "Arcade, Racing, 3D, Motorboats",
+    "companies": "Microsoft Game Studios, Vector Unit",
+    "languages": "ENG/MULTI8",
+    "originalSize": "439 MB",
+    "repackSize": "243 MB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=38&t=77618"
+  },
+  {
+    "id": "ea-sports-fc-27-1794450003000",
+    "title": "EA SPORTS FC 27 – v1.2.0 [Monkey Repack]",
+    "url": "https://fitgirl-repacks.site/ea-sports-fc-27/",
+    "image": "https://i6.imageban.ru/out/2026/11/12/539c145828afb864eb6b05c32125f1ff.jpg",
+    "categories": [],
+    "date": "2026-11-12T05:20:03+03:00",
+    "year": "2026",
+    "genres": "Sports, Soccer, 3D",
+    "companies": "EA Romania, Electronic Arts, EA Vancouver",
+    "languages": "RUS/ENG/MULTI21",
+    "originalSize": "84.4 GB",
+    "repackSize": "from 56.3 GB [Selective Download]",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=41&t=160342"
+  },
+  {
+    "id": "dreamworks-shrek-2-remastered-1794449273000",
+    "title": "DreamWorks Shrek 2 Remastered",
+    "url": "https://fitgirl-repacks.site/dreamworks-shrek-2-remastered/",
+    "image": "https://i6.imageban.ru/out/2026/11/12/27d7ab45c5aa4b39638a185a6e90f7b2.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-12T05:07:53+03:00",
+    "year": "2026",
+    "genres": "Arcade, Beat 'em up (Brawler), Third-person, 3D",
+    "companies": "",
+    "languages": "RUS/ENG/MULTI12",
+    "originalSize": "5.6 GB",
+    "repackSize": "3.5 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=162896"
+  },
+  {
+    "id": "wing-commander-iv-the-price-of-freedom-30th-anniversary-edition-1794445331000",
+    "title": "Wing Commander IV: The Price of Freedom – 30th Anniversary Edition",
+    "url": "https://fitgirl-repacks.site/wing-commander-iv-the-price-of-freedom-30th-anniversary-edition/",
+    "image": "https://i6.imageban.ru/out/2026/11/12/147f3d2561a9197742fdc38bca5d81d3.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-12T04:02:11+03:00",
+    "year": "2026",
+    "genres": "Interactive movie, Simulation, 3D, Spacecraft",
+    "companies": "Electronic Arts, Origin Systems",
+    "languages": "ENG/MULTI3",
+    "originalSize": "74.6 GB",
+    "repackSize": "from 5.3 GB [Selective Download]",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=162773"
+  },
+  {
+    "id": "euro-truck-simulator-2-1794438020000",
+    "title": "Euro Truck Simulator 2 – v1.62.2.1s + 106 DLCs + Multiplayer",
+    "url": "https://fitgirl-repacks.site/euro-truck-simulator-2/",
+    "image": "https://i1.imageban.ru/out/2023/10/21/b40deca1731b010fe2cfaee4489bc40f.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-12T02:00:20+03:00",
+    "year": "2026",
+    "genres": "Driving, Simulation, Open world, 3D",
+    "companies": "SCS Software / Excalibur Publishing",
+    "languages": "RUS/ENG/MULTI42",
+    "originalSize": "34.4 GB",
+    "repackSize": "17 GB",
+    "discussionUrl": "http://cs.rin.ru/forum/viewtopic.php?f=10&t=63279"
+  },
+  {
+    "id": "ashes-of-the-singularity-2-1794435999000",
+    "title": "Ashes of the Singularity II – v1.0.0.207 (284635)",
+    "url": "https://fitgirl-repacks.site/ashes-of-the-singularity-2/",
+    "image": "https://i3.imageban.ru/out/2026/11/12/d2412a19dce0f62069898dcb5a79c946.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-12T01:26:39+03:00",
+    "year": "2026",
+    "genres": "Strategy, RTS, 3D, Real-time",
+    "companies": "Oxide Games, Stardock",
+    "languages": "RUS/ENG/MULTI14",
+    "originalSize": "6 GB",
+    "repackSize": "4.2 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=150719"
+  },
+  {
+    "id": "sledders-1794427210000",
+    "title": "Sledders – v1.1.7",
+    "url": "https://fitgirl-repacks.site/sledders/",
+    "image": "https://i3.imageban.ru/out/2025/03/20/88cb4bb011a85e57cf87fe4bf33ed852.jpg",
+    "categories": [
+      "Lossless Repack"
+    ],
+    "date": "2026-11-11T23:00:10+03:00",
+    "year": "2026",
+    "genres": "Driving, Racing, Sports, Extreme sports, Winter sports, Physics-based, First-person, Third-person, 3D",
+    "companies": "Hanki Games, Bonus Stage Publishing",
+    "languages": "ENG",
+    "originalSize": "5 GB",
+    "repackSize": "2 GB",
+    "discussionUrl": "https://cs.rin.ru/forum/viewtopic.php?f=10&t=135633"
+  },
+  {
     "id": "legend-of-zelda-ocarina-of-time-1794355909000",
     "title": "Legend of Zelda: Ocarina of Time – v1.1.1 + Switch 2 Emulator",
     "url": "https://fitgirl-repacks.site/legend-of-zelda-ocarina-of-time/",
@@ -107,7 +729,10 @@
     "title": "Pokémon Pokopia – v2.0.1 + Switch 2 Emulator",
     "url": "https://fitgirl-repacks.site/pokemon-pokopia/",
     "image": "https://i3.imageban.ru/out/2026/11/10/61d2fa17d00fc78b6acb040000bc0ca9.jpg",
-    "categories": [],
+    "categories": [
+      "Lossless Repack",
+      "Switch 2 Emulated"
+    ],
     "date": "2026-11-10T03:30:46+03:00",
     "year": "2026",
     "genres": "Digital pets, Lifestyle, Item crafting, 3D",
@@ -424,9 +1049,7 @@
     "title": "Godzilla: Destroy All Monsters Melee Remastered – Digital Deluxe Edition + DLC",
     "url": "https://fitgirl-repacks.site/godzilla-destroy-all-monsters-melee-remastered/",
     "image": "https://i2.imageban.ru/out/2026/11/06/223139159ebc4a1f5f7540c936326be2.jpg",
-    "categories": [
-      "Lossless Repack"
-    ],
+    "categories": [],
     "date": "2026-11-06T02:57:29+03:00",
     "year": "2026",
     "genres": "Arcade, Fighting, Side, 3D",
@@ -675,7 +1298,9 @@
     "title": "Resonance of Fate (End of Eternity) 4K/HD Edition – ENHANCED REMASTER, Build 25984155 + High Resolution Texture Pack DLC",
     "url": "https://fitgirl-repacks.site/resonance-of-fate-4k-hd-edition/",
     "image": "https://i4.imageban.ru/out/2026/11/02/e29c19e63fc90700819ea7e18efd1123.jpg",
-    "categories": [],
+    "categories": [
+      "Lossless Repack"
+    ],
     "date": "2026-11-03T01:00:05+03:00",
     "year": "2026",
     "genres": "RPG, 3D, Steampunk, Japanese, Turn-based",
