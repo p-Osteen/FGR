@@ -71,6 +71,24 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://p-osteen.github.io/FGR/game/tokyo-xtreme-racer-1795572021000</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://p-osteen.github.io/FGR/game/blitzkrieg-3-1795565826000</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://p-osteen.github.io/FGR/game/stellaris-galaxy-edition-1795557647000</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://p-osteen.github.io/FGR/game/serious-sam-fusion-1795553709000</loc>
     <lastmod>2026-11-24</lastmod>
     <changefreq>monthly</changefreq>
